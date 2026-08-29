@@ -94,9 +94,9 @@ include __DIR__ . '/includes/header.php';
     <div class="hero-tracks">
 
       <article class="htrack">
-        <div class="htrack-top">
+        <div class="htrack-img">
+          <img src="<?= e(asset('img/card-students.jpg')) ?>" alt="Students in a school computer lab learning with AI" fetchpriority="high">
           <span class="htrack-chip"><i class="fas fa-graduation-cap"></i> Class 3–12</span>
-          <span class="htrack-mark"><i class="fas fa-user-graduate"></i></span>
         </div>
         <div class="htrack-body">
           <h3>AI for Students</h3>
@@ -107,9 +107,9 @@ include __DIR__ . '/includes/header.php';
       </article>
 
       <article class="htrack t-green">
-        <div class="htrack-top">
+        <div class="htrack-img">
+          <img src="<?= e(asset('img/card-educators.jpg')) ?>" alt="Teacher guiding a student at a computer" loading="lazy">
           <span class="htrack-chip"><i class="fas fa-chalkboard-user"></i> L1 &amp; L2</span>
-          <span class="htrack-mark"><i class="fas fa-chalkboard-user"></i></span>
         </div>
         <div class="htrack-body">
           <h3>AI for Educators</h3>
@@ -120,9 +120,9 @@ include __DIR__ . '/includes/header.php';
       </article>
 
       <article class="htrack t-yellow">
-        <div class="htrack-top">
+        <div class="htrack-img">
+          <img src="<?= e(asset('img/card-professionals.jpg')) ?>" alt="Working professional upskilling on a laptop" loading="lazy">
           <span class="htrack-chip"><i class="fas fa-briefcase"></i> Upskilling</span>
-          <span class="htrack-mark"><i class="fas fa-briefcase"></i></span>
         </div>
         <div class="htrack-body">
           <h3>AI for Professionals</h3>
