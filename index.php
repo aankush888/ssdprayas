@@ -193,62 +193,85 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- ============ PROGRAMMES / 3 AUDIENCES ============ -->
-<section class="section section-soft" id="programmes">
+<!-- ============ PROGRAMMES — LEARNING JOURNEY ============ -->
+<section class="prog" id="programmes">
   <div class="container">
 
     <div class="section-head is-center reveal">
-      <span class="eyebrow"><i class="fas fa-layer-group"></i> Our Programmes</span>
-      <h2>One Mission, <span class="text-brand">Three Learner Journeys</span></h2>
-      <p>AI is not one course for one audience. SSD Prayas runs three distinct, structured tracks —
-         each with its own curriculum, delivery mode and certification.</p>
+      <span class="eyebrow"><i class="fas fa-route"></i> Our Programmes</span>
+      <h2>The SSD Prayas <span class="grad-text">Learning Journey</span></h2>
+      <p>AI is not one course taught once. The curriculum grows with the learner — from a
+         Class 3 child meeting a computer, to a Class 12 student building real AI projects.</p>
     </div>
 
-    <div class="grid grid-3">
-
-      <article class="track-card reveal">
-        <span class="track-badge">Class 3 – 12</span>
-        <h3>AI for Students</h3>
-        <p>A graded curriculum that grows with the child — from digital literacy in Class 3 to
-           AI specialisation and career pathways in Class 12.</p>
-        <ul class="track-list">
-          <li>Age-appropriate, grade-wise modules</li>
-          <li>Hands-on projects, not just theory</li>
-          <li>School computer labs, no extra hardware</li>
-          <li>Certificate on assessment</li>
-        </ul>
-        <a href="#contact" class="btn btn-primary btn-block">Enrol Your School</a>
+    <div class="journey">
+      <article class="jstep reveal">
+        <div class="jstep-dot"><i class="fas fa-shapes"></i></div>
+        <span class="jstep-grade">Class 3–5</span>
+        <h3>Digital Foundations</h3>
+        <p>Computer confidence, safe internet habits and a first, playful introduction to
+           what artificial intelligence actually is.</p>
       </article>
 
-      <article class="track-card t-green reveal">
-        <span class="track-badge">L1 &amp; L2 Levels</span>
-        <h3>AI for Educators</h3>
-        <p>Teachers are the multiplier. We train and certify school educators so AI teaching
-           continues long after our team leaves the campus.</p>
-        <ul class="track-list">
-          <li>Structured L1 and L2 training batches</li>
-          <li>Gemini-certified educator pathway</li>
-          <li>Classroom-ready lesson plans &amp; tools</li>
-          <li>Work-certified trained batches</li>
-        </ul>
-        <a href="<?= e(url('careers')) ?>" class="btn btn-ghost btn-block">Join as an Educator</a>
+      <article class="jstep reveal">
+        <div class="jstep-dot"><i class="fas fa-puzzle-piece"></i></div>
+        <span class="jstep-grade">Class 6–8</span>
+        <h3>AI Fundamentals</h3>
+        <p>Computational thinking, block-based coding and the core ideas behind machine
+           learning — taught through hands-on activities.</p>
       </article>
 
-      <article class="track-card t-yellow reveal">
-        <span class="track-badge">Career Upskilling</span>
-        <h3>AI for Professionals</h3>
-        <p>Practical AI skills for working professionals — applied tools, real workflows and
-           portfolio projects that hold up in the job market.</p>
-        <ul class="track-list">
-          <li>Applied AI &amp; prompt engineering</li>
-          <li>Weekend and online-friendly batches</li>
-          <li>Industry mentors and live projects</li>
-          <li>Recognised completion certificate</li>
-        </ul>
-        <a href="#contact" class="btn btn-ghost btn-block">Talk to an Advisor</a>
+      <article class="jstep reveal">
+        <div class="jstep-dot"><i class="fas fa-diagram-project"></i></div>
+        <span class="jstep-grade">Class 9–10</span>
+        <h3>Applied Machine Learning</h3>
+        <p>Real datasets, real AI tools and real problems. Students start building projects
+           worth putting in a portfolio.</p>
       </article>
 
+      <article class="jstep reveal">
+        <div class="jstep-dot"><i class="fas fa-rocket"></i></div>
+        <span class="jstep-grade">Class 11–12</span>
+        <h3>Specialisation &amp; Careers</h3>
+        <p>Advanced AI, capstone projects, certification and clear guidance on the courses
+           and careers that follow.</p>
+      </article>
     </div>
+
+    <div class="prog-panels">
+      <article class="ppanel reveal">
+        <div class="ppanel-ico"><i class="fas fa-chalkboard-user"></i></div>
+        <div>
+          <h3>Educator Training — L1 &amp; L2</h3>
+          <p>Your own teachers are trained, assessed and certified so AI teaching keeps
+             running on campus after our team moves on.</p>
+          <div class="prog-tags">
+            <span class="prog-tag">L1 Foundation</span>
+            <span class="prog-tag">L2 Advanced</span>
+            <span class="prog-tag">Gemini certified</span>
+            <span class="prog-tag">E-check verified</span>
+          </div>
+          <a href="<?= e(url('careers')) ?>" class="link-arrow">Join as an educator <span>→</span></a>
+        </div>
+      </article>
+
+      <article class="ppanel reveal">
+        <div class="ppanel-ico"><i class="fas fa-briefcase"></i></div>
+        <div>
+          <h3>Professional Upskilling</h3>
+          <p>Applied AI for working professionals — the tools and workflows actually used
+             on the job, taught on evenings and weekends.</p>
+          <div class="prog-tags">
+            <span class="prog-tag">Applied AI</span>
+            <span class="prog-tag">Prompt engineering</span>
+            <span class="prog-tag">Live projects</span>
+            <span class="prog-tag">Online friendly</span>
+          </div>
+          <a href="#contact" class="link-arrow">Talk to an advisor <span>→</span></a>
+        </div>
+      </article>
+    </div>
+
   </div>
 </section>
 
