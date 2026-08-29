@@ -17,7 +17,8 @@ define('SITE_NAME',    'SSD Prayas');
 define('SITE_LOGO',    'ssdprayaslogo-1.png');   // wordmark used in header/footer
 define('SITE_TAGLINE', 'Empowering the Next Generation with AI');
 define('SITE_URL',     'http://localhost/ssdprayas');   // TODO: live domain daalna hai
-define('SITE_EMAIL',   'info@ssdprayas.in');            // TODO: confirm karna hai
+define('SITE_EMAIL',     'info@ssdprayas.com');
+define('SITE_EMAIL_ALT', 'jai@ssdprayas.com');
 
 // ---------- Contact ----------
 define('CONTACT_PHONE',    '+91 98104 50465');

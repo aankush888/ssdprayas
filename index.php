@@ -565,7 +565,10 @@ include __DIR__ . '/includes/header.php';
           <i class="fas fa-envelope"></i>
           <div>
             <b>Email Us</b>
-            <p><a href="mailto:<?= e(SITE_EMAIL) ?>" style="color:var(--brand)"><?= e(SITE_EMAIL) ?></a></p>
+            <p>
+              <a href="mailto:<?= e(SITE_EMAIL) ?>" style="color:var(--brand)"><?= e(SITE_EMAIL) ?></a><br>
+              <a href="mailto:<?= e(SITE_EMAIL_ALT) ?>" style="color:var(--brand)"><?= e(SITE_EMAIL_ALT) ?></a>
+            </p>
           </div>
         </div>
       </div>

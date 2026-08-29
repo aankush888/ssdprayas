@@ -5,4 +5,4 @@ Disallow: /assets/uploads/resumes/
 Disallow: /_backup_old_site/
 Allow: /
 
-Sitemap: https://ssdprayas.in/sitemap.xml
+Sitemap: https://ssdprayas.com/sitemap.xml

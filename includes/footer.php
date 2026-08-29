@@ -42,6 +42,7 @@
         <a href="tel:+<?= e(CONTACT_PHONE_RAW) ?>"><i class="fas fa-phone" style="width:18px"></i> <?= e(CONTACT_PHONE) ?></a>
         <a href="<?= e(whatsapp_link()) ?>" target="_blank" rel="noopener"><i class="fab fa-whatsapp" style="width:18px"></i> WhatsApp (same number)</a>
         <a href="mailto:<?= e(SITE_EMAIL) ?>"><i class="fas fa-envelope" style="width:18px"></i> <?= e(SITE_EMAIL) ?></a>
+        <a href="mailto:<?= e(SITE_EMAIL_ALT) ?>"><i class="fas fa-envelope" style="width:18px"></i> <?= e(SITE_EMAIL_ALT) ?></a>
         <a href="<?= e($home) ?>#contact"><i class="fas fa-location-dot" style="width:18px"></i> The DM Tower, Bhopal</a>
       </div>
 
