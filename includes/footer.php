@@ -21,11 +21,11 @@
 
       <div>
         <h4>Programmes</h4>
-        <a href="<?= e($home) ?>#programmes">AI for Students (Class 3–12)</a>
-        <a href="<?= e($home) ?>#programmes">AI for Educators</a>
-        <a href="<?= e($home) ?>#programmes">AI for Professionals</a>
-        <a href="<?= e($home) ?>#ai-for-school">AI for School Programme</a>
-        <a href="<?= e($home) ?>#government">Government Projects</a>
+        <a href="<?= e(url('programmes')) ?>">All Programmes</a>
+        <a href="<?= e(url('ai-for-school')) ?>">AI for School Programme</a>
+        <a href="<?= e(url('government')) ?>">Government Projects</a>
+        <a href="<?= e(url('careers')) ?>">Educator Training</a>
+        <a href="<?= e(url('programmes')) ?>#mode">Online &amp; Offline</a>
       </div>
 
       <div>
@@ -34,7 +34,7 @@
         <a href="<?= e(url('about')) ?>#leadership">Leadership</a>
         <a href="<?= e(url('careers')) ?>">Careers</a>
         <a href="<?= e(url('blogs')) ?>">Blogs</a>
-        <a href="<?= e($home) ?>#contact">Contact Us</a>
+        <a href="<?= e(url('contact')) ?>">Contact Us</a>
       </div>
 
       <div>
@@ -43,7 +43,7 @@
         <a href="<?= e(whatsapp_link()) ?>" target="_blank" rel="noopener"><i class="fab fa-whatsapp" style="width:18px"></i> WhatsApp (same number)</a>
         <a href="mailto:<?= e(SITE_EMAIL) ?>"><i class="fas fa-envelope" style="width:18px"></i> <?= e(SITE_EMAIL) ?></a>
         <a href="mailto:<?= e(SITE_EMAIL_ALT) ?>"><i class="fas fa-envelope" style="width:18px"></i> <?= e(SITE_EMAIL_ALT) ?></a>
-        <a href="<?= e($home) ?>#contact"><i class="fas fa-location-dot" style="width:18px"></i> The DM Tower, Bhopal</a>
+        <a href="<?= e(url('contact')) ?>"><i class="fas fa-location-dot" style="width:18px"></i> The DM Tower, Bhopal</a>
       </div>
 
     </div>

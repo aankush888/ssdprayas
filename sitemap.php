@@ -3,10 +3,14 @@ require_once __DIR__ . '/includes/functions.php';
 header('Content-Type: application/xml; charset=utf-8');
 
 $static = [
-    ['/', '1.00', 'weekly'],
-    ['about', '0.80', 'monthly'],
-    ['careers', '0.80', 'weekly'],
-    ['blogs', '0.80', 'weekly'],
+    ['/',              '1.00', 'weekly'],
+    ['programmes',     '0.90', 'monthly'],
+    ['ai-for-school',  '0.90', 'monthly'],
+    ['government',     '0.85', 'monthly'],
+    ['about',          '0.80', 'monthly'],
+    ['careers',        '0.80', 'weekly'],
+    ['blogs',          '0.80', 'weekly'],
+    ['contact',        '0.75', 'monthly'],
 ];
 $posts = rows($pdo, "SELECT slug, updated_at, created_at FROM blogs WHERE status = 'published' ORDER BY created_at DESC");
 

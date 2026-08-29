@@ -85,12 +85,13 @@ $home = ($page === 'home') ? '' : url('/');
 
     <nav class="nav-menu" id="navMenu">
       <a href="<?= e(url('/')) ?>" class="<?= $page === 'home' ? 'active' : '' ?>">Home</a>
-      <a href="<?= e($home) ?>#programmes">Programmes</a>
-      <a href="<?= e($home) ?>#government">Government</a>
+      <a href="<?= e(url('programmes')) ?>" class="<?= $page === 'programmes' ? 'active' : '' ?>">Programmes</a>
+      <a href="<?= e(url('ai-for-school')) ?>" class="<?= $page === 'ai-for-school' ? 'active' : '' ?>">AI for School</a>
+      <a href="<?= e(url('government')) ?>" class="<?= $page === 'government' ? 'active' : '' ?>">Government</a>
       <a href="<?= e(url('about')) ?>" class="<?= $page === 'about' ? 'active' : '' ?>">About</a>
       <a href="<?= e(url('careers')) ?>" class="<?= $page === 'careers' ? 'active' : '' ?>">Careers</a>
       <a href="<?= e(url('blogs')) ?>" class="<?= in_array($page, ['blogs', 'blog'], true) ? 'active' : '' ?>">Blogs</a>
-      <a href="<?= e($home) ?>#contact">Contact</a>
+      <a href="<?= e(url('contact')) ?>" class="<?= $page === 'contact' ? 'active' : '' ?>">Contact</a>
     </nav>
 
     <div class="nav-actions">
@@ -98,7 +99,7 @@ $home = ($page === 'home') ? '' : url('/');
          class="btn btn-ghost btn-sm btn-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
         <i class="fab fa-whatsapp" style="color:#25D366;font-size:17px"></i>
       </a>
-      <a href="<?= e($home) ?>#contact" class="btn btn-primary btn-sm">Start Your AI Journey</a>
+      <a href="<?= e(url('contact')) ?>" class="btn btn-primary btn-sm">Start Your AI Journey</a>
     </div>
 
   </div>
