@@ -1,0 +1,46 @@
+RewriteEngine On
+
+# Force extensionless, index-free URLs.
+# GET only — redirecting a POST would drop the form data.
+# The admin panel keeps its .php URLs.
+RewriteCond %{REQUEST_URI} !adminpanelweb
+RewriteCond %{THE_REQUEST} ^GET\s(.*)/index\.php [NC]
+RewriteRule ^ %1 [R=301,L]
+
+RewriteCond %{REQUEST_URI} !adminpanelweb
+RewriteCond %{THE_REQUEST} ^GET\s([^.]+)\.php [NC]
+RewriteRule ^ %1 [R=301,L]
+
+# Search engines ask for /sitemap.xml — serve the generated one.
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+# Blog detail: /blog/my-post-slug -> blog-detail.php?slug=my-post-slug
+RewriteRule ^blog/([A-Za-z0-9_-]+)/?$ blog-detail.php?slug=$1 [L,QSA]
+
+# Map extensionless URLs to their .php file
+RewriteCond %{REQUEST_URI} !adminpanelweb
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*?)/?$ $1.php [L]
+
+# Keep config, includes and backups off the web
+<FilesMatch "^(config\.php)$">
+    Require all denied
+</FilesMatch>
+
+# Basic security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/png  "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType text/css   "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+</IfModule>

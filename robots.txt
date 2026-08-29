@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /adminpanelweb/
+Disallow: /includes/
+Disallow: /assets/uploads/resumes/
+Disallow: /_backup_old_site/
+Allow: /
+
+Sitemap: https://ssdprayas.in/sitemap.xml

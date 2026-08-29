@@ -1,0 +1,2 @@
+# The admin panel uses plain .php URLs — no rewriting inherited from the site root.
+RewriteEngine On

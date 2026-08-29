@@ -1,0 +1,20 @@
+# Local configuration — copy config.example.php to config.php and fill it in.
+# Keeps DB credentials and the Gemini API key out of the repository.
+/config.php
+
+# Previous "AI for Schools" site, kept locally for reference only.
+# Contains a hard-coded live API key — must never be pushed.
+/_backup_old_site/
+
+# Uploaded content: blog images and applicant resumes (personal data).
+/assets/uploads/blogs/*
+/assets/uploads/resumes/*
+!/assets/uploads/**/.htaccess
+!/assets/uploads/**/.gitkeep
+
+# OS and editor noise
+.DS_Store
+._*
+Thumbs.db
+*.bak
+*.log
