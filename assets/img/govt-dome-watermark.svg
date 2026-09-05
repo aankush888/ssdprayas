@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Dome Top finial -->
+  <line x1="250" y1="20" x2="250" y2="45" stroke-width="2"/>
+  <circle cx="250" cy="20" r="3" fill="currentColor"/>
+  <!-- Central Dome -->
+  <path d="M210 100 C210 50, 290 50, 290 100 Z" />
+  <!-- Dome Base / Drum -->
+  <rect x="205" y="100" width="90" height="25" rx="2"/>
+  <line x1="215" y1="100" x2="215" y2="125"/>
+  <line x1="230" y1="100" x2="230" y2="125"/>
+  <line x1="250" y1="100" x2="250" y2="125"/>
+  <line x1="270" y1="100" x2="270" y2="125"/>
+  <line x1="285" y1="100" x2="285" y2="125"/>
+  
+  <!-- Chhatri / Mini side domes -->
+  <path d="M150 115 C150 90, 180 90, 180 115 Z"/>
+  <rect x="148" y="115" width="34" height="15"/>
+  <line x1="165" y1="80" x2="165" y2="92"/>
+
+  <path d="M320 115 C320 90, 350 90, 350 115 Z"/>
+  <rect x="318" y="115" width="34" height="15"/>
+  <line x1="335" y1="80" x2="335" y2="92"/>
+
+  <!-- Pediment / Central facade -->
+  <polygon points="190,140 250,126 310,140"/>
+  
+  <!-- Main building roofline -->
+  <line x1="60" y1="140" x2="440" y2="140" stroke-width="2"/>
+  <line x1="50" y1="148" x2="450" y2="148" stroke-width="1.5"/>
+
+  <!-- Columns Colonnade -->
+  <!-- Center columns -->
+  <line x1="200" y1="148" x2="200" y2="240"/>
+  <line x1="216" y1="148" x2="216" y2="240"/>
+  <line x1="232" y1="148" x2="232" y2="240"/>
+  <line x1="248" y1="148" x2="248" y2="240"/>
+  <line x1="264" y1="148" x2="264" y2="240"/>
+  <line x1="280" y1="148" x2="280" y2="240"/>
+  <line x1="296" y1="148" x2="296" y2="240"/>
+
+  <!-- Left wing colonnade -->
+  <line x1="80" y1="148" x2="80" y2="240"/>
+  <line x1="100" y1="148" x2="100" y2="240"/>
+  <line x1="120" y1="148" x2="120" y2="240"/>
+  <line x1="140" y1="148" x2="140" y2="240"/>
+  <line x1="160" y1="148" x2="160" y2="240"/>
+  <line x1="180" y1="148" x2="180" y2="240"/>
+
+  <!-- Right wing colonnade -->
+  <line x1="320" y1="148" x2="320" y2="240"/>
+  <line x1="340" y1="148" x2="340" y2="240"/>
+  <line x1="360" y1="148" x2="360" y2="240"/>
+  <line x1="380" y1="148" x2="380" y2="240"/>
+  <line x1="400" y1="148" x2="400" y2="240"/>
+  <line x1="420" y1="148" x2="420" y2="240"/>
+
+  <!-- Arch windows in lower facade -->
+  <path d="M90 200 C90 190, 110 190, 110 200 L110 220 L90 220 Z"/>
+  <path d="M130 200 C130 190, 150 190, 150 200 L150 220 L90 220 Z"/>
+  <path d="M350 200 C350 190, 370 190, 370 200 L370 220 L350 220 Z"/>
+  <path d="M390 200 C390 190, 410 190, 410 200 L410 220 L390 220 Z"/>
+
+  <!-- Plinth / Steps -->
+  <line x1="40" y1="240" x2="460" y2="240" stroke-width="2"/>
+  <line x1="30" y1="248" x2="470" y2="248" stroke-width="1.5"/>
+  <line x1="20" y1="256" x2="480" y2="256" stroke-width="1.5"/>
+  <line x1="10" y1="264" x2="490" y2="264" stroke-width="2"/>
+</svg>

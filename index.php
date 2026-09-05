@@ -20,305 +20,343 @@ $show_states    = display_stat($stats['states'],    6);
 include __DIR__ . '/includes/header.php';
 ?>
 
-<main>
+<main class="page-home">
 
-<!-- ============ HERO ============ -->
-<section class="hero" id="home">
+<!-- ============ HERO SECTION ============ -->
+<section class="home-hero" id="home">
   <div class="container">
+    <div class="home-hero-content">
+      
+      <div class="google-partner-pill">
+        <img src="<?= e(asset('img/google.png')) ?>" alt="Google" class="google-logo-sm">
+        <span>Google for Education Partner</span>
+      </div>
 
-    <div class="hero-head">
-      <span class="hero-badge">
-        <i class="fas fa-award"></i> Google for Education Partner
-      </span>
+      <h1>AI Skilling for a<br><span class="text-blue">Future-Ready</span> Bharat</h1>
 
-      <h1>AI Skilling for a <span class="grad-text">Future-Ready</span> Bharat</h1>
-
-      <p class="hero-lead">
-        Practical, hands-on AI education for school students, their teachers and working
-        professionals — NEP 2020-aligned, delivered online and offline across India.
+      <p class="home-hero-lead">
+        Practical, hands-on AI education for school students, teachers and working professionals across India.
       </p>
 
-      <div class="hero-actions">
-        <a href="<?= e(url('contact')) ?>" class="btn btn-primary">Start Your AI Journey <i class="fas fa-arrow-right"></i></a>
+      <div class="home-hero-actions">
+        <a href="<?= e(url('contact')) ?>" class="btn btn-primary btn-pill">Start Your AI Journey <i class="fas fa-arrow-right"></i></a>
         <a href="<?= e(whatsapp_link('Hello SSD Prayas, I would like to book a demo.')) ?>"
-           class="btn btn-ghost" target="_blank" rel="noopener">
-          <i class="fab fa-whatsapp" style="color:#25D366"></i> Book a Demo
+           class="btn btn-white-pill" target="_blank" rel="noopener">
+          <i class="far fa-circle-play text-blue"></i> Book a Demo
         </a>
       </div>
-    </div>
 
-    <div class="hero-tracks">
-
-      <article class="htrack">
-        <div class="htrack-img">
-          <img src="<?= e(asset('img/card-students.jpg')) ?>" alt="Students in a school computer lab learning with AI" fetchpriority="high">
-          <span class="htrack-chip"><i class="fas fa-graduation-cap"></i> Class 3–12</span>
+      <div class="home-hero-highlights">
+        <div class="hh-item">
+          <div class="hh-icon"><i class="fas fa-microchip"></i></div>
+          <span>Industry Relevant AI Curriculum</span>
         </div>
-        <div class="htrack-body">
-          <h3>AI for Students</h3>
-          <p>A grade-wise curriculum that grows with the child — from digital literacy to
-             AI projects and career pathways.</p>
-          <a href="<?= e(url('programmes')) ?>" class="link-arrow">See the programme <span>→</span></a>
+        <div class="hh-item">
+          <div class="hh-icon"><i class="fas fa-hand-sparkles"></i></div>
+          <span>Practical, Hands-on Learning</span>
         </div>
-      </article>
-
-      <article class="htrack t-green">
-        <div class="htrack-img">
-          <img src="<?= e(asset('img/card-educators.jpg')) ?>" alt="Teacher guiding a student at a computer" loading="lazy">
-          <span class="htrack-chip"><i class="fas fa-chalkboard-user"></i> L1 &amp; L2</span>
+        <div class="hh-item">
+          <div class="hh-icon"><i class="fas fa-map-location-dot"></i></div>
+          <span>Across India Impact</span>
         </div>
-        <div class="htrack-body">
-          <h3>AI for Educators</h3>
-          <p>We train and certify your own teachers, so AI teaching continues long after
-             our team leaves the campus.</p>
-          <a href="<?= e(url('programmes')) ?>" class="link-arrow">See the training <span>→</span></a>
-        </div>
-      </article>
-
-      <article class="htrack t-yellow">
-        <div class="htrack-img">
-          <img src="<?= e(asset('img/card-professionals.jpg')) ?>" alt="Working professional upskilling on a laptop" loading="lazy">
-          <span class="htrack-chip"><i class="fas fa-briefcase"></i> Upskilling</span>
-        </div>
-        <div class="htrack-body">
-          <h3>AI for Professionals</h3>
-          <p>Applied AI skills for working professionals — real tools, real workflows,
-             portfolio projects that hold up.</p>
-          <a href="<?= e(url('programmes')) ?>" class="link-arrow">See the courses <span>→</span></a>
-        </div>
-      </article>
+      </div>
 
     </div>
+  </div>
 
-    <div class="hero-facts">
-      <div>
-        <strong><?= number_format($show_partners) ?>+</strong>
-        <span>Partner institutions</span>
-      </div>
-      <div>
-        <strong><?= number_format($show_states) ?>+</strong>
-        <span>States covered</span>
-      </div>
-      <div>
-        <strong><?= number_format($show_educators) ?>+</strong>
-        <span>Educators trained</span>
-      </div>
-      <img src="<?= e(asset('google-partner-badge-horizontal.png')) ?>"
-           alt="Google for Education Professional Development Partner">
-    </div>
-
+  <div class="home-hero-wave-corner" aria-hidden="true">
+    <svg viewBox="0 0 360 90" preserveAspectRatio="none">
+      <path d="M0,90 C90,45 180,85 270,30 C310,5 340,0 360,0 L360,90 Z" fill="url(#homeHeroWaveGrad)"></path>
+      <defs>
+        <linearGradient id="homeHeroWaveGrad" x1="0" y1="0" x2="360" y2="90" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#1a73e8"/>
+          <stop offset="1" stop-color="#0b57d0"/>
+        </linearGradient>
+      </defs>
+    </svg>
   </div>
 </section>
 
-<!-- ============ MARQUEE STRIP ============ -->
-<div class="strip" aria-hidden="true">
-  <div class="strip-track">
-    <?php for ($i = 0; $i < 2; $i++): ?>
-      <span><i class="fas fa-circle"></i> NEP 2020 Aligned Curriculum</span>
-      <span><i class="fas fa-circle"></i> Google for Education Partner</span>
-      <span><i class="fas fa-circle"></i> Government Large-Scale Projects</span>
-      <span><i class="fas fa-circle"></i> Class 3 to 12 Students</span>
-      <span><i class="fas fa-circle"></i> L1 &amp; L2 Educator Training</span>
-      <span><i class="fas fa-circle"></i> Online &amp; Offline Delivery</span>
-      <span><i class="fas fa-circle"></i> Work-Certified Batches</span>
-    <?php endfor; ?>
-  </div>
-</div>
-
-<!-- ============ STAT BAND ============ -->
-<section class="section-tight">
+<!-- ============ 3 TRACK CARDS (CONTENT & IMAGES PRESERVED) ============ -->
+<section class="section section-tracks">
   <div class="container">
-    <div class="stat-band reveal">
-      <div>
-        <strong data-count="<?= (int)$show_partners ?>" data-suffix="+">0</strong>
-        <span>Partner Institutions</span>
+    <div class="grid grid-3 home-tracks-grid">
+
+      <article class="home-track-card reveal">
+        <div class="htrack-media">
+          <img src="<?= e(asset('img/card-students.jpg')) ?>" alt="Students in a school computer lab learning with AI" fetchpriority="high">
+          <span class="htrack-tag is-blue">FOR STUDENTS</span>
+        </div>
+        <div class="htrack-info">
+          <h3>AI for Students</h3>
+          <p>A grade-wise curriculum that grows with the child starting with digital literacy in the early years and moving into real AI projects and career-readiness by senior school. Our online AI classes for students are built so a Class 3 student and a Class 12 student are never learning the same thing in a different font each stage has its own depth, tools, and outcomes</p>
+          <a href="<?= e(url('programmes')) ?>" class="htrack-link link-blue">Explore Programme <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="home-track-card reveal">
+        <div class="htrack-media">
+          <img src="<?= e(asset('img/card-educators.jpg')) ?>" alt="Teacher guiding a student at a computer" loading="lazy">
+          <span class="htrack-tag is-green">FOR EDUCATORS</span>
+        </div>
+        <div class="htrack-info">
+          <h3>AI for Educators</h3>
+          <p>We train and certify your own teachers, so AI teaching in schools continues long after our team has left the building. This isn't a one-day workshop it's structured L1 and L2 training designed to make your existing staff confident, independent, and genuinely good at running AI classrooms on their own.</p>
+          <a href="<?= e(url('programmes')) ?>" class="htrack-link link-green">Explore Training <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="home-track-card reveal">
+        <div class="htrack-media">
+          <img src="<?= e(asset('img/card-professionals.jpg')) ?>" alt="Working professional upskilling on a laptop" loading="lazy">
+          <span class="htrack-tag is-orange">FOR PROFESSIONALS</span>
+        </div>
+        <div class="htrack-info">
+          <h3>AI for Professionals</h3>
+          <p>Applied AI skills for working professionals real tools, real workflows, and portfolio projects that actually hold up in an interview. Every course ends in an industry-recognised AI certification, so what you learn on screen translates into something you can point to on a resume.</p>
+          <a href="<?= e(url('programmes')) ?>" class="htrack-link link-orange">Explore Courses <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS BAR ============ -->
+<section class="section-tight" style="padding: 10px 0 50px;">
+  <div class="container">
+    <div class="home-stats-card reveal">
+      <div class="hs-stat">
+        <div class="hs-icon hs-blue"><i class="fas fa-landmark"></i></div>
+        <div class="hs-info">
+          <strong data-count="<?= (int)$show_partners ?>" data-suffix="+">250+</strong>
+          <span>Partner Institutions</span>
+        </div>
       </div>
-      <div>
-        <strong data-count="<?= (int)$show_educators ?>" data-suffix="+">0</strong>
-        <span>Educators Trained</span>
+
+      <div class="hs-stat">
+        <div class="hs-icon hs-green"><i class="fas fa-graduation-cap"></i></div>
+        <div class="hs-info">
+          <strong data-count="<?= (int)$show_educators ?>" data-suffix="+">800+</strong>
+          <span>Educators Trained</span>
+        </div>
       </div>
-      <div>
-        <strong data-count="<?= (int)$show_students ?>" data-suffix="+">0</strong>
-        <span>Students Impacted</span>
+
+      <div class="hs-stat">
+        <div class="hs-icon hs-yellow"><i class="fas fa-users"></i></div>
+        <div class="hs-info">
+          <strong data-count="<?= (int)$show_students ?>" data-suffix="+">25,000+</strong>
+          <span>Students Impacted</span>
+        </div>
       </div>
-      <div>
-        <strong data-count="<?= (int)$show_states ?>" data-suffix="+">0</strong>
-        <span>States Covered</span>
+
+      <div class="hs-stat">
+        <div class="hs-icon hs-purple"><i class="fas fa-globe"></i></div>
+        <div class="hs-info">
+          <strong data-count="<?= (int)$show_states ?>" data-suffix="+">6+</strong>
+          <span>States Covered</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ EXPLORE — links to the full pages ============ -->
+<!-- ============ WHERE SSD PRAYAS WORKS ============ -->
 <section class="section section-soft" id="explore">
   <div class="container">
+    <div class="home-works-grid">
+      
+      <!-- Left Intro Box -->
+      <div class="works-intro-col reveal">
+        <span class="eyebrow is-blue"><i class="fas fa-compass"></i> Explore</span>
+        <h2>Where SSD Prayas <span class="text-blue">Works</span></h2>
+        <p>We deliver AI education at scale across schools, individuals and government departments in multiple states.</p>
+        <a href="<?= e(url('programmes')) ?>" class="btn btn-outline-pill">View All Programmes <i class="fas fa-arrow-right"></i></a>
+      </div>
 
-    <div class="section-head is-center reveal">
-      <span class="eyebrow"><i class="fas fa-compass"></i> Explore</span>
-      <h2>Where SSD Prayas <span class="text-brand">Works</span></h2>
-      <p>Two ways we deliver AI education at scale — inside individual schools, and across
-         entire states with government departments.</p>
-    </div>
-
-    <div class="teaser">
-      <a class="teaser-card is-school reveal" href="<?= e(url('ai-for-school')) ?>">
-        <span class="eyebrow"><i class="fas fa-school"></i> Flagship Programme</span>
-        <h3>AI for School Programme</h3>
-        <p>We train your teachers, deliver the curriculum in your existing computer lab,
-           and certify both educators and students.</p>
-        <span class="link-arrow">See how it works <span>→</span></span>
-      </a>
-
-      <a class="teaser-card is-govt reveal" href="<?= e(url('government')) ?>">
-        <span class="eyebrow"><i class="fas fa-landmark"></i> Government Projects</span>
-        <h3>Statewide AI Skilling</h3>
-        <p>Multi-district projects with partner onboarding, L1/L2 educator batches and
-           full certification tracking.</p>
-        <span class="link-arrow">See our approach <span>→</span></span>
-      </a>
-    </div>
-
-    <div style="text-align:center;margin-top:38px">
-      <a href="<?= e(url('programmes')) ?>" class="btn btn-ghost">
-        View All Programmes <i class="fas fa-arrow-right"></i>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ============ HOW WE WORK ============ -->
-<section class="section section-soft" id="process">
-  <div class="container">
-    <div class="section-head is-center reveal">
-      <span class="eyebrow is-red"><i class="fas fa-diagram-project"></i> Our Process</span>
-      <h2>How an SSD Prayas <span class="text-brand">Project Runs</span></h2>
-      <p>A repeatable six-stage system — the same whether it is one school or an entire state.</p>
-    </div>
-
-    <div class="steps">
-      <article class="step reveal">
-        <span class="step-no">01</span>
-        <h3>Partner Onboarding</h3>
-        <p>School, institute or government department is onboarded and recorded in our partner
-           database with district, scale and scope.</p>
+      <!-- Middle Card: AI for School -->
+      <article class="works-card works-school reveal">
+        <div class="works-card-bg" style="background-image: url('<?= e(asset('img/school-hero.jpg')) ?>');"></div>
+        <div class="works-card-overlay is-blue-overlay"></div>
+        <div class="works-card-content">
+          <span class="eyebrow is-trans-blue">AI FOR SCHOOL PROGRAMME</span>
+          <h3>AI for School Programme</h3>
+          <p>A future-ready curriculum for schools that builds computational thinking, creativity and problem-solving skills in students.</p>
+          <a href="<?= e(url('ai-for-school')) ?>" class="works-card-btn">
+            <span class="wc-btn-icon"><i class="fas fa-laptop-code"></i></span>
+            <span>Explore it works <i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div>
       </article>
-      <article class="step reveal">
-        <span class="step-no">02</span>
-        <h3>Curriculum Mapping</h3>
-        <p>NEP 2020-aligned curriculum is mapped to the learner group — grade-wise for students,
-           level-wise for educators.</p>
+
+      <!-- Right Card: Government Projects -->
+      <article class="works-card works-govt reveal">
+        <div class="works-card-bg" style="background-image: url('<?= e(asset('img/govt-hero.jpg')) ?>');"></div>
+        <div class="works-card-overlay is-green-overlay"></div>
+        <div class="works-card-content">
+          <span class="eyebrow is-trans-green">GOVERNMENT PROJECTS</span>
+          <h3>Statewide AI Skilling</h3>
+          <p>Large-scale AI skilling initiatives in partnership with state governments to empower educators and youth.</p>
+          <a href="<?= e(url('government')) ?>" class="works-card-btn">
+            <span class="wc-btn-icon"><i class="fas fa-landmark"></i></span>
+            <span>See our approach <i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div>
       </article>
-      <article class="step reveal">
-        <span class="step-no">03</span>
-        <h3>Educator Training (L1/L2)</h3>
-        <p>Educators are grouped into L1 and L2 batches and trained on AI tools, pedagogy and
-           classroom delivery.</p>
-      </article>
-      <article class="step reveal">
-        <span class="step-no">04</span>
-        <h3>Classroom Delivery</h3>
-        <p>Trained faculty deliver hands-on, project-based sessions — offline in labs, online,
-           or hybrid.</p>
-      </article>
-      <article class="step reveal">
-        <span class="step-no">05</span>
-        <h3>Assessment &amp; E-Check</h3>
-        <p>Every batch goes through assessment and an e-check verification before certification
-           is released.</p>
-      </article>
-      <article class="step reveal">
-        <span class="step-no">06</span>
-        <h3>Certification</h3>
-        <p>Students and educators receive recognised certificates, and the batch is marked
-           work-certified in our records.</p>
-      </article>
+
     </div>
   </div>
 </section>
 
-<!-- ============ TESTIMONIAL + CTA ============ -->
-<section class="section">
+<!-- ============ HOW AN SSD PRAYAS PROJECT RUNS ============ -->
+<section class="section section-home-process">
   <div class="container">
-    <div class="grid grid-2" style="align-items:stretch">
-
-      <div class="quote-card reveal">
-        <div class="quote-stars">★★★★★</div>
-        <blockquote>
-          "This programme taught me to <em>create</em> AI tools, not just use them. The portfolio I
-          built got me recognition at school, and the certification opened doors I never thought
-          possible at my age."
-        </blockquote>
-        <div class="quote-author">
-          <span class="quote-avatar">RP</span>
-          <div>
-            <b>Rahul Patel</b>
-            <span>Class 10 Student, Madhya Pradesh</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="quote-card reveal">
-        <div class="quote-stars">★★★★★</div>
-        <blockquote>
-          "As a teacher I was nervous about AI. The L1 and L2 training was practical and paced for
-          us — now I run AI activities in my own classroom without any outside help."
-        </blockquote>
-        <div class="quote-author">
-          <span class="quote-avatar" style="background:var(--green-soft);color:#1c7a3c">SK</span>
-          <div>
-            <b>Sunita Kumari</b>
-            <span>Senior Educator, Jharkhand</span>
-          </div>
-        </div>
-      </div>
-
+    <div class="section-head is-center reveal">
+      <h2>How an SSD Prayas Project <span class="text-blue">Runs</span></h2>
     </div>
 
-    <div class="cta-band reveal" style="margin-top:34px">
-      <div>
+    <div class="home-process-card reveal">
+      <div class="home-milestones-track">
+
+        <div class="milestone-item">
+          <div class="m-badge m-blue">01</div>
+          <h4>Partner Onboarding</h4>
+          <p>We align goals with government departments and institutions.</p>
+        </div>
+
+        <div class="milestone-item">
+          <div class="m-badge m-green">02</div>
+          <h4>Curriculum Mapping</h4>
+          <p>We map NEP 2020 aligned curriculum to state needs and learner outcomes.</p>
+        </div>
+
+        <div class="milestone-item">
+          <div class="m-badge m-yellow">03</div>
+          <h4>Educator Training (L1/L2)</h4>
+          <p>Hands-on training for educators to deliver AI confidently in classrooms.</p>
+        </div>
+
+        <div class="milestone-item">
+          <div class="m-badge m-purple">04</div>
+          <h4>Classroom Delivery</h4>
+          <p>Trainers &amp; educators deliver engaging AI sessions to students.</p>
+        </div>
+
+        <div class="milestone-item">
+          <div class="m-badge m-cyan">05</div>
+          <h4>Assessment &amp; E-Check</h4>
+          <p>Easy assessments and verification for learning outcomes.</p>
+        </div>
+
+        <div class="milestone-item">
+          <div class="m-badge m-emerald">06</div>
+          <h4>Certification</h4>
+          <p>Students and educators receive recognized certificates.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS BANNER ============ -->
+<section class="section-tight" style="padding-bottom: 35px;">
+  <div class="container">
+    <div class="home-testimonial-banner reveal">
+      <!-- Left: 3D Robot & Student illustration -->
+      <div class="tb-visual">
+        <img src="<?= e(asset('img/robot-testimonial.png')) ?>" alt="AI Learning Together" class="tb-robot-img">
+      </div>
+
+      <!-- Right: 3 Testimonial Cards -->
+      <div class="tb-reviews-grid">
+        <div class="tb-review-card">
+          <div class="tb-stars">★★★★★</div>
+          <p class="tb-quote">"This programme opened doors I never thought possible at my age. I now build AI projects and feel confident about my future."</p>
+          <div class="tb-author">
+            <div class="tb-avatar-circle">RP</div>
+            <div class="tb-meta">
+              <strong>Rahul Patel</strong>
+              <span>Class 10 Student, Madhya Pradesh</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tb-review-card">
+          <div class="tb-stars">★★★★★</div>
+          <p class="tb-quote">"The L1 &amp; L2 training was practical, well paced and full of activities. I now integrate AI in my classroom with ease."</p>
+          <div class="tb-author">
+            <div class="tb-avatar-circle is-green">SK</div>
+            <div class="tb-meta">
+              <strong>Sunita Kumari</strong>
+              <span>Senior Educator, Rajasthan</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tb-review-card">
+          <div class="tb-stars">★★★★★</div>
+          <p class="tb-quote">"The AI curriculum and training are industry-relevant and making a real impact in our schools."</p>
+          <div class="tb-author">
+            <div class="tb-avatar-circle is-purple">AV</div>
+            <div class="tb-meta">
+              <strong>Amit Verma</strong>
+              <span>School Principal, Uttar Pradesh</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tb-dots" aria-hidden="true">
+        <span class="tb-dot is-active"></span>
+        <span class="tb-dot"></span>
+        <span class="tb-dot"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BANNER ============ -->
+<section class="section-tight" style="padding-bottom: 60px;">
+  <div class="container">
+    <div class="home-cta-box reveal">
+      <div class="home-cta-content">
         <h2>Ready to bring AI to your students?</h2>
-        <p>Whether you run a single school, a district programme or a state-level project —
-           our team will design the right roll-out with you.</p>
+        <p>Whether you're running a single school, a district-wide programme, or a state-level project — we're here to help you every step of the way.</p>
       </div>
-      <div class="cta-actions">
-        <a href="<?= e(url('contact')) ?>" class="btn btn-yellow">Start Your AI Journey <i class="fas fa-arrow-right"></i></a>
-        <a href="tel:+<?= e(CONTACT_PHONE_RAW) ?>" class="btn btn-light"><i class="fas fa-phone"></i> Call Now</a>
+      <div class="home-cta-actions">
+        <a href="<?= e(url('contact')) ?>" class="btn btn-yellow-pill">Start Your AI Journey <i class="fas fa-arrow-right"></i></a>
+        <a href="tel:+<?= e(CONTACT_PHONE_RAW) ?>" class="btn btn-ghost-pill"><i class="fas fa-phone"></i> Call Now</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ BLOGS ============ -->
+<!-- ============ LATEST INSIGHTS / BLOGS ============ -->
 <?php if ($posts): ?>
-<section class="section section-soft" id="insights">
+<section class="section section-soft" id="insights" style="padding-bottom: 90px;">
   <div class="container">
-    <div class="section-head is-center reveal">
-      <span class="eyebrow"><i class="fas fa-newspaper"></i> Latest Insights</span>
-      <h2>From the <span class="text-brand">SSD Prayas Blog</span></h2>
+    <div class="home-insights-header reveal">
+      <span class="eyebrow is-blue"><i class="fas fa-newspaper"></i> Latest Insights</span>
+      <a href="<?= e(url('blogs')) ?>" class="btn btn-outline-pill">View All Articles <i class="fas fa-arrow-right"></i></a>
     </div>
 
-    <div class="grid grid-3">
+    <div class="grid grid-3 home-blog-grid">
       <?php foreach ($posts as $post): ?>
-        <article class="post-card reveal">
-          <a href="<?= e(url('blog/' . $post['slug'])) ?>" class="post-thumb">
+        <article class="home-blog-card reveal">
+          <a href="<?= e(url('blog/' . $post['slug'])) ?>" class="hbc-thumb">
             <img src="<?= e(url($post['image'])) ?>" alt="<?= e($post['title']) ?>" loading="lazy">
           </a>
-          <div class="post-body">
-            <span class="post-tag"><?= e($post['tag']) ?></span>
+          <div class="hbc-body">
+            <span class="hbc-tag"><?= e($post['tag']) ?></span>
             <h3><a href="<?= e(url('blog/' . $post['slug'])) ?>"><?= e($post['title']) ?></a></h3>
-            <p><?= e(mb_strimwidth($post['excerpt'], 0, 120, '…')) ?></p>
-            <div class="post-meta">
-              <span><?= date('M d, Y', strtotime($post['created_at'])) ?></span>
-              <a href="<?= e(url('blog/' . $post['slug'])) ?>" class="link-arrow">Read <span>→</span></a>
+            <div class="hbc-footer">
+              <span class="hbc-date"><?= date('M j, Y', strtotime($post['created_at'])) ?></span>
+              <a href="<?= e(url('blog/' . $post['slug'])) ?>" class="hbc-link">Read <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
         </article>
       <?php endforeach; ?>
-    </div>
-
-    <div style="text-align:center;margin-top:40px">
-      <a href="<?= e(url('blogs')) ?>" class="btn btn-ghost">View All Articles <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
 </section>
