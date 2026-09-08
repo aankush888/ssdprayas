@@ -149,50 +149,181 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- ============ 3 HORIZONTAL TRACK CARDS ============ -->
-<section class="section section-prog-tracks" style="padding-top: 0; padding-bottom: 70px;">
-  <div class="container">
-    <div class="grid grid-3 prog-tracks-grid">
+<!-- ============ 3 HORIZONTAL TRACK CARDS (Continuous Left-to-Right Slider) ============ -->
+<section class="section section-prog-tracks" style="padding-top: 5px; padding-bottom: 70px; overflow: hidden;">
+  <div class="container prog-slider-container">
+    <div class="prog-slider-wrapper" aria-label="Programmes tracks continuous slider">
+      <div class="prog-slider-track">
 
-      <!-- Card 1: Students -->
-      <article class="prog-h-card reveal">
-        <div class="phc-content">
-          <span class="phc-badge is-blue">FOR STUDENTS</span>
-          <h3>AI for Students</h3>
-          <p>Future-ready AI skills, hands-on projects and real-world exposure to build tomorrow's leaders.</p>
-          <a href="<?= e(url('contact')) ?>" class="phc-link link-blue">Explore Programme <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="phc-visual bg-blue-arch">
-          <img src="<?= e(asset('img/prog-student-portrait.png')) ?>" alt="AI for Students" loading="lazy">
-        </div>
-      </article>
+        <!-- Set 1 -->
+        <div class="prog-slider-set">
+          <!-- Card 1: Students -->
+          <article class="prog-h-card">
+            <div class="phc-content">
+              <span class="phc-badge is-blue">FOR STUDENTS</span>
+              <h3>AI for Students</h3>
+              <p>Future-ready AI skills, hands-on projects and real-world exposure to build tomorrow's leaders.</p>
+              <a href="<?= e(url('contact')) ?>" class="phc-link link-blue">Explore Programme <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="phc-visual bg-blue-arch">
+              <img src="<?= e(asset('img/prog-student-portrait.png')) ?>" alt="AI for Students" loading="lazy">
+            </div>
+          </article>
 
-      <!-- Card 2: Educators -->
-      <article class="prog-h-card reveal">
-        <div class="phc-content">
-          <span class="phc-badge is-green">FOR EDUCATORS</span>
-          <h3>AI for Educators</h3>
-          <p>Empowering teachers with the training and tools to bring AI into classrooms.</p>
-          <a href="<?= e(url('contact')) ?>" class="phc-link link-green">Explore Training <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="phc-visual bg-green-arch">
-          <img src="<?= e(asset('img/prog-educator-portrait.png')) ?>" alt="AI for Educators" loading="lazy">
-        </div>
-      </article>
+          <!-- Card 2: Educators -->
+          <article class="prog-h-card">
+            <div class="phc-content">
+              <span class="phc-badge is-green">FOR EDUCATORS</span>
+              <h3>AI for Educators</h3>
+              <p>Empowering teachers with the training and tools to bring AI into classrooms.</p>
+              <a href="<?= e(url('contact')) ?>" class="phc-link link-green">Explore Training <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="phc-visual bg-green-arch">
+              <img src="<?= e(asset('img/prog-educator-portrait.png')) ?>" alt="AI for Educators" loading="lazy">
+            </div>
+          </article>
 
-      <!-- Card 3: Professionals -->
-      <article class="prog-h-card reveal">
-        <div class="phc-content">
-          <span class="phc-badge is-orange">FOR PROFESSIONALS</span>
-          <h3>AI for Professionals</h3>
-          <p>Upskill with industry relevant AI tools and practical workflow to stay ahead.</p>
-          <a href="<?= e(url('contact')) ?>" class="phc-link link-orange">Explore Courses <i class="fas fa-arrow-right"></i></a>
+          <!-- Card 3: Professionals -->
+          <article class="prog-h-card">
+            <div class="phc-content">
+              <span class="phc-badge is-orange">FOR PROFESSIONALS</span>
+              <h3>AI for Professionals</h3>
+              <p>Upskill with industry relevant AI tools and practical workflow to stay ahead.</p>
+              <a href="<?= e(url('contact')) ?>" class="phc-link link-orange">Explore Courses <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="phc-visual bg-orange-arch">
+              <img src="<?= e(asset('img/prog-prof-portrait.png')) ?>" alt="AI for Professionals" loading="lazy">
+            </div>
+          </article>
         </div>
-        <div class="phc-visual bg-orange-arch">
-          <img src="<?= e(asset('img/prog-prof-portrait.png')) ?>" alt="AI for Professionals" loading="lazy">
-        </div>
-      </article>
 
+        <!-- Set 2 -->
+        <div class="prog-slider-set" aria-hidden="true">
+          <!-- Card 1: Students -->
+          <article class="prog-h-card">
+            <div class="phc-content">
+              <span class="phc-badge is-blue">FOR STUDENTS</span>
+              <h3>AI for Students</h3>
+              <p>Future-ready AI skills, hands-on projects and real-world exposure to build tomorrow's leaders.</p>
+              <a href="<?= e(url('contact')) ?>" class="phc-link link-blue" tabindex="-1">Explore Programme <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="phc-visual bg-blue-arch">
+              <img src="<?= e(asset('img/prog-student-portrait.png')) ?>" alt="AI for Students" loading="lazy">
+            </div>
+          </article>
+
+          <!-- Card 2: Educators -->
+          <article class="prog-h-card">
+            <div class="phc-content">
+              <span class="phc-badge is-green">FOR EDUCATORS</span>
+              <h3>AI for Educators</h3>
+              <p>Empowering teachers with the training and tools to bring AI into classrooms.</p>
+              <a href="<?= e(url('contact')) ?>" class="phc-link link-green" tabindex="-1">Explore Training <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="phc-visual bg-green-arch">
+              <img src="<?= e(asset('img/prog-educator-portrait.png')) ?>" alt="AI for Educators" loading="lazy">
+            </div>
+          </article>
+
+          <!-- Card 3: Professionals -->
+          <article class="prog-h-card">
+            <div class="phc-content">
+              <span class="phc-badge is-orange">FOR PROFESSIONALS</span>
+              <h3>AI for Professionals</h3>
+              <p>Upskill with industry relevant AI tools and practical workflow to stay ahead.</p>
+              <a href="<?= e(url('contact')) ?>" class="phc-link link-orange" tabindex="-1">Explore Courses <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="phc-visual bg-orange-arch">
+              <img src="<?= e(asset('img/prog-prof-portrait.png')) ?>" alt="AI for Professionals" loading="lazy">
+            </div>
+          </article>
+        </div>
+
+        <!-- Set 3 -->
+        <div class="prog-slider-set" aria-hidden="true">
+          <!-- Card 1: Students -->
+          <article class="prog-h-card">
+            <div class="phc-content">
+              <span class="phc-badge is-blue">FOR STUDENTS</span>
+              <h3>AI for Students</h3>
+              <p>Future-ready AI skills, hands-on projects and real-world exposure to build tomorrow's leaders.</p>
+              <a href="<?= e(url('contact')) ?>" class="phc-link link-blue" tabindex="-1">Explore Programme <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="phc-visual bg-blue-arch">
+              <img src="<?= e(asset('img/prog-student-portrait.png')) ?>" alt="AI for Students" loading="lazy">
+            </div>
+          </article>
+
+          <!-- Card 2: Educators -->
+          <article class="prog-h-card">
+            <div class="phc-content">
+              <span class="phc-badge is-green">FOR EDUCATORS</span>
+              <h3>AI for Educators</h3>
+              <p>Empowering teachers with the training and tools to bring AI into classrooms.</p>
+              <a href="<?= e(url('contact')) ?>" class="phc-link link-green" tabindex="-1">Explore Training <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="phc-visual bg-green-arch">
+              <img src="<?= e(asset('img/prog-educator-portrait.png')) ?>" alt="AI for Educators" loading="lazy">
+            </div>
+          </article>
+
+          <!-- Card 3: Professionals -->
+          <article class="prog-h-card">
+            <div class="phc-content">
+              <span class="phc-badge is-orange">FOR PROFESSIONALS</span>
+              <h3>AI for Professionals</h3>
+              <p>Upskill with industry relevant AI tools and practical workflow to stay ahead.</p>
+              <a href="<?= e(url('contact')) ?>" class="phc-link link-orange" tabindex="-1">Explore Courses <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="phc-visual bg-orange-arch">
+              <img src="<?= e(asset('img/prog-prof-portrait.png')) ?>" alt="AI for Professionals" loading="lazy">
+            </div>
+          </article>
+        </div>
+
+        <!-- Set 4 -->
+        <div class="prog-slider-set" aria-hidden="true">
+          <!-- Card 1: Students -->
+          <article class="prog-h-card">
+            <div class="phc-content">
+              <span class="phc-badge is-blue">FOR STUDENTS</span>
+              <h3>AI for Students</h3>
+              <p>Future-ready AI skills, hands-on projects and real-world exposure to build tomorrow's leaders.</p>
+              <a href="<?= e(url('contact')) ?>" class="phc-link link-blue" tabindex="-1">Explore Programme <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="phc-visual bg-blue-arch">
+              <img src="<?= e(asset('img/prog-student-portrait.png')) ?>" alt="AI for Students" loading="lazy">
+            </div>
+          </article>
+
+          <!-- Card 2: Educators -->
+          <article class="prog-h-card">
+            <div class="phc-content">
+              <span class="phc-badge is-green">FOR EDUCATORS</span>
+              <h3>AI for Educators</h3>
+              <p>Empowering teachers with the training and tools to bring AI into classrooms.</p>
+              <a href="<?= e(url('contact')) ?>" class="phc-link link-green" tabindex="-1">Explore Training <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="phc-visual bg-green-arch">
+              <img src="<?= e(asset('img/prog-educator-portrait.png')) ?>" alt="AI for Educators" loading="lazy">
+            </div>
+          </article>
+
+          <!-- Card 3: Professionals -->
+          <article class="prog-h-card">
+            <div class="phc-content">
+              <span class="phc-badge is-orange">FOR PROFESSIONALS</span>
+              <h3>AI for Professionals</h3>
+              <p>Upskill with industry relevant AI tools and practical workflow to stay ahead.</p>
+              <a href="<?= e(url('contact')) ?>" class="phc-link link-orange" tabindex="-1">Explore Courses <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="phc-visual bg-orange-arch">
+              <img src="<?= e(asset('img/prog-prof-portrait.png')) ?>" alt="AI for Professionals" loading="lazy">
+            </div>
+          </article>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>

@@ -134,35 +134,230 @@ include __DIR__ . '/includes/header.php';
   </aside>
 </section>
 
-<!-- ============ SECTION 2: ROLE SNAPSHOT ============ -->
+<!-- ============ SECTION 2: ROLE SNAPSHOT (Continuous Right to Left Ticker) ============ -->
 <section class="section section-career-snapshot">
+  <div class="career-ticker-wrapper" aria-label="Role snapshot continuous ticker">
+    <div class="career-ticker-track">
+      <?php for ($i = 0; $i < 4; $i++): ?>
+      <div class="career-ticker-set" <?= $i > 0 ? 'aria-hidden="true"' : '' ?>>
+        <div class="career-snap-card">
+          <div class="csc-icon csc-blue"><i class="fas fa-user-tie"></i></div>
+          <h3>Role</h3>
+          <p>AI Educator / Trainer — school students (Class 3–12) and teacher training batches.</p>
+        </div>
+
+        <div class="career-snap-card">
+          <div class="csc-icon csc-green"><i class="fas fa-shuffle"></i></div>
+          <h3>Work Mode</h3>
+          <p><strong class="text-green">Hybrid</strong> — on-campus sessions combined with online training, planning and mentoring.</p>
+        </div>
+
+        <div class="career-snap-card">
+          <div class="csc-icon csc-yellow"><i class="fas fa-location-dot"></i></div>
+          <h3>Locations</h3>
+          <p>Across our project states — Madhya Pradesh, Jharkhand, Chhattisgarh, Rajasthan, UP, Uttarakhand and more.</p>
+        </div>
+
+        <div class="career-snap-card">
+          <div class="csc-icon csc-red"><i class="fas fa-certificate"></i></div>
+          <h3>Certification</h3>
+          <p>Selected educators go through our L1 and L2 training and become certified SSD Prayas educators.</p>
+        </div>
+      </div>
+      <?php endfor; ?>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: GOOGLE CERTIFIED MASTER TRAINER CREDENTIALS ============ -->
+<section class="section section-career-certifications">
   <div class="container">
-    <div class="career-snapshot-grid reveal">
-      
-      <div class="career-snap-card">
-        <div class="csc-icon csc-blue"><i class="fas fa-user-tie"></i></div>
-        <h3>Role</h3>
-        <p>AI Educator / Trainer — school students (Class 3–12) and teacher training batches.</p>
+    <div class="section-head is-center reveal">
+      <div class="pill-badge pill-blue"><i class="fab fa-google"></i> GOOGLE CERTIFIED MASTER TRAINER</div>
+      <h2>Verified <span class="text-blue">Google for Education</span> Accreditations</h2>
+      <p class="sec-subtitle">SSD Prayas AI programmes and educator training modules are led by certified Google for Education trainers.</p>
+    </div>
+
+    <div class="career-certs-grid reveal">
+      <!-- Certificate 1: Google Certified Educator Level 1 -->
+      <div class="cert-flip-card" tabindex="0" role="button" aria-label="Google Certified Educator Level 1 certificate, hover or tap to flip">
+        <div class="cert-flip-inner">
+          <!-- Front Face -->
+          <div class="cert-card-face cert-face-front">
+            <div class="cert-card-stripe"></div>
+            <div class="cert-card-body">
+              <div class="cert-header">
+                <div class="cert-badge-wrap bg-blue-subtle">
+                  <i class="fab fa-google text-blue"></i>
+                </div>
+                <span class="cert-status-badge"><i class="fas fa-circle-check"></i> Verified</span>
+              </div>
+              <span class="cert-recipient"><i class="fas fa-user-graduate"></i> Apurv Kumar Persai</span>
+              <h3 class="cert-title">Google Certified Educator Level 1</h3>
+              <p class="cert-desc">Demonstrates foundational skills to integrate Google for Education tools and collaborative AI technologies in the classroom.</p>
+              <div class="cert-footer">
+                <span class="cert-issuer">Google for Education</span>
+                <span class="btn-cert-flip-hint"><i class="fas fa-arrows-rotate"></i> Flip Certificate</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Back Face (High-Res Certificate Image) -->
+          <div class="cert-card-face cert-face-back">
+            <div class="cert-card-stripe"></div>
+            <div class="cert-back-body">
+              <div class="cert-back-top">
+                <span class="cert-back-tag"><i class="fab fa-google text-blue"></i> Official Credential</span>
+                <span class="cert-back-flip-hint"><i class="fas fa-rotate-left"></i> Flip back</span>
+              </div>
+              <div class="cert-img-frame">
+                <img src="<?= e(asset_v('img/cert-google-educator-l1.png')) ?>" alt="Apurv Kumar Persai - Google Certified Educator Level 1 Certificate" class="cert-full-img">
+              </div>
+              <div class="cert-back-footer">
+                <span class="cert-back-meta"><i class="fas fa-calendar-check"></i> Valid thru 2029</span>
+                <span class="btn-cert-verify">
+                  <span>Verify Online</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="career-snap-card">
-        <div class="csc-icon csc-green"><i class="fas fa-shuffle"></i></div>
-        <h3>Work Mode</h3>
-        <p><strong class="text-green">Hybrid</strong> — on-campus sessions combined with online training, planning and mentoring.</p>
+      <!-- Certificate 2: Google Certified Educator Level 2 -->
+      <div class="cert-flip-card" tabindex="0" role="button" aria-label="Google Certified Educator Level 2 certificate, hover or tap to flip">
+        <div class="cert-flip-inner">
+          <!-- Front Face -->
+          <div class="cert-card-face cert-face-front">
+            <div class="cert-card-stripe"></div>
+            <div class="cert-card-body">
+              <div class="cert-header">
+                <div class="cert-badge-wrap bg-green-subtle">
+                  <i class="fab fa-google text-green"></i>
+                </div>
+                <span class="cert-status-badge"><i class="fas fa-circle-check"></i> Verified</span>
+              </div>
+              <span class="cert-recipient"><i class="fas fa-user-graduate"></i> Apurv Kumar Persai</span>
+              <h3 class="cert-title">Google Certified Educator Level 2</h3>
+              <p class="cert-desc">Validates advanced expertise in pedagogical mastery, digital curriculum workflows, and leading transformative classroom experiences.</p>
+              <div class="cert-footer">
+                <span class="cert-issuer">Google for Education</span>
+                <span class="btn-cert-flip-hint"><i class="fas fa-arrows-rotate"></i> Flip Certificate</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Back Face (High-Res Certificate Image) -->
+          <div class="cert-card-face cert-face-back">
+            <div class="cert-card-stripe"></div>
+            <div class="cert-back-body">
+              <div class="cert-back-top">
+                <span class="cert-back-tag"><i class="fab fa-google text-green"></i> Official Credential</span>
+                <span class="cert-back-flip-hint"><i class="fas fa-rotate-left"></i> Flip back</span>
+              </div>
+              <div class="cert-img-frame">
+                <img src="<?= e(asset_v('img/cert-google-educator-l2.png')) ?>" alt="Apurv Kumar Persai - Google Certified Educator Level 2 Certificate" class="cert-full-img">
+              </div>
+              <div class="cert-back-footer">
+                <span class="cert-back-meta"><i class="fas fa-calendar-check"></i> Valid thru 2029</span>
+                <span class="btn-cert-verify">
+                  <span>Verify Online</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="career-snap-card">
-        <div class="csc-icon csc-yellow"><i class="fas fa-location-dot"></i></div>
-        <h3>Locations</h3>
-        <p>Across our project states — Madhya Pradesh, Jharkhand, Chhattisgarh, Rajasthan, UP, Uttarakhand and more.</p>
+      <!-- Certificate 3: Gemini Certified Educator -->
+      <div class="cert-flip-card" tabindex="0" role="button" aria-label="Gemini Certified Educator certificate, hover or tap to flip">
+        <div class="cert-flip-inner">
+          <!-- Front Face -->
+          <div class="cert-card-face cert-face-front">
+            <div class="cert-card-stripe"></div>
+            <div class="cert-card-body">
+              <div class="cert-header">
+                <div class="cert-badge-wrap bg-purple-subtle">
+                  <i class="fas fa-wand-magic-sparkles text-purple"></i>
+                </div>
+                <span class="cert-status-badge"><i class="fas fa-circle-check"></i> Verified</span>
+              </div>
+              <span class="cert-recipient"><i class="fas fa-user-graduate"></i> Apurv Kumar Persai</span>
+              <h3 class="cert-title">Gemini Certified Educator</h3>
+              <p class="cert-desc">Specialized accreditation in Google Gemini generative AI, prompt engineering for educators, and adaptive student AI tutoring.</p>
+              <div class="cert-footer">
+                <span class="cert-issuer">Google for Education</span>
+                <span class="btn-cert-flip-hint"><i class="fas fa-arrows-rotate"></i> Flip Certificate</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Back Face (High-Res Certificate Image) -->
+          <div class="cert-card-face cert-face-back">
+            <div class="cert-card-stripe"></div>
+            <div class="cert-back-body">
+              <div class="cert-back-top">
+                <span class="cert-back-tag"><i class="fas fa-wand-magic-sparkles text-purple"></i> Official Credential</span>
+                <span class="cert-back-flip-hint"><i class="fas fa-rotate-left"></i> Flip back</span>
+              </div>
+              <div class="cert-img-frame">
+                <img src="<?= e(asset_v('img/cert-gemini-educator.png')) ?>" alt="Apurv Kumar Persai - Gemini Certified Educator Certificate" class="cert-full-img">
+              </div>
+              <div class="cert-back-footer">
+                <span class="cert-back-meta"><i class="fas fa-calendar-check"></i> Valid thru 2029</span>
+                <span class="btn-cert-verify">
+                  <span>Verify Online</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="career-snap-card">
-        <div class="csc-icon csc-red"><i class="fas fa-certificate"></i></div>
-        <h3>Certification</h3>
-        <p>Selected educators go through our L1 and L2 training and become certified SSD Prayas educators.</p>
-      </div>
+      <!-- Certificate 4: Trainer Skills Assessment -->
+      <div class="cert-flip-card" tabindex="0" role="button" aria-label="Trainer Skills Assessment certificate, hover or tap to flip">
+        <div class="cert-flip-inner">
+          <!-- Front Face -->
+          <div class="cert-card-face cert-face-front">
+            <div class="cert-card-stripe"></div>
+            <div class="cert-card-body">
+              <div class="cert-header">
+                <div class="cert-badge-wrap bg-amber-subtle">
+                  <i class="fas fa-chalkboard-user text-amber"></i>
+                </div>
+                <span class="cert-status-badge"><i class="fas fa-circle-check"></i> Verified</span>
+              </div>
+              <span class="cert-recipient"><i class="fas fa-user-graduate"></i> Apurv Kumar Persai</span>
+              <h3 class="cert-title">Trainer Skills Assessment</h3>
+              <p class="cert-desc">Certified competency in training adult educators, institutional workshop leadership, and designing school-level AI capability programmes.</p>
+              <div class="cert-footer">
+                <span class="cert-issuer">Google for Education</span>
+                <span class="btn-cert-flip-hint"><i class="fas fa-arrows-rotate"></i> Flip Certificate</span>
+              </div>
+            </div>
+          </div>
 
+          <!-- Back Face (High-Res Certificate Image) -->
+          <div class="cert-card-face cert-face-back">
+            <div class="cert-card-stripe"></div>
+            <div class="cert-back-body">
+              <div class="cert-back-top">
+                <span class="cert-back-tag"><i class="fas fa-chalkboard-user text-amber"></i> Official Credential</span>
+                <span class="cert-back-flip-hint"><i class="fas fa-rotate-left"></i> Flip back</span>
+              </div>
+              <div class="cert-img-frame">
+                <img src="<?= e(asset_v('img/cert-trainer-skills.png')) ?>" alt="Apurv Kumar Persai - Trainer Skills Assessment Certificate" class="cert-full-img">
+              </div>
+              <div class="cert-back-footer">
+                <span class="cert-back-meta"><i class="fas fa-calendar-check"></i> Valid thru 2029</span>
+                <span class="btn-cert-verify">
+                  <span>Verify Online</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

@@ -6,8 +6,8 @@
 
       <div class="footer-about">
         <a href="<?= e(url('/')) ?>" class="brand">
-          <img class="brand-logo is-inverted" src="<?= e(asset(SITE_LOGO)) ?>"
-               alt="<?= e(SITE_NAME) ?>" width="602" height="134">
+          <img class="brand-logo footer-logo" src="<?= e(asset(defined('SITE_LOGO_WHITE') ? SITE_LOGO_WHITE : 'ssdprayaslogo-white.png')) ?>"
+               alt="<?= e(SITE_NAME) ?>" width="959" height="166">
         </a>
         <p>AI skilling for students, educators and professionals — delivered online and offline
            with schools, institutes and state governments across India.</p>

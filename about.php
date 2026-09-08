@@ -129,29 +129,102 @@ include __DIR__ . '/includes/header.php';
       </div>
     </div>
 
-    <div class="about-mvv-grid">
-      <article class="mvv-card reveal">
-        <div class="mvv-icon mvv-blue"><i class="fas fa-bullseye"></i></div>
-        <h3>Our Mission</h3>
-        <p>To deliver practical, hands-on AI education to every learner group — students, educators and professionals — regardless of their city, board or background.</p>
-      </article>
+    <!-- Interactive 3 Flip Cards -->
+    <div class="about-mvv-grid" aria-label="Mission, Vision and Values">
+      <!-- Card 1: Mission -->
+      <div class="mvv-flip-card reveal" tabindex="0" role="button" aria-label="Our Mission card, hover or tap to flip">
+        <div class="mvv-flip-inner">
+          <!-- Front Face -->
+          <div class="mvv-card-face mvv-face-front">
+            <div class="mvv-card-top">
+              <div class="mvv-icon mvv-blue"><i class="fas fa-bullseye"></i></div>
+              <span class="mvv-flip-pill"><i class="fas fa-arrows-rotate"></i> Flip</span>
+            </div>
+            <h3>Our Mission</h3>
+            <p>To deliver practical, hands-on AI education to every learner group — students, educators and professionals — regardless of their city, board or background.</p>
+            <div class="mvv-card-footer">
+              <span class="mvv-flip-link"><i class="fas fa-image"></i> View In Action <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+          <!-- Back Face (Image Showcase) -->
+          <div class="mvv-card-face mvv-face-back">
+            <img src="<?= e(asset_v('img/about-mission.jpg')) ?>" alt="SSD Prayas Mission in Action" class="mvv-back-img">
+            <div class="mvv-back-overlay">
+              <span class="mvv-back-tag tag-blue"><i class="fas fa-bullseye"></i> Mission in Action</span>
+              <div class="mvv-back-info">
+                <h4>Hands-On AI Labs</h4>
+                <p>Equipping classrooms across India with real AI tools and curricula.</p>
+                <span class="mvv-back-hint"><i class="fas fa-rotate-left"></i> Flip back</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <article class="mvv-card reveal">
-        <div class="mvv-icon mvv-green"><i class="fas fa-eye"></i></div>
-        <h3>Our Vision</h3>
-        <p>An India where a Class 6 student in a district school has the same access to AI skills as one in a metro private school.</p>
-      </article>
+      <!-- Card 2: Vision -->
+      <div class="mvv-flip-card reveal" tabindex="0" role="button" aria-label="Our Vision card, hover or tap to flip">
+        <div class="mvv-flip-inner">
+          <!-- Front Face -->
+          <div class="mvv-card-face mvv-face-front">
+            <div class="mvv-card-top">
+              <div class="mvv-icon mvv-green"><i class="fas fa-eye"></i></div>
+              <span class="mvv-flip-pill"><i class="fas fa-arrows-rotate"></i> Flip</span>
+            </div>
+            <h3>Our Vision</h3>
+            <p>An India where a Class 6 student in a district school has the same access to AI skills as one in a metro private school.</p>
+            <div class="mvv-card-footer">
+              <span class="mvv-flip-link"><i class="fas fa-image"></i> View In Action <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+          <!-- Back Face (Image Showcase) -->
+          <div class="mvv-card-face mvv-face-back">
+            <img src="<?= e(asset_v('img/about-vision.jpg')) ?>" alt="SSD Prayas Vision in Action" class="mvv-back-img">
+            <div class="mvv-back-overlay">
+              <span class="mvv-back-tag tag-green"><i class="fas fa-eye"></i> Vision in Action</span>
+              <div class="mvv-back-info">
+                <h4>Equal AI for Bharat</h4>
+                <p>Bridging the district-metro divide so every child has equal opportunity.</p>
+                <span class="mvv-back-hint"><i class="fas fa-rotate-left"></i> Flip back</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <article class="mvv-card reveal">
-        <div class="mvv-icon mvv-amber"><i class="fas fa-users"></i></div>
-        <h3>Our Values</h3>
-        <p>Build, don't just consume. Train the trainer. Measure everything. And never let geography decide a child's opportunity.</p>
-      </article>
+      <!-- Card 3: Values -->
+      <div class="mvv-flip-card reveal" tabindex="0" role="button" aria-label="Our Values card, hover or tap to flip">
+        <div class="mvv-flip-inner">
+          <!-- Front Face -->
+          <div class="mvv-card-face mvv-face-front">
+            <div class="mvv-card-top">
+              <div class="mvv-icon mvv-amber"><i class="fas fa-users"></i></div>
+              <span class="mvv-flip-pill"><i class="fas fa-arrows-rotate"></i> Flip</span>
+            </div>
+            <h3>Our Values</h3>
+            <p>Build, don't just consume. Train the trainer. Measure everything. And never let geography decide a child's opportunity.</p>
+            <div class="mvv-card-footer">
+              <span class="mvv-flip-link"><i class="fas fa-image"></i> View In Action <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </div>
+          <!-- Back Face (Image Showcase) -->
+          <div class="mvv-card-face mvv-face-back">
+            <img src="<?= e(asset_v('img/about-values.jpg')) ?>" alt="SSD Prayas Values in Action" class="mvv-back-img">
+            <div class="mvv-back-overlay">
+              <span class="mvv-back-tag tag-amber"><i class="fas fa-users"></i> Values in Action</span>
+              <div class="mvv-back-info">
+                <h4>Train the Trainer</h4>
+                <p>Empowering educators with certified skills and accountable delivery.</p>
+                <span class="mvv-back-hint"><i class="fas fa-rotate-left"></i> Flip back</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ SECTION 4: FOUR PILLARS ============ -->
+<!-- ============ SECTION 4: FOUR PILLARS (Continuous Left-to-Right Slider) ============ -->
 <section class="section section-about-pillars">
   <div class="container">
     <div class="section-head is-center reveal">
@@ -159,35 +232,42 @@ include __DIR__ . '/includes/header.php';
       <h2>Four Pillars of <span class="text-blue">SSD Prayas</span></h2>
       <p class="sec-subtitle">A comprehensive model designed to create long-term, measurable impact.</p>
     </div>
+  </div>
 
-    <div class="about-pillars-grid">
-      <article class="pillar-card reveal">
-        <div class="pillar-icon p-blue"><i class="fas fa-graduation-cap"></i></div>
-        <h3>Student Skilling</h3>
-        <p>Grade-wise AI curriculum for Class 3 to 12 with hands-on projects and certification.</p>
-        <a href="<?= e(url('ai-for-school')) ?>" class="pillar-link pbtn-blue" aria-label="Learn more about Student Skilling"><i class="fas fa-arrow-right"></i></a>
-      </article>
+  <!-- Continuous Left to Right Slider -->
+  <div class="pillars-slider-wrapper" aria-label="Four Pillars continuous slider">
+    <div class="pillars-slider-track">
+      <?php for ($i = 0; $i < 4; $i++): ?>
+      <div class="pillars-slider-set" <?= $i > 0 ? 'aria-hidden="true"' : '' ?>>
+        <article class="pillar-card">
+          <div class="pillar-icon p-blue"><i class="fas fa-graduation-cap"></i></div>
+          <h3>Student Skilling</h3>
+          <p>Grade-wise AI curriculum for Class 3 to 12 with hands-on projects and certification.</p>
+          <a href="<?= e(url('ai-for-school')) ?>" class="pillar-link pbtn-blue" aria-label="Learn more about Student Skilling"><i class="fas fa-arrow-right"></i></a>
+        </article>
 
-      <article class="pillar-card reveal">
-        <div class="pillar-icon p-green"><i class="fas fa-chalkboard-user"></i></div>
-        <h3>Educator Training</h3>
-        <p>Structured L1 and L2 programmes that turn existing teachers into confident AI educators.</p>
-        <a href="<?= e(url('programmes')) ?>#educators" class="pillar-link pbtn-green" aria-label="Learn more about Educator Training"><i class="fas fa-arrow-right"></i></a>
-      </article>
+        <article class="pillar-card">
+          <div class="pillar-icon p-green"><i class="fas fa-chalkboard-user"></i></div>
+          <h3>Educator Training</h3>
+          <p>Structured L1 and L2 programmes that turn existing teachers into confident AI educators.</p>
+          <a href="<?= e(url('programmes')) ?>#educators" class="pillar-link pbtn-green" aria-label="Learn more about Educator Training"><i class="fas fa-arrow-right"></i></a>
+        </article>
 
-      <article class="pillar-card reveal">
-        <div class="pillar-icon p-amber"><i class="fas fa-briefcase"></i></div>
-        <h3>Professional Upskilling</h3>
-        <p>Applied AI programmes for working professionals, delivered online and on weekends.</p>
-        <a href="<?= e(url('programmes')) ?>#professionals" class="pillar-link pbtn-amber" aria-label="Learn more about Professional Upskilling"><i class="fas fa-arrow-right"></i></a>
-      </article>
+        <article class="pillar-card">
+          <div class="pillar-icon p-amber"><i class="fas fa-briefcase"></i></div>
+          <h3>Professional Upskilling</h3>
+          <p>Applied AI programmes for working professionals, delivered online and on weekends.</p>
+          <a href="<?= e(url('programmes')) ?>#professionals" class="pillar-link pbtn-amber" aria-label="Learn more about Professional Upskilling"><i class="fas fa-arrow-right"></i></a>
+        </article>
 
-      <article class="pillar-card reveal">
-        <div class="pillar-icon p-red"><i class="fas fa-building-columns"></i></div>
-        <h3>Government Projects</h3>
-        <p>Large-scale, multi-state skilling projects with full batch and certification tracking.</p>
-        <a href="<?= e(url('government')) ?>" class="pillar-link pbtn-red" aria-label="Learn more about Government Projects"><i class="fas fa-arrow-right"></i></a>
-      </article>
+        <article class="pillar-card">
+          <div class="pillar-icon p-red"><i class="fas fa-building-columns"></i></div>
+          <h3>Government Projects</h3>
+          <p>Large-scale, multi-state skilling projects with full batch and certification tracking.</p>
+          <a href="<?= e(url('government')) ?>" class="pillar-link pbtn-red" aria-label="Learn more about Government Projects"><i class="fas fa-arrow-right"></i></a>
+        </article>
+      </div>
+      <?php endfor; ?>
     </div>
   </div>
 </section>

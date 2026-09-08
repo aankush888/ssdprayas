@@ -90,28 +90,132 @@ include __DIR__ . '/includes/header.php';
     </div>
 
     <div class="govt-why-grid">
-      <article class="govt-why-card reveal">
-        <div class="gwc-icon gwc-blue"><i class="fas fa-chart-simple"></i></div>
-        <h3>Everything Tracked</h3>
-        <p>Partners, educators, students and batches are recorded state-wise, so progress is auditable at any point.</p>
+      <!-- Card 1: Everything Tracked -->
+      <article class="govt-why-card gwc-theme-blue reveal">
+        <div class="gwc-deck-wrapper" aria-hidden="true">
+          <div class="gwc-deck-container">
+            <div class="gwc-mini-card mini-left">
+              <span class="gmc-tag"><i class="fas fa-map-pin"></i> States</span>
+            </div>
+            <div class="gwc-mini-card mini-center">
+              <span class="gmc-tag"><i class="fas fa-layer-group"></i> Batches</span>
+            </div>
+            <div class="gwc-mini-card mini-right">
+              <span class="gmc-tag"><i class="fas fa-user-graduate"></i> Students</span>
+            </div>
+            <svg class="gwc-wire-svg" viewBox="0 0 200 60" fill="none" preserveAspectRatio="none">
+              <path class="gwc-wire-path" d="M 15,42 Q 55,14 100,28 T 185,20" stroke="url(#wireBlue)" stroke-width="3" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="wireBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#38bdf8"/>
+                  <stop offset="50%" stop-color="#60a5fa"/>
+                  <stop offset="100%" stop-color="#818cf8"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <div class="gwc-content">
+          <div class="gwc-icon gwc-blue"><i class="fas fa-chart-simple"></i></div>
+          <h3>Everything Tracked</h3>
+          <p>Partners, educators, students and batches are recorded state-wise, so progress is auditable at any point.</p>
+        </div>
       </article>
 
-      <article class="govt-why-card reveal">
-        <div class="gwc-icon gwc-green"><i class="fas fa-users-gear"></i></div>
-        <h3>Train the Trainer</h3>
-        <p>We certify government school teachers through L1 and L2 batches, so capacity stays inside the system.</p>
+      <!-- Card 2: Train the Trainer -->
+      <article class="govt-why-card gwc-theme-green reveal">
+        <div class="gwc-deck-wrapper" aria-hidden="true">
+          <div class="gwc-deck-container">
+            <div class="gwc-mini-card mini-left">
+              <span class="gmc-tag"><i class="fas fa-chalkboard-user"></i> Teachers</span>
+            </div>
+            <div class="gwc-mini-card mini-center">
+              <span class="gmc-tag"><i class="fas fa-award"></i> L1 &amp; L2</span>
+            </div>
+            <div class="gwc-mini-card mini-right">
+              <span class="gmc-tag"><i class="fas fa-shield-check"></i> Certified</span>
+            </div>
+            <svg class="gwc-wire-svg" viewBox="0 0 200 60" fill="none" preserveAspectRatio="none">
+              <path class="gwc-wire-path" d="M 15,42 Q 55,14 100,28 T 185,20" stroke="url(#wireGreen)" stroke-width="3" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="wireGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#bef264"/>
+                  <stop offset="50%" stop-color="#10b981"/>
+                  <stop offset="100%" stop-color="#06b6d4"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <div class="gwc-content">
+          <div class="gwc-icon gwc-green"><i class="fas fa-users-gear"></i></div>
+          <h3>Train the Trainer</h3>
+          <p>We certify government school teachers through L1 and L2 batches, so capacity stays inside the system.</p>
+        </div>
       </article>
 
-      <article class="govt-why-card reveal">
-        <div class="gwc-icon gwc-amber"><i class="fas fa-shield-halved"></i></div>
-        <h3>E-Check Verification</h3>
-        <p>No batch is certified until it clears our e-check verification — a documented quality gate for every cohort.</p>
+      <!-- Card 3: E-Check Verification -->
+      <article class="govt-why-card gwc-theme-amber reveal">
+        <div class="gwc-deck-wrapper" aria-hidden="true">
+          <div class="gwc-deck-container">
+            <div class="gwc-mini-card mini-left">
+              <span class="gmc-tag"><i class="fas fa-clipboard-check"></i> Audit</span>
+            </div>
+            <div class="gwc-mini-card mini-center">
+              <span class="gmc-tag"><i class="fas fa-shield-halved"></i> Gateways</span>
+            </div>
+            <div class="gwc-mini-card mini-right">
+              <span class="gmc-tag"><i class="fas fa-circle-check"></i> Verified</span>
+            </div>
+            <svg class="gwc-wire-svg" viewBox="0 0 200 60" fill="none" preserveAspectRatio="none">
+              <path class="gwc-wire-path" d="M 15,42 Q 55,14 100,28 T 185,20" stroke="url(#wireAmber)" stroke-width="3" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="wireAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#fde047"/>
+                  <stop offset="50%" stop-color="#f59e0b"/>
+                  <stop offset="100%" stop-color="#f97316"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <div class="gwc-content">
+          <div class="gwc-icon gwc-amber"><i class="fas fa-shield-halved"></i></div>
+          <h3>E-Check Verification</h3>
+          <p>No batch is certified until it clears our e-check verification — a documented quality gate for every cohort.</p>
+        </div>
       </article>
 
-      <article class="govt-why-card reveal">
-        <div class="gwc-icon gwc-red"><i class="fas fa-building-columns"></i></div>
-        <h3>Existing Infrastructure</h3>
-        <p>Programmes run in the school's existing computer labs. No procurement cycle, no new hardware budget.</p>
+      <!-- Card 4: Existing Infrastructure -->
+      <article class="govt-why-card gwc-theme-red reveal">
+        <div class="gwc-deck-wrapper" aria-hidden="true">
+          <div class="gwc-deck-container">
+            <div class="gwc-mini-card mini-left">
+              <span class="gmc-tag"><i class="fas fa-desktop"></i> Lab Ready</span>
+            </div>
+            <div class="gwc-mini-card mini-center">
+              <span class="gmc-tag"><i class="fas fa-coins"></i> Zero HW</span>
+            </div>
+            <div class="gwc-mini-card mini-right">
+              <span class="gmc-tag"><i class="fas fa-bolt"></i> Fast Scale</span>
+            </div>
+            <svg class="gwc-wire-svg" viewBox="0 0 200 60" fill="none" preserveAspectRatio="none">
+              <path class="gwc-wire-path" d="M 15,42 Q 55,14 100,28 T 185,20" stroke="url(#wireRed)" stroke-width="3" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="wireRed" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#fb7185"/>
+                  <stop offset="50%" stop-color="#ef4444"/>
+                  <stop offset="100%" stop-color="#c084fc"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <div class="gwc-content">
+          <div class="gwc-icon gwc-red"><i class="fas fa-building-columns"></i></div>
+          <h3>Existing Infrastructure</h3>
+          <p>Programmes run in the school's existing computer labs. No procurement cycle, no new hardware budget.</p>
+        </div>
       </article>
     </div>
   </div>

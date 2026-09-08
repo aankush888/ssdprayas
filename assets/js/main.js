@@ -97,4 +97,103 @@
             setTimeout(function () { el.remove(); }, 400);
         }, 6000);
     });
+
+    /* Testimonial dots interactive highlight */
+    var tbDots = document.querySelectorAll('.tb-dot');
+    var tbCards = document.querySelectorAll('.tb-review-card');
+    if (tbDots.length && tbCards.length) {
+        tbDots.forEach(function (dot, idx) {
+            dot.addEventListener('click', function () {
+                tbDots.forEach(function (d) { d.classList.remove('is-active'); });
+                dot.classList.add('is-active');
+                tbCards.forEach(function (card, cIdx) {
+                    if (cIdx === idx) {
+                        card.style.transform = 'translateY(-6px)';
+                        card.style.background = 'rgba(255, 255, 255, 0.18)';
+                        card.style.borderColor = 'rgba(255, 255, 255, 0.45)';
+                    } else {
+                        card.style.transform = '';
+                        card.style.background = '';
+                        card.style.borderColor = '';
+                    }
+                });
+            });
+        });
+    }
+
+    /* Continuous Programmes Slider: Pause on Touch for Mobile Devices */
+    var progTrack = document.querySelector('.prog-slider-track');
+    if (progTrack) {
+        progTrack.addEventListener('touchstart', function () {
+            progTrack.style.animationPlayState = 'paused';
+        }, { passive: true });
+        progTrack.addEventListener('touchend', function () {
+            progTrack.style.animationPlayState = 'running';
+        }, { passive: true });
+    }
+
+    /* Continuous Home Tracks Slider: Pause on Touch for Mobile Devices */
+    var homeTracksTrack = document.querySelector('.tracks-slider-track');
+    if (homeTracksTrack) {
+        homeTracksTrack.addEventListener('touchstart', function () {
+            homeTracksTrack.style.animationPlayState = 'paused';
+        }, { passive: true });
+        homeTracksTrack.addEventListener('touchend', function () {
+            homeTracksTrack.style.animationPlayState = 'running';
+        }, { passive: true });
+    }
+
+    /* Continuous School Programme Marquees: Pause on Touch for Mobile Devices */
+    document.querySelectorAll('.school-marquee-track').forEach(function (track) {
+        track.addEventListener('touchstart', function () {
+            track.style.animationPlayState = 'paused';
+        }, { passive: true });
+        track.addEventListener('touchend', function () {
+            track.style.animationPlayState = 'running';
+        }, { passive: true });
+    });
+
+    /* Interactive 3D Flip Cards (MVV & Google Certificates) */
+    var flipCards = document.querySelectorAll('.mvv-flip-card, .cert-flip-card');
+    if (flipCards.length) {
+        flipCards.forEach(function (card) {
+            card.addEventListener('click', function (e) {
+                if (e.target.closest('a')) {
+                    return;
+                }
+                card.classList.toggle('is-flipped');
+            });
+            card.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    if (e.target.closest('a')) {
+                        return;
+                    }
+                    e.preventDefault();
+                    card.classList.toggle('is-flipped');
+                }
+            });
+        });
+    }
+
+    /* Continuous Four Pillars Slider: Pause on Touch for Mobile Devices */
+    var pillarsTrack = document.querySelector('.pillars-slider-track');
+    if (pillarsTrack) {
+        pillarsTrack.addEventListener('touchstart', function () {
+            pillarsTrack.style.animationPlayState = 'paused';
+        }, { passive: true });
+        pillarsTrack.addEventListener('touchend', function () {
+            pillarsTrack.style.animationPlayState = 'running';
+        }, { passive: true });
+    }
+
+    /* Continuous Career Snapshot Ticker: Pause on Touch for Mobile Devices */
+    var careerTrack = document.querySelector('.career-ticker-track');
+    if (careerTrack) {
+        careerTrack.addEventListener('touchstart', function () {
+            careerTrack.style.animationPlayState = 'paused';
+        }, { passive: true });
+        careerTrack.addEventListener('touchend', function () {
+            careerTrack.style.animationPlayState = 'running';
+        }, { passive: true });
+    }
 })();

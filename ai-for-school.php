@@ -1,9 +1,10 @@
 <?php
 require_once __DIR__ . '/includes/functions.php';
 
-$page       = 'ai-for-school';
-$page_title = 'AI for School Programme | ' . SITE_NAME;
-$page_desc  = 'Our flagship school engagement: SSD Prayas trains your educators, delivers a NEP 2020-aligned AI curriculum in your existing computer lab, and certifies both teachers and students.';
+$page        = 'ai-for-school';
+$page_title  = 'AI for School Programme | ' . SITE_NAME;
+$page_desc   = 'Our flagship school engagement: SSD Prayas trains your educators, delivers a NEP 2020-aligned AI curriculum in your existing computer lab, and certifies both teachers and students.';
+$page_robots = 'noindex, follow';
 
 $stats = impact_stats($pdo);
 
@@ -51,56 +52,74 @@ include __DIR__ . '/includes/header.php';
       <span class="eyebrow is-blue"><i class="fas fa-box-open"></i> What's Included</span>
       <h2>What Your <span class="text-blue">School Gets</span></h2>
       <p>One programme, six moving parts — all handled by us.</p>
+  </div>
+
+  <!-- Dual Continuous Sliding Marquees: Row 1 Scrolls Left, Row 2 Scrolls Right -->
+  <div class="school-marquee-container">
+    <!-- Row 1: Continuously scrolls to the Left -->
+    <div class="school-marquee-wrapper is-scroll-left" aria-label="School programme features row 1">
+      <div class="school-marquee-track track-scroll-left">
+        <?php for ($i = 0; $i < 4; $i++): ?>
+        <div class="school-marquee-set" <?= $i > 0 ? 'aria-hidden="true"' : '' ?>>
+          <article class="school-card">
+            <div class="s-card-icon i-blue"><i class="fas fa-book-open"></i></div>
+            <div class="s-card-body">
+              <h3>Grade-wise Curriculum</h3>
+              <p>A complete Class 3 to 12 AI syllabus, NEP 2020-aligned and mapped to what each age group can actually absorb.</p>
+            </div>
+          </article>
+
+          <article class="school-card">
+            <div class="s-card-icon i-green"><i class="fas fa-chalkboard-user"></i></div>
+            <div class="s-card-body">
+              <h3>Educator Training</h3>
+              <p>Your teachers go through L1 and L2 training on campus, with lesson plans and classroom-ready material.</p>
+            </div>
+          </article>
+
+          <article class="school-card">
+            <div class="s-card-icon i-yellow"><i class="fas fa-flask"></i></div>
+            <div class="s-card-body">
+              <h3>Hands-on Lab Sessions</h3>
+              <p>Trained faculty deliver practical, project-based classes in your existing computer lab — no new hardware needed.</p>
+            </div>
+          </article>
+        </div>
+        <?php endfor; ?>
+      </div>
     </div>
 
-    <div class="grid grid-3 school-features-grid">
-      <article class="school-card reveal">
-        <div class="s-card-icon i-blue"><i class="fas fa-book-open"></i></div>
-        <div class="s-card-body">
-          <h3>Grade-wise Curriculum</h3>
-          <p>A complete Class 3 to 12 AI syllabus, NEP 2020-aligned and mapped to what each age group can actually absorb.</p>
-        </div>
-      </article>
+    <!-- Row 2: Continuously scrolls to the Right -->
+    <div class="school-marquee-wrapper is-scroll-right" aria-label="School programme features row 2">
+      <div class="school-marquee-track track-scroll-right">
+        <?php for ($i = 0; $i < 4; $i++): ?>
+        <div class="school-marquee-set" <?= $i > 0 ? 'aria-hidden="true"' : '' ?>>
+          <article class="school-card">
+            <div class="s-card-icon i-red"><i class="fas fa-chess-knight"></i></div>
+            <div class="s-card-body">
+              <h3>Projects &amp; Exhibitions</h3>
+              <p>Students build real AI projects and present them at school exhibitions, building portfolios and confidence.</p>
+            </div>
+          </article>
 
-      <article class="school-card reveal">
-        <div class="s-card-icon i-green"><i class="fas fa-chalkboard-user"></i></div>
-        <div class="s-card-body">
-          <h3>Educator Training</h3>
-          <p>Your teachers go through L1 and L2 training on campus, with lesson plans and classroom-ready material.</p>
-        </div>
-      </article>
+          <article class="school-card">
+            <div class="s-card-icon i-blue"><i class="fas fa-clipboard-check"></i></div>
+            <div class="s-card-body">
+              <h3>Assessment &amp; E-Check</h3>
+              <p>Every batch is assessed and verified through our e-check process before any certificate is released.</p>
+            </div>
+          </article>
 
-      <article class="school-card reveal">
-        <div class="s-card-icon i-yellow"><i class="fas fa-flask"></i></div>
-        <div class="s-card-body">
-          <h3>Hands-on Lab Sessions</h3>
-          <p>Trained faculty deliver practical, project-based classes in your existing computer lab — no new hardware needed.</p>
+          <article class="school-card">
+            <div class="s-card-icon i-green"><i class="fas fa-award"></i></div>
+            <div class="s-card-body">
+              <h3>Certification</h3>
+              <p>Students and teachers receive recognised certificates, and the batch is recorded as work-certified in our system.</p>
+            </div>
+          </article>
         </div>
-      </article>
-
-      <article class="school-card reveal">
-        <div class="s-card-icon i-red"><i class="fas fa-chess-knight"></i></div>
-        <div class="s-card-body">
-          <h3>Projects &amp; Exhibitions</h3>
-          <p>Students build real AI projects and present them at school exhibitions, building portfolios and confidence.</p>
-        </div>
-      </article>
-
-      <article class="school-card reveal">
-        <div class="s-card-icon i-blue"><i class="fas fa-clipboard-check"></i></div>
-        <div class="s-card-body">
-          <h3>Assessment &amp; E-Check</h3>
-          <p>Every batch is assessed and verified through our e-check process before any certificate is released.</p>
-        </div>
-      </article>
-
-      <article class="school-card reveal">
-        <div class="s-card-icon i-green"><i class="fas fa-award"></i></div>
-        <div class="s-card-body">
-          <h3>Certification</h3>
-          <p>Students and teachers receive recognised certificates, and the batch is recorded as work-certified in our system.</p>
-        </div>
-      </article>
+        <?php endfor; ?>
+      </div>
     </div>
   </div>
 </section>

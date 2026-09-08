@@ -77,47 +77,67 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- ============ 3 TRACK CARDS (CONTENT & IMAGES PRESERVED) ============ -->
+<!-- ============ TRACK CARDS (Continuous Left-to-Right Slider) ============ -->
 <section class="section section-tracks">
-  <div class="container">
-    <div class="grid grid-3 home-tracks-grid">
+  <div class="tracks-slider-wrapper" aria-label="SSD Prayas Tracks continuous slider">
+    <div class="tracks-slider-track">
+      <?php for ($set = 0; $set < 4; $set++): ?>
+      <div class="tracks-slider-set" <?= $set > 0 ? 'aria-hidden="true"' : '' ?>>
 
-      <article class="home-track-card reveal">
-        <div class="htrack-media">
-          <img src="<?= e(asset('img/card-students.jpg')) ?>" alt="Students in a school computer lab learning with AI" fetchpriority="high">
-          <span class="htrack-tag is-blue">FOR STUDENTS</span>
-        </div>
-        <div class="htrack-info">
-          <h3>AI for Students</h3>
-          <p>A grade-wise curriculum that grows with the child starting with digital literacy in the early years and moving into real AI projects and career-readiness by senior school. Our online AI classes for students are built so a Class 3 student and a Class 12 student are never learning the same thing in a different font each stage has its own depth, tools, and outcomes</p>
-          <a href="<?= e(url('programmes')) ?>" class="htrack-link link-blue">Explore Programme <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article>
+        <!-- Card 1: Students -->
+        <article class="home-track-card">
+          <div class="htrack-media">
+            <img src="<?= e(asset('img/card-students.jpg')) ?>" alt="Students in a school computer lab learning with AI" loading="lazy">
+            <span class="htrack-tag is-blue">FOR STUDENTS</span>
+          </div>
+          <div class="htrack-info">
+            <h3>AI for Students</h3>
+            <p>Grade-wise curriculum from Class 3 to 12. Hands-on coding, ethical AI foundations, and portfolio-ready real-world projects.</p>
+            <a href="<?= e(url('programmes')) ?>" class="htrack-link link-blue" <?= $set > 0 ? 'tabindex="-1"' : '' ?>>Explore Programme <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
 
-      <article class="home-track-card reveal">
-        <div class="htrack-media">
-          <img src="<?= e(asset('img/card-educators.jpg')) ?>" alt="Teacher guiding a student at a computer" loading="lazy">
-          <span class="htrack-tag is-green">FOR EDUCATORS</span>
-        </div>
-        <div class="htrack-info">
-          <h3>AI for Educators</h3>
-          <p>We train and certify your own teachers, so AI teaching in schools continues long after our team has left the building. This isn't a one-day workshop it's structured L1 and L2 training designed to make your existing staff confident, independent, and genuinely good at running AI classrooms on their own.</p>
-          <a href="<?= e(url('programmes')) ?>" class="htrack-link link-green">Explore Training <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article>
+        <!-- Card 2: Educators -->
+        <article class="home-track-card">
+          <div class="htrack-media">
+            <img src="<?= e(asset('img/card-educators.jpg')) ?>" alt="Teacher guiding a student at a computer" loading="lazy">
+            <span class="htrack-tag is-green">FOR EDUCATORS</span>
+          </div>
+          <div class="htrack-info">
+            <h3>AI for Educators</h3>
+            <p>Structured L1 &amp; L2 certification training enabling teachers to independently lead engaging, modern AI classrooms.</p>
+            <a href="<?= e(url('programmes')) ?>" class="htrack-link link-green" <?= $set > 0 ? 'tabindex="-1"' : '' ?>>Explore Training <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
 
-      <article class="home-track-card reveal">
-        <div class="htrack-media">
-          <img src="<?= e(asset('img/card-professionals.jpg')) ?>" alt="Working professional upskilling on a laptop" loading="lazy">
-          <span class="htrack-tag is-orange">FOR PROFESSIONALS</span>
-        </div>
-        <div class="htrack-info">
-          <h3>AI for Professionals</h3>
-          <p>Applied AI skills for working professionals real tools, real workflows, and portfolio projects that actually hold up in an interview. Every course ends in an industry-recognised AI certification, so what you learn on screen translates into something you can point to on a resume.</p>
-          <a href="<?= e(url('programmes')) ?>" class="htrack-link link-orange">Explore Courses <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article>
+        <!-- Card 3: Professionals -->
+        <article class="home-track-card">
+          <div class="htrack-media">
+            <img src="<?= e(asset('img/card-professionals.jpg')) ?>" alt="Working professional upskilling on a laptop" loading="lazy">
+            <span class="htrack-tag is-orange">FOR PROFESSIONALS</span>
+          </div>
+          <div class="htrack-info">
+            <h3>AI for Professionals</h3>
+            <p>Applied AI workflows, generative tools, and industry-recognised certifications to accelerate your career growth.</p>
+            <a href="<?= e(url('programmes')) ?>" class="htrack-link link-orange" <?= $set > 0 ? 'tabindex="-1"' : '' ?>>Explore Courses <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
 
+        <!-- Card 4: Everyone -->
+        <article class="home-track-card">
+          <div class="htrack-media">
+            <img src="<?= e(asset('img/card-everyone.jpg')) ?>" alt="Lifelong learners and everyday citizens mastering AI skills" loading="lazy">
+            <span class="htrack-tag is-purple">FOR EVERYONE</span>
+          </div>
+          <div class="htrack-info">
+            <h3>AI for Everyone</h3>
+            <p>Practical AI literacy for everyday citizens, homemakers, and beginners. Zero coding required for daily smart productivity.</p>
+            <a href="<?= e(url('programmes')) ?>" class="htrack-link link-purple" <?= $set > 0 ? 'tabindex="-1"' : '' ?>>Explore Courses <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+      </div>
+      <?php endfor; ?>
     </div>
   </div>
 </section>
