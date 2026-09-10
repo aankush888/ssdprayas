@@ -9,11 +9,15 @@
           <img class="brand-logo footer-logo" src="<?= e(asset(defined('SITE_LOGO_WHITE') ? SITE_LOGO_WHITE : 'ssdprayaslogo-white.png')) ?>"
                alt="<?= e(SITE_NAME) ?>" width="959" height="166">
         </a>
-        <p>AI skilling for students, educators and professionals — delivered online and offline
+        <p>AI education for students, educators and professionals — delivered online and offline
            with schools, institutes and state governments across India.</p>
+        <?php
+        $fb_link    = (defined('SOCIAL_FACEBOOK') && strpos(SOCIAL_FACEBOOK, 'aiforschools') === false && SOCIAL_FACEBOOK !== '#') ? SOCIAL_FACEBOOK : 'https://www.facebook.com/ssdprayas';
+        $insta_link = (defined('SOCIAL_INSTAGRAM') && strpos(SOCIAL_INSTAGRAM, 'aifor_schools') === false && SOCIAL_INSTAGRAM !== '#') ? SOCIAL_INSTAGRAM : 'https://www.instagram.com/ssdprayas/';
+        ?>
         <div class="socials">
-          <a href="<?= e(SOCIAL_FACEBOOK) ?>" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="<?= e(SOCIAL_INSTAGRAM) ?>" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="<?= e($fb_link) ?>" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="<?= e($insta_link) ?>" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="<?= e(SOCIAL_LINKEDIN) ?>" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           <a href="<?= e(SOCIAL_YOUTUBE) ?>" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>

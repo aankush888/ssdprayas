@@ -193,7 +193,7 @@ include __DIR__ . '/includes/header.php';
           ?>
             <article class="blog-card">
               <a href="<?= e(url('blog/' . $post['slug'])) ?>" class="blog-card-thumb">
-                <img src="<?= e(url_v($post['image'])) ?>" alt="<?= e($post['title']) ?>" class="blog-thumb-img" loading="lazy">
+                <img src="<?= e(blog_image_url($post)) ?>" alt="<?= e($post['title']) ?>" class="blog-thumb-img" loading="lazy">
               </a>
               <div class="blog-card-body">
                 <span class="blog-tag-pill <?= e($tag_cls) ?>"><?= e(strtoupper($post['tag'])) ?></span>

@@ -2,8 +2,8 @@
 require_once __DIR__ . '/includes/functions.php';
 
 $page       = 'home';
-$page_title = SITE_NAME . ' | AI Skilling for Students, Educators & Professionals';
-$page_desc  = 'SSD Prayas delivers NEP 2020-aligned AI skilling across India — Class 3 to 12 students, school educators and working professionals. Online and offline, with government and school partnerships.';
+$page_title = SITE_NAME . ' | AI Education for Students, Educators & Professionals';
+$page_desc  = 'SSD Prayas delivers NEP 2020-aligned AI education across India — Class 3 to 12 students, school educators and working professionals. Online and offline, with government and school partnerships.';
 $page_robots = 'noindex, follow';
 
 /* ---------- Page data ---------- */
@@ -33,7 +33,7 @@ include __DIR__ . '/includes/header.php';
         <span>Google for Education Partner</span>
       </div>
 
-      <h1>AI Skilling for a<br><span class="text-blue">Future-Ready</span> Bharat</h1>
+      <h1>AI Education for a<br><span class="text-blue">Future-Ready</span> Bharat</h1>
 
       <p class="home-hero-lead">
         Practical, hands-on AI education for school students, teachers and working professionals across India.
@@ -75,6 +75,94 @@ include __DIR__ . '/includes/header.php';
         </linearGradient>
       </defs>
     </svg>
+  </div>
+</section>
+
+<!-- ============ MANIFESTO / SPOTLIGHT SECTION ============ -->
+<section class="home-manifesto-section" id="about-spotlight">
+  <div class="container">
+    <div class="home-manifesto-grid">
+      
+      <!-- Left Column: Core Narrative & Manifesto -->
+      <div class="manifesto-left-col reveal">
+        <div class="manifesto-eyebrow">
+          <span class="m-pill-dot"></span>
+          <span><i class="fas fa-sparkles text-blue"></i> AI Education for Bharat</span>
+        </div>
+
+        <h2 class="manifesto-title">
+          Making AI <span class="text-gradient-brand">Part of Everyday Learning</span> &mdash; Not Just a Buzzword.
+        </h2>
+
+        <p class="manifesto-lead">
+          <strong>SSD Prayas</strong> is an AI education company working directly with schools, colleges, and state governments to make artificial intelligence part of everyday learning &mdash; not just a buzzword on a syllabus.
+        </p>
+
+        <p class="manifesto-text">
+          Whether you're a principal exploring AI training for schools, a teacher looking to get certified, or a professional wanting to upskill, we design programmes that fit where you already are and take you further. As one of India's more hands-on approaches to AI education in India, we focus less on lecture slides and more on what students and teachers actually build.
+        </p>
+
+        <div class="manifesto-pills">
+          <span class="mf-pill"><i class="fas fa-check-circle text-blue"></i> NEP 2020 Aligned</span>
+          <span class="mf-pill"><i class="fas fa-check-circle text-green"></i> 100% Practical &amp; Project-Based</span>
+          <span class="mf-pill"><i class="fas fa-check-circle text-purple"></i> In-Lab School Delivery</span>
+        </div>
+
+        <div class="manifesto-actions">
+          <a href="<?= e(url('about')) ?>" class="btn btn-primary btn-pill">
+            Learn Our Story <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="<?= e(url('contact')) ?>" class="btn btn-outline-pill">
+            Partner With Us <i class="fas fa-handshake"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Tailored Target Cards -->
+      <div class="manifesto-right-col reveal">
+        <div class="manifesto-cards-stack">
+          
+          <!-- Card 1: Schools & Principals -->
+          <div class="manifesto-card mc-blue">
+            <div class="mc-icon-wrap">
+              <i class="fas fa-school"></i>
+            </div>
+            <div class="mc-content">
+              <span class="mc-tag">For Schools &amp; Principals</span>
+              <h3 class="mc-heading">Zero New Hardware Required</h3>
+              <p class="mc-desc">We deliver grade-wise AI curriculum directly inside your existing computer lab, training your faculty to teach with confidence.</p>
+            </div>
+          </div>
+
+          <!-- Card 2: Educators & Teachers -->
+          <div class="manifesto-card mc-green">
+            <div class="mc-icon-wrap">
+              <i class="fas fa-chalkboard-user"></i>
+            </div>
+            <div class="mc-content">
+              <span class="mc-tag">For Teachers &amp; Educators</span>
+              <h3 class="mc-heading">L1 &amp; L2 Certified Faculty</h3>
+              <p class="mc-desc">Empowering educators with hands-on generative AI tools, pedagogical frameworks, and verified certifications for independent teaching.</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Working Professionals & Students -->
+          <div class="manifesto-card mc-purple">
+            <div class="mc-icon-wrap">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <div class="mc-content">
+              <span class="mc-tag">For Learners &amp; Professionals</span>
+              <h3 class="mc-heading">Portfolio Over Slides</h3>
+              <p class="mc-desc">Applied AI workflows, machine learning models, and resume-ready credentials designed for actual career acceleration.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </section>
 
@@ -191,7 +279,7 @@ include __DIR__ . '/includes/header.php';
       <div class="works-intro-col reveal">
         <span class="eyebrow is-blue"><i class="fas fa-compass"></i> Explore</span>
         <h2>Where SSD Prayas <span class="text-blue">Works</span></h2>
-        <p>We deliver AI education at scale across schools, individuals and government departments in multiple states.</p>
+        <p>Two ways we deliver AI education for schools at scale &mdash; inside individual classrooms, and across entire states in partnership with government departments.</p>
         <a href="<?= e(url('programmes')) ?>" class="btn btn-outline-pill">View All Programmes <i class="fas fa-arrow-right"></i></a>
       </div>
 
@@ -343,7 +431,7 @@ include __DIR__ . '/includes/header.php';
     <div class="home-cta-box reveal">
       <div class="home-cta-content">
         <h2>Ready to bring AI to your students?</h2>
-        <p>Whether you're running a single school, a district-wide programme, or a state-level project — we're here to help you every step of the way.</p>
+        <p>Whether you're running a single school, a district-wide programme, or a state-level project, our team will design the right roll-out for you &mdash; no two schools get a copy-pasted plan.</p>
       </div>
       <div class="home-cta-actions">
         <a href="<?= e(url('contact')) ?>" class="btn btn-yellow-pill">Start Your AI Journey <i class="fas fa-arrow-right"></i></a>
@@ -382,6 +470,134 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 <?php endif; ?>
+
+<!-- ============ FREQUENTLY ASKED QUESTIONS ============ -->
+<section class="home-faq-section" id="faq">
+  <div class="container">
+    <div class="home-faq-header reveal">
+      <span class="eyebrow is-blue"><i class="fas fa-circle-question"></i> Got Questions?</span>
+      <h2>Frequently Asked <span class="text-blue">Questions</span></h2>
+      <p class="section-lead">Everything you need to know about our programmes, beginner pathways, and recognised AI certifications.</p>
+    </div>
+
+    <div class="home-faq-wrap reveal">
+      <details class="home-faq-item" name="home-faq" open>
+        <summary class="home-faq-summary">
+          <span class="home-faq-num">01</span>
+          <span class="home-faq-question">What makes SSD Prayas the best AI learning platform in India for schools?</span>
+          <span class="home-faq-icon"><i class="fas fa-plus"></i></span>
+        </summary>
+        <div class="home-faq-body">
+          <p>Most platforms hand a school a login and call it done. We don't. SSD Prayas trains your own teachers, delivers the curriculum inside your existing classroom setup, and certifies both students and staff &mdash; so the learning doesn't disappear the moment a subscription ends. That combination of hands-on delivery, teacher independence, and NEP 2020 alignment is what schools tell us sets us apart from platforms that are really just video libraries with a login screen.</p>
+        </div>
+      </details>
+
+      <details class="home-faq-item" name="home-faq">
+        <summary class="home-faq-summary">
+          <span class="home-faq-num">02</span>
+          <span class="home-faq-question">Is there an AI course for beginners in India, or do students need coding experience first?</span>
+          <span class="home-faq-icon"><i class="fas fa-plus"></i></span>
+        </summary>
+        <div class="home-faq-body">
+          <p>No coding background is needed to start. Our beginner-level modules are built for students who've never written a line of code &mdash; the early classes focus on how AI actually works in plain language, with simple hands-on tools, before anything resembling &ldquo;programming&rdquo; shows up. Coding gets introduced gradually as students move into higher grades or more advanced tracks, not on day one.</p>
+        </div>
+      </details>
+
+      <details class="home-faq-item" name="home-faq">
+        <summary class="home-faq-summary">
+          <span class="home-faq-num">03</span>
+          <span class="home-faq-question">Do you offer online AI classes for students, or is everything in-person?</span>
+          <span class="home-faq-icon"><i class="fas fa-plus"></i></span>
+        </summary>
+        <div class="home-faq-body">
+          <p>Both, depending on what a school needs. Some partner schools run sessions fully offline in their existing computer labs; others prefer online delivery, and a fair number end up doing a mix of the two. The curriculum itself doesn't change based on format &mdash; what changes is how it's delivered, and we build that around the school's infrastructure rather than forcing one model on everyone.</p>
+        </div>
+      </details>
+
+      <details class="home-faq-item" name="home-faq">
+        <summary class="home-faq-summary">
+          <span class="home-faq-num">04</span>
+          <span class="home-faq-question">What does the AI certification actually cover, and is it recognised outside SSD Prayas?</span>
+          <span class="home-faq-icon"><i class="fas fa-plus"></i></span>
+        </summary>
+        <div class="home-faq-body">
+          <p>Certification is tied to completed, assessed work &mdash; not attendance. Students and educators go through an assessment and verification check before any certificate is issued, so it reflects what was actually learned, not just a completed calendar. For working professionals in particular, the certificate is designed to be something you can genuinely point to in a resume or interview, not a participation trophy.</p>
+        </div>
+      </details>
+
+      <details class="home-faq-item" name="home-faq">
+        <summary class="home-faq-summary">
+          <span class="home-faq-num">05</span>
+          <span class="home-faq-question">Can working professionals join, or is this only for schools and students?</span>
+          <span class="home-faq-icon"><i class="fas fa-plus"></i></span>
+        </summary>
+        <div class="home-faq-body">
+          <p>Professionals are one of our three main tracks, alongside students and educators. The professional track is applied rather than academic &mdash; real tools, real workflows, project-based learning &mdash; aimed at people upskilling for their current job or pivoting into AI-adjacent roles, not at people looking for a theory-heavy refresher course.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="home-faq-footer-cta reveal">
+      <span class="home-faq-footer-text">Have more questions about our AI skilling programmes?</span>
+      <div style="display:inline-flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;">
+        <a href="<?= e(url('contact')) ?>" class="btn btn-outline-pill btn-sm">Contact Our Team <i class="fas fa-arrow-right"></i></a>
+        <a href="<?= e(whatsapp_link('Hello SSD Prayas, I have a question regarding your AI programmes.')) ?>" target="_blank" rel="noopener" class="btn btn-green-pill btn-sm" style="background:#25d366;color:#fff;border:none;">
+          <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQPage Schema for Google Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What makes SSD Prayas the best AI learning platform in India for schools?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most platforms hand a school a login and call it done. We don't. SSD Prayas trains your own teachers, delivers the curriculum inside your existing classroom setup, and certifies both students and staff — so the learning doesn't disappear the moment a subscription ends. That combination of hands-on delivery, teacher independence, and NEP 2020 alignment is what schools tell us sets us apart from platforms that are really just video libraries with a login screen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there an AI course for beginners in India, or do students need coding experience first?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No coding background is needed to start. Our beginner-level modules are built for students who've never written a line of code — the early classes focus on how AI actually works in plain language, with simple hands-on tools, before anything resembling 'programming' shows up. Coding gets introduced gradually as students move into higher grades or more advanced tracks, not on day one."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer online AI classes for students, or is everything in-person?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both, depending on what a school needs. Some partner schools run sessions fully offline in their existing computer labs; others prefer online delivery, and a fair number end up doing a mix of the two. The curriculum itself doesn't change based on format — what changes is how it's delivered, and we build that around the school's infrastructure rather than forcing one model on everyone."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the AI certification actually cover, and is it recognised outside SSD Prayas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Certification is tied to completed, assessed work — not attendance. Students and educators go through an assessment and verification check before any certificate is issued, so it reflects what was actually learned, not just a completed calendar. For working professionals in particular, the certificate is designed to be something you can genuinely point to in a resume or interview, not a participation trophy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can working professionals join, or is this only for schools and students?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Professionals are one of our three main tracks, alongside students and educators. The professional track is applied rather than academic — real tools, real workflows, project-based learning — aimed at people upskilling for their current job or pivoting into AI-adjacent roles, not at people looking for a theory-heavy refresher course."
+        }
+      }
+    ]
+  }
+  </script>
+</section>
 
 </main>
 

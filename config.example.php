@@ -26,8 +26,8 @@ define('CONTACT_PHONE_RAW','919810450465');   // WhatsApp same number
 define('CONTACT_ADDRESS',  'The DM Tower, Danish Kunj, Kolar Road, Bhopal, Madhya Pradesh 462039');
 
 // ---------- Social ----------
-define('SOCIAL_FACEBOOK', 'https://www.facebook.com/aiforschoolsindia');
-define('SOCIAL_INSTAGRAM','https://www.instagram.com/aifor_schools');
+define('SOCIAL_FACEBOOK', 'https://www.facebook.com/ssdprayas');
+define('SOCIAL_INSTAGRAM','https://www.instagram.com/ssdprayas/');
 define('SOCIAL_LINKEDIN', 'https://www.linkedin.com/company/aiforschoolsindia/');
 define('SOCIAL_YOUTUBE',  '#');
 

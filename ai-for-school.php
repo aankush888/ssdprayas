@@ -23,7 +23,7 @@ include __DIR__ . '/includes/header.php';
       <p class="hero-lead">We do not drop a syllabus and leave. We partner with your school, train your own
          teachers, run the classes inside your existing computer lab, and certify both the
          educators and the students — a self-sustaining AI ecosystem on your campus.</p>
-      <div class="hero-actions">
+      <div class="hero-actions" style="justify-content: flex-start;">
         <a href="<?= e(url('contact')) ?>" class="btn btn-primary btn-pill">Partner Your School <i class="fas fa-arrow-right"></i></a>
         <a href="<?= e(whatsapp_link('Hello SSD Prayas, I want to know about the AI for School programme.')) ?>"
            class="btn btn-white-pill" target="_blank" rel="noopener">

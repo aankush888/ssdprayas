@@ -177,3 +177,29 @@ function csrf_check() {
         && !empty($_SESSION['csrf'])
         && hash_equals($_SESSION['csrf'], $_POST['csrf']);
 }
+
+/**
+ * Automatically sync legacy blog image paths in the database if any old student-laptop.png paths exist.
+ */
+function sync_legacy_blog_images(PDO $pdo) {
+    static $done = false;
+    if ($done) return;
+    $done = true;
+    try {
+        $has_old = (int)scalar($pdo, "SELECT COUNT(*) FROM blogs WHERE image LIKE '%student-laptop.png%'");
+        if ($has_old > 0) {
+            $pdo->exec("UPDATE blogs SET image = 'assets/img/blog-1.jpg' WHERE slug = 'why-ai-in-cbse-schools-is-no-longer-optional-and-why-it-should-start-early' AND image LIKE '%student-laptop.png%'");
+            $pdo->exec("UPDATE blogs SET image = 'assets/img/blog-2.jpg' WHERE slug = 'ai-in-schools-the-future-of-smart-education' AND image LIKE '%student-laptop.png%'");
+            $pdo->exec("UPDATE blogs SET image = 'assets/img/blog-3.jpg' WHERE slug = 'nep-2020-and-the-ai-revolution' AND image LIKE '%student-laptop.png%'");
+            $pdo->exec("UPDATE blogs SET image = 'assets/img/blog-4.jpg' WHERE slug = 'top-5-ai-skills' AND image LIKE '%student-laptop.png%'");
+            $pdo->exec("UPDATE blogs SET image = 'assets/img/blog-5.jpg' WHERE slug = 'how-educators-can-bring-ai-to-their-classrooms' AND image LIKE '%student-laptop.png%'");
+        }
+    } catch (PDOException $e) {
+        // fail silently
+    }
+}
+
+if (isset($pdo)) {
+    sync_legacy_blog_images($pdo);
+}
+
