@@ -39,6 +39,15 @@ function asset_v($path) {
     return is_file($file) ? $url . '?v=' . filemtime($file) : $url;
 }
 
+/** URL with automatic cache-busting stamp from file mtime */
+function url_v($path) {
+    if (!$path) return '';
+    $path_clean = ltrim($path, '/');
+    $file = __DIR__ . '/../' . $path_clean;
+    $u = url($path_clean);
+    return is_file($file) ? $u . '?v=' . filemtime($file) : $u;
+}
+
 /** WhatsApp click-to-chat link. */
 function whatsapp_link($text = '') {
     return 'https://wa.me/' . CONTACT_PHONE_RAW . ($text ? '?text=' . rawurlencode($text) : '');

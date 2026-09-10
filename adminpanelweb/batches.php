@@ -98,9 +98,25 @@ if ($action === 'new' || $action === 'edit') {
     $admin_sub    = 'L1 / L2 training batches with e-check verification and certification tracking.';
     include __DIR__ . '/_layout.php';
     ?>
+    <!-- Form Hero Header -->
+    <div class="mod-hero-strip">
+      <div class="mod-hero-left">
+        <div class="mod-hero-icon mhi-amber">
+          <i class="fas fa-layer-group"></i>
+        </div>
+        <div>
+          <h2 class="mod-hero-title"><?= e($admin_title) ?></h2>
+          <p class="mod-hero-sub">Schedule training cohorts, manage seats, assign partner schools, and track e-checks.</p>
+        </div>
+      </div>
+      <div class="mod-hero-actions">
+        <a href="batches.php" class="btn btn-ghost"><i class="fas fa-arrow-left"></i> Back to Batches</a>
+      </div>
+    </div>
+
     <div class="card">
       <div class="card-head">
-        <h2><?= e($admin_title) ?></h2>
+        <h2><i class="fas fa-calendar-check text-amber" style="font-size:16px"></i> Training Cohort Details</h2>
         <span class="spacer"></span>
         <a href="batches.php" class="btn btn-ghost btn-sm"><i class="fas fa-arrow-left"></i> Back</a>
       </div>
@@ -246,13 +262,89 @@ $admin_active = 'batches';
 $admin_sub    = 'L1 / L2 training batches with e-check verification and certification tracking.';
 include __DIR__ . '/_layout.php';
 
+$tot_batches   = count($list);
+$tot_running   = count(array_filter($list, fn($b) => $b['status'] === 'running'));
+$tot_verified  = count(array_filter($list, fn($b) => ($b['echeck_status'] ?? '') === 'verified'));
+$tot_seats     = array_sum(array_column($list, 'total_seats'));
+
 $echeck_badge = ['pending' => 'b-grey', 'in_review' => 'b-yellow', 'verified' => 'b-green', 'rejected' => 'b-red'];
 $status_badge = ['planned' => 'b-grey', 'running' => 'b-blue', 'completed' => 'b-green', 'cancelled' => 'b-red'];
 ?>
 
+<!-- Module Hero Header -->
+<div class="mod-hero-strip">
+  <div class="mod-hero-left">
+    <div class="mod-hero-icon mhi-amber">
+      <i class="fas fa-layer-group"></i>
+    </div>
+    <div>
+      <h2 class="mod-hero-title">
+        Training Batches & Cohorts
+        <span class="mod-hero-badge"><?= $tot_batches ?> Total</span>
+      </h2>
+      <p class="mod-hero-sub">Manage educator and student cohorts, e-check compliance, and official certification dates.</p>
+    </div>
+  </div>
+  <div class="mod-hero-actions">
+    <a href="batches.php?action=new" class="btn btn-primary"><i class="fas fa-plus"></i> Create Batch</a>
+  </div>
+</div>
+
+<!-- Quick Stats Strip -->
+<div class="mod-stats-grid">
+  <div class="mod-stat-card">
+    <div class="msc-icon msc-amber"><i class="fas fa-layer-group"></i></div>
+    <div class="msc-info">
+      <span class="msc-label">Total Batches</span>
+      <div class="msc-value"><?= number_format($tot_batches) ?></div>
+      <div class="msc-sub"><i class="fas fa-folder-open text-amber"></i> All Cohorts</div>
+    </div>
+  </div>
+  <div class="mod-stat-card">
+    <div class="msc-icon msc-blue"><i class="fas fa-spinner fa-spin-pulse"></i></div>
+    <div class="msc-info">
+      <span class="msc-label">Running Batches</span>
+      <div class="msc-value"><?= number_format($tot_running) ?></div>
+      <div class="msc-sub"><i class="fas fa-circle-play text-brand"></i> Live Training</div>
+    </div>
+  </div>
+  <div class="mod-stat-card">
+    <div class="msc-icon msc-green"><i class="fas fa-clipboard-check"></i></div>
+    <div class="msc-info">
+      <span class="msc-label">Verified E-Checks</span>
+      <div class="msc-value"><?= number_format($tot_verified) ?></div>
+      <div class="msc-sub"><i class="fas fa-award text-green"></i> Quality Passed</div>
+    </div>
+  </div>
+  <div class="mod-stat-card">
+    <div class="msc-icon msc-purple"><i class="fas fa-chair"></i></div>
+    <div class="msc-info">
+      <span class="msc-label">Total Seats</span>
+      <div class="msc-value"><?= number_format($tot_seats) ?></div>
+      <div class="msc-sub"><i class="fas fa-users-line text-purple"></i> Total Capacity</div>
+    </div>
+  </div>
+</div>
+
 <div class="card">
+  <!-- Quick Tabs -->
+  <div class="mod-quick-tabs">
+    <a href="batches.php" class="mqt-item <?= ($f_status === '' && $q === '') ? 'is-active' : '' ?>">
+      <i class="fas fa-layer-group"></i> All Cohorts <span class="mqt-count"><?= $tot_batches ?></span>
+    </a>
+    <a href="batches.php?status=running" class="mqt-item <?= $f_status === 'running' ? 'is-active' : '' ?>">
+      <i class="fas fa-play"></i> Running <span class="mqt-count"><?= count(array_filter($list, fn($b) => $b['status'] === 'running')) ?></span>
+    </a>
+    <a href="batches.php?status=completed" class="mqt-item <?= $f_status === 'completed' ? 'is-active' : '' ?>">
+      <i class="fas fa-check-double"></i> Completed <span class="mqt-count"><?= count(array_filter($list, fn($b) => $b['status'] === 'completed')) ?></span>
+    </a>
+  </div>
+
   <div class="card-head">
-    <h2>Training Batches <span class="badge b-grey"><?= count($list) ?></span></h2>
+    <h2>
+      <i class="fas fa-layer-group text-amber" style="font-size:16px"></i>
+      Cohort Schedule & Management
+    </h2>
     <span class="spacer"></span>
     <form method="GET" class="filters">
       <input type="text" name="q" value="<?= e($q) ?>" placeholder="Search code, title…">
@@ -274,9 +366,11 @@ $status_badge = ['planned' => 'b-grey', 'running' => 'b-blue', 'completed' => 'b
           <option value="<?= e($s) ?>" <?= $f_status === $s ? 'selected' : '' ?>><?= e(ucfirst($s)) ?></option>
         <?php endforeach; ?>
       </select>
-      <button class="btn btn-ghost btn-sm"><i class="fas fa-magnifying-glass"></i></button>
+      <button class="btn btn-primary btn-sm"><i class="fas fa-magnifying-glass"></i> Filter</button>
+      <?php if ($q || $f_state || $f_audience || $f_status): ?>
+        <a href="batches.php" class="btn btn-ghost btn-sm" title="Reset Filters"><i class="fas fa-rotate-left"></i></a>
+      <?php endif; ?>
     </form>
-    <a href="batches.php?action=new" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Create Batch</a>
   </div>
 
   <?php if (!$list): ?>
@@ -284,47 +378,69 @@ $status_badge = ['planned' => 'b-grey', 'running' => 'b-blue', 'completed' => 'b
       <i class="fas fa-layer-group"></i>
       <h3>No batches yet</h3>
       <p>Create a batch to start tracking training and certification.</p>
-      <a href="batches.php?action=new" class="btn btn-primary"><i class="fas fa-plus"></i> Create Batch</a>
+      <a href="batches.php?action=new" class="btn btn-primary" style="margin-top:14px"><i class="fas fa-plus"></i> Create Batch</a>
     </div>
   <?php else: ?>
     <div class="table-wrap">
       <table class="data">
         <thead>
-          <tr><th>Batch</th><th>Audience</th><th>Location</th><th>Enrolled</th><th>Dates</th><th>E-Check</th><th>Status</th><th></th></tr>
+          <tr>
+            <th><i class="fas fa-barcode" style="margin-right:6px"></i>Batch Code & Title</th>
+            <th><i class="fas fa-users" style="margin-right:6px"></i>Audience</th>
+            <th><i class="fas fa-location-dot" style="margin-right:6px"></i>Location & School</th>
+            <th><i class="fas fa-chair" style="margin-right:6px"></i>Enrolled</th>
+            <th><i class="fas fa-calendar" style="margin-right:6px"></i>Dates</th>
+            <th><i class="fas fa-shield-check" style="margin-right:6px"></i>E-Check</th>
+            <th><i class="fas fa-traffic-light" style="margin-right:6px"></i>Status</th>
+            <th style="text-align:right">Actions</th>
+          </tr>
         </thead>
         <tbody>
           <?php foreach ($list as $r): ?>
             <tr>
               <td>
-                <div class="cell-main"><?= e($r['batch_code']) ?></div>
-                <div class="cell-sub"><?= e($r['title'] ?: '—') ?></div>
+                <div class="entity-cell">
+                  <div class="entity-avatar ea-amber">
+                    <i class="fas fa-layer-group"></i>
+                  </div>
+                  <div>
+                    <div class="cell-main"><?= e($r['batch_code']) ?></div>
+                    <div class="cell-sub"><?= e($r['title'] ?: '—') ?></div>
+                  </div>
+                </div>
               </td>
               <td>
                 <span class="badge b-blue"><?= e(ucfirst($r['audience'])) ?></span>
                 <span class="badge b-grey"><?= e($r['level']) ?></span>
-                <div class="cell-sub" style="margin-top:4px"><?= e(ucfirst($r['mode'])) ?></div>
+                <div class="cell-sub" style="margin-top:4px"><i class="fas fa-laptop" style="font-size:11px"></i> <?= e(ucfirst($r['mode'])) ?></div>
               </td>
               <td>
-                <div><?= e($r['state_name'] ?: '—') ?></div>
-                <div class="cell-sub"><?= e($r['partner_name'] ?: '') ?></div>
+                <div style="font-weight:700;color:var(--ink)"><?= e($r['state_name'] ?: '—') ?></div>
+                <div class="cell-sub"><?= e($r['partner_name'] ?: 'Independent') ?></div>
               </td>
               <td>
-                <div class="cell-sub"><?= (int)$r['educator_count'] ?> educators</div>
+                <div style="font-weight:700;color:var(--ink)"><?= (int)$r['educator_count'] ?> educators</div>
                 <div class="cell-sub"><?= (int)$r['student_count'] ?> students</div>
-                <?php if ($r['total_seats']): ?><div class="cell-sub">of <?= (int)$r['total_seats'] ?> seats</div><?php endif; ?>
+                <?php if ($r['total_seats']): ?><div class="cell-sub">Capacity: <?= (int)$r['total_seats'] ?></div><?php endif; ?>
               </td>
               <td class="cell-sub">
-                <?= $r['start_date'] ? date('d M Y', strtotime($r['start_date'])) : '—' ?><br>
+                <strong><?= $r['start_date'] ? date('d M Y', strtotime($r['start_date'])) : '—' ?></strong><br>
                 <?= $r['end_date'] ? 'to ' . date('d M Y', strtotime($r['end_date'])) : '' ?>
               </td>
               <td>
-                <span class="badge <?= $echeck_badge[$r['echeck_status']] ?? 'b-grey' ?>"><?= e(ucfirst(str_replace('_', ' ', $r['echeck_status']))) ?></span>
-                <?php if ($r['is_work_certified']): ?><div style="margin-top:4px"><span class="badge b-yellow">Work certified</span></div><?php endif; ?>
+                <span class="badge <?= $echeck_badge[$r['echeck_status']] ?? 'b-grey' ?>">
+                  <span class="badge-dot"></span><?= e(ucfirst(str_replace('_', ' ', $r['echeck_status']))) ?>
+                </span>
+                <?php if ($r['is_work_certified']): ?><div style="margin-top:4px"><span class="badge b-yellow"><span class="badge-dot"></span>Work certified</span></div><?php endif; ?>
               </td>
-              <td><span class="badge <?= $status_badge[$r['status']] ?? 'b-grey' ?>"><?= e(ucfirst($r['status'])) ?></span></td>
               <td>
-                <div class="row-actions">
-                  <a href="batches.php?action=edit&id=<?= (int)$r['id'] ?>" class="icon-btn ib-edit" title="Edit"><i class="fas fa-pen"></i></a>
+                <span class="badge <?= $status_badge[$r['status']] ?? 'b-grey' ?>">
+                  <span class="badge-dot"></span><?= e(ucfirst($r['status'])) ?>
+                </span>
+              </td>
+              <td style="text-align:right">
+                <div class="row-actions" style="justify-content:flex-end">
+                  <a href="batches.php?action=edit&id=<?= (int)$r['id'] ?>" class="icon-btn ib-edit" title="Edit Batch"><i class="fas fa-pen"></i></a>
                   <a href="batches.php?action=delete&id=<?= (int)$r['id'] ?>" class="icon-btn ib-del" title="Delete"
                      data-confirm="Delete batch <?= e($r['batch_code']) ?>?"><i class="fas fa-trash"></i></a>
                 </div>
@@ -334,7 +450,96 @@ $status_badge = ['planned' => 'b-grey', 'running' => 'b-blue', 'completed' => 'b
         </tbody>
       </table>
     </div>
+
+    <!-- Table Footer Bar -->
+    <div class="table-footer-bar">
+      <div class="tfb-info">
+        <span>Showing <strong><?= count($list) ?></strong> of <strong><?= $tot_batches ?></strong> cohorts</span>
+        <span class="tfb-sync"><span class="tfb-sync-dot"></span> Schedule Synchronized</span>
+      </div>
+      <div class="tfb-pager">
+        <button class="tfb-btn disabled"><i class="fas fa-chevron-left"></i> Previous</button>
+        <span style="font-size:12px;font-weight:700;padding:0 8px;color:var(--ink)">1 of 1</span>
+        <button class="tfb-btn disabled">Next <i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
   <?php endif; ?>
+</div>
+
+<!-- Secondary Insights Grid -->
+<div class="mod-bottom-grid">
+  <div class="mbg-card">
+    <div class="mbg-header">
+      <div class="mbg-title"><i class="fas fa-chart-simple text-amber"></i> Cohort Quality & Completion</div>
+      <span class="mbg-tag">Performance</span>
+    </div>
+    <div class="mbg-metric-row">
+      <div class="mmr-item">
+        <div class="mmr-label-bar">
+          <span>E-Check Verification Rate</span>
+          <span class="mmr-val"><?= $tot_batches > 0 ? round(($tot_verified / $tot_batches) * 100) : 0 ?>% Quality Cleared</span>
+        </div>
+        <div class="mmr-bar-track">
+          <div class="mmr-bar-fill fill-green" style="width: <?= $tot_batches > 0 ? round(($tot_verified / $tot_batches) * 100) : 0 ?>%"></div>
+        </div>
+      </div>
+      <div class="mmr-item">
+        <div class="mmr-label-bar">
+          <span>Active Batch Delivery</span>
+          <span class="mmr-val"><?= $tot_batches > 0 ? round(($tot_running / $tot_batches) * 100) : 0 ?>% Running Now</span>
+        </div>
+        <div class="mmr-bar-track">
+          <div class="mmr-bar-fill fill-amber" style="width: <?= $tot_batches > 0 ? round(($tot_running / $tot_batches) * 100) : 0 ?>%"></div>
+        </div>
+      </div>
+      <div class="mmr-item">
+        <div class="mmr-label-bar">
+          <span>Seat Utilization</span>
+          <span class="mmr-val"><?= number_format($tot_seats) ?> Available Seats</span>
+        </div>
+        <div class="mmr-bar-track">
+          <div class="mmr-bar-fill fill-purple" style="width: 75%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mbg-card">
+    <div class="mbg-header">
+      <div class="mbg-title"><i class="fas fa-bolt text-amber"></i> Batch Management Actions</div>
+      <span class="mbg-tag">Shortcuts</span>
+    </div>
+    <div class="quick-links-grid">
+      <a href="batches.php?action=new" class="qlg-item">
+        <div class="qlg-icon qi-amber"><i class="fas fa-calendar-plus"></i></div>
+        <div class="qlg-text">
+          <span class="qlg-name">Create Batch</span>
+          <span class="qlg-desc">Launch new cohort</span>
+        </div>
+      </a>
+      <a href="educators.php" class="qlg-item">
+        <div class="qlg-icon qi-green"><i class="fas fa-chalkboard-user"></i></div>
+        <div class="qlg-text">
+          <span class="qlg-name">Assign Mentors</span>
+          <span class="qlg-desc">Link faculty</span>
+        </div>
+      </a>
+      <a href="students.php" class="qlg-item">
+        <div class="qlg-icon qi-purple"><i class="fas fa-user-graduate"></i></div>
+        <div class="qlg-text">
+          <span class="qlg-name">Enrol Learners</span>
+          <span class="qlg-desc">Add students</span>
+        </div>
+      </a>
+      <a href="partners.php" class="qlg-item">
+        <div class="qlg-icon qi-blue"><i class="fas fa-school"></i></div>
+        <div class="qlg-text">
+          <span class="qlg-name">Partner Center</span>
+          <span class="qlg-desc">School venue</span>
+        </div>
+      </a>
+    </div>
+  </div>
 </div>
 
 <?php include __DIR__ . '/_layout_end.php'; ?>

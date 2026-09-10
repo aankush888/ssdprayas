@@ -23,8 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = trim($_POST['username'] ?? '');
         $password = $_POST['password'] ?? '';
 
-        $stmt = $pdo->prepare("SELECT * FROM admin_users WHERE username = ? AND is_active = 1");
-        $stmt->execute([$username]);
+        $stmt = $pdo->prepare("SELECT * FROM admin_users WHERE (username = ? OR email = ?) AND is_active = 1 LIMIT 1");
+        $stmt->execute([$username, $username]);
         $user = $stmt->fetch();
 
         if ($user && password_verify($password, $user['password_hash'])) {
@@ -83,8 +83,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form method="POST">
       <?= csrf_field() ?>
       <div class="fg">
-        <label for="u">Username</label>
-        <input type="text" id="u" name="username" required autofocus autocomplete="username" placeholder="Enter username">
+        <label for="u">Username or Email</label>
+        <input type="text" id="u" name="username" required autofocus autocomplete="username" placeholder="Enter username or email">
       </div>
       <div class="fg">
         <label for="p">Password</label>

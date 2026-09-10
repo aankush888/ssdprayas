@@ -92,7 +92,7 @@ include __DIR__ . '/includes/header.php';
           </div>
           <div class="htrack-info">
             <h3>AI for Students</h3>
-            <p>Grade-wise curriculum from Class 3 to 12. Hands-on coding, ethical AI foundations, and portfolio-ready real-world projects.</p>
+            <p>A grade-wise curriculum that grows with the child &mdash; starting with digital literacy in the early years and moving into real AI projects and career-readiness by senior school. Our online AI classes for students are built so a Class 3 student and a Class 12 student are never learning the same thing in a different font &mdash; each stage has its own depth, tools, and outcomes.</p>
             <a href="<?= e(url('programmes')) ?>" class="htrack-link link-blue" <?= $set > 0 ? 'tabindex="-1"' : '' ?>>Explore Programme <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
@@ -105,7 +105,7 @@ include __DIR__ . '/includes/header.php';
           </div>
           <div class="htrack-info">
             <h3>AI for Educators</h3>
-            <p>Structured L1 &amp; L2 certification training enabling teachers to independently lead engaging, modern AI classrooms.</p>
+            <p>We train and certify your own teachers, so AI teaching in schools continues long after our team has left the building. This isn't a one-day workshop &mdash; it's structured L1 and L2 training designed to make your existing staff confident, independent, and genuinely good at running AI classrooms on their own.</p>
             <a href="<?= e(url('programmes')) ?>" class="htrack-link link-green" <?= $set > 0 ? 'tabindex="-1"' : '' ?>>Explore Training <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
@@ -118,7 +118,7 @@ include __DIR__ . '/includes/header.php';
           </div>
           <div class="htrack-info">
             <h3>AI for Professionals</h3>
-            <p>Applied AI workflows, generative tools, and industry-recognised certifications to accelerate your career growth.</p>
+            <p>Applied AI skills for working professionals &mdash; real tools, real workflows, and portfolio projects that actually hold up in an interview. Every course ends in an industry-recognised AI certification, so what you learn on screen translates into something you can point to on a resume.</p>
             <a href="<?= e(url('programmes')) ?>" class="htrack-link link-orange" <?= $set > 0 ? 'tabindex="-1"' : '' ?>>Explore Courses <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
@@ -131,7 +131,7 @@ include __DIR__ . '/includes/header.php';
           </div>
           <div class="htrack-info">
             <h3>AI for Everyone</h3>
-            <p>Practical AI literacy for everyday citizens, homemakers, and beginners. Zero coding required for daily smart productivity.</p>
+            <p>Practical AI literacy for everyday citizens, homemakers, parents, and curious minds &mdash; demystifying generative AI tools, voice assistants, and smart workflows for daily productivity and creative problem-solving with zero coding or technical background required.</p>
             <a href="<?= e(url('programmes')) ?>" class="htrack-link link-purple" <?= $set > 0 ? 'tabindex="-1"' : '' ?>>Explore Courses <i class="fas fa-arrow-right"></i></a>
           </div>
         </article>
@@ -201,7 +201,7 @@ include __DIR__ . '/includes/header.php';
         <div class="works-card-content">
           <span class="eyebrow is-trans-blue">AI FOR SCHOOL PROGRAMME</span>
           <h3>AI for School Programme</h3>
-          <p>A future-ready curriculum for schools that builds computational thinking, creativity and problem-solving skills in students.</p>
+          <p>We train your teachers, deliver the curriculum inside your existing computer lab, and certify both educators and students by the end of the cycle. It's one of the more complete models for AI training in schools available in India today &mdash; no new infrastructure required, no outside dependency once your team is certified.</p>
           <a href="<?= e(url('ai-for-school')) ?>" class="works-card-btn">
             <span class="wc-btn-icon"><i class="fas fa-laptop-code"></i></span>
             <span>Explore it works <i class="fas fa-arrow-right"></i></span>
@@ -216,7 +216,7 @@ include __DIR__ . '/includes/header.php';
         <div class="works-card-content">
           <span class="eyebrow is-trans-green">GOVERNMENT PROJECTS</span>
           <h3>Statewide AI Skilling</h3>
-          <p>Large-scale AI skilling initiatives in partnership with state governments to empower educators and youth.</p>
+          <p>Multi-district projects built for scale &mdash; from partner onboarding through L1 and L2 educator batches, right down to full certification tracking across every school involved. This is AI education in India as a policy-level rollout, not a pilot programme that quietly ends after one semester.</p>
           <a href="<?= e(url('government')) ?>" class="works-card-btn">
             <span class="wc-btn-icon"><i class="fas fa-landmark"></i></span>
             <span>See our approach <i class="fas fa-arrow-right"></i></span>
@@ -241,37 +241,37 @@ include __DIR__ . '/includes/header.php';
         <div class="milestone-item">
           <div class="m-badge m-blue">01</div>
           <h4>Partner Onboarding</h4>
-          <p>We align goals with government departments and institutions.</p>
+          <p>Every school, institute, or government department is onboarded and recorded in our partner database, with district, scale, and scope mapped out from day one.</p>
         </div>
 
         <div class="milestone-item">
           <div class="m-badge m-green">02</div>
           <h4>Curriculum Mapping</h4>
-          <p>We map NEP 2020 aligned curriculum to state needs and learner outcomes.</p>
+          <p>The NEP 2020-aligned curriculum is matched to the learner group &mdash; grade-wise for students, level-wise for educators &mdash; so nobody starts a module they're not ready for.</p>
         </div>
 
         <div class="milestone-item">
           <div class="m-badge m-yellow">03</div>
           <h4>Educator Training (L1/L2)</h4>
-          <p>Hands-on training for educators to deliver AI confidently in classrooms.</p>
+          <p>Educators are grouped into L1 and L2 batches and trained on AI tools, teaching methods, and how to actually run an AI classroom day to day.</p>
         </div>
 
         <div class="milestone-item">
           <div class="m-badge m-purple">04</div>
           <h4>Classroom Delivery</h4>
-          <p>Trainers &amp; educators deliver engaging AI sessions to students.</p>
+          <p>Trained faculty deliver hands-on, project-based sessions &mdash; offline in labs, online, or a mix of both, depending on what the school can support.</p>
         </div>
 
         <div class="milestone-item">
           <div class="m-badge m-cyan">05</div>
           <h4>Assessment &amp; E-Check</h4>
-          <p>Easy assessments and verification for learning outcomes.</p>
+          <p>Every batch goes through assessment and a verification check before any certificate is released &mdash; no rubber-stamping.</p>
         </div>
 
         <div class="milestone-item">
           <div class="m-badge m-emerald">06</div>
           <h4>Certification</h4>
-          <p>Students and educators receive recognized certificates.</p>
+          <p>Students and educators receive recognised certificates, and the batch is marked work-certified in our records.</p>
         </div>
 
       </div>
@@ -365,7 +365,7 @@ include __DIR__ . '/includes/header.php';
       <?php foreach ($posts as $post): ?>
         <article class="home-blog-card reveal">
           <a href="<?= e(url('blog/' . $post['slug'])) ?>" class="hbc-thumb">
-            <img src="<?= e(url($post['image'])) ?>" alt="<?= e($post['title']) ?>" loading="lazy">
+            <img src="<?= e(url_v($post['image'])) ?>" alt="<?= e($post['title']) ?>" loading="lazy">
           </a>
           <div class="hbc-body">
             <span class="hbc-tag"><?= e($post['tag']) ?></span>

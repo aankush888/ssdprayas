@@ -111,9 +111,25 @@ include __DIR__ . '/_layout.php';
   @keyframes sp { to { transform: rotate(360deg); } }
 </style>
 
+<!-- Form Hero Header -->
+<div class="mod-hero-strip">
+  <div class="mod-hero-left">
+    <div class="mod-hero-icon mhi-purple">
+      <i class="fas fa-pen-nib"></i>
+    </div>
+    <div>
+      <h2 class="mod-hero-title"><?= e($admin_title) ?></h2>
+      <p class="mod-hero-sub">Draft and publish educational articles with AI assistance and rich content formatting.</p>
+    </div>
+  </div>
+  <div class="mod-hero-actions">
+    <a href="blogs.php" class="btn btn-ghost"><i class="fas fa-arrow-left"></i> Back to Articles</a>
+  </div>
+</div>
+
 <div class="card">
   <div class="card-head">
-    <h2><?= e($admin_title) ?></h2>
+    <h2><i class="fas fa-feather-pointed text-purple" style="font-size:16px"></i> Article Composer</h2>
     <span class="spacer"></span>
     <a href="blogs.php" class="btn btn-ghost btn-sm"><i class="fas fa-arrow-left"></i> Back</a>
   </div>

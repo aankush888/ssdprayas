@@ -91,9 +91,25 @@ if ($action === 'new' || $action === 'edit') {
     $admin_sub    = 'Student enrolment records, Class 3 to 12.';
     include __DIR__ . '/_layout.php';
     ?>
+    <!-- Form Hero Header -->
+    <div class="mod-hero-strip">
+      <div class="mod-hero-left">
+        <div class="mod-hero-icon mhi-purple">
+          <i class="fas fa-user-graduate"></i>
+        </div>
+        <div>
+          <h2 class="mod-hero-title"><?= e($admin_title) ?></h2>
+          <p class="mod-hero-sub">Register student enrollment data, school details, guardian contacts, and certificates.</p>
+        </div>
+      </div>
+      <div class="mod-hero-actions">
+        <a href="students.php" class="btn btn-ghost"><i class="fas fa-arrow-left"></i> Back to Directory</a>
+      </div>
+    </div>
+
     <div class="card">
       <div class="card-head">
-        <h2><?= e($admin_title) ?></h2>
+        <h2><i class="fas fa-address-card text-purple" style="font-size:16px"></i> Student Enrolment Form</h2>
         <span class="spacer"></span>
         <a href="students.php" class="btn btn-ghost btn-sm"><i class="fas fa-arrow-left"></i> Back</a>
       </div>
@@ -238,11 +254,87 @@ $admin_title  = 'Students';
 $admin_active = 'students';
 $admin_sub    = 'Student enrolment records, Class 3 to 12.';
 include __DIR__ . '/_layout.php';
+
+$tot_enrolled  = $tot;
+$tot_certified = count(array_filter($list, fn($s) => !empty($s['cert_issued'])));
+$tot_active    = count(array_filter($list, fn($s) => $s['status'] === 'enrolled' || $s['status'] === 'active'));
+$tot_batches   = count(array_unique(array_filter(array_column($list, 'batch_id'))));
 ?>
 
+<!-- Module Hero Header -->
+<div class="mod-hero-strip">
+  <div class="mod-hero-left">
+    <div class="mod-hero-icon mhi-purple">
+      <i class="fas fa-user-graduate"></i>
+    </div>
+    <div>
+      <h2 class="mod-hero-title">
+        Student Learners Database
+        <span class="mod-hero-badge"><?= number_format($tot) ?> Enrolled</span>
+      </h2>
+      <p class="mod-hero-sub">Track school student enrolments, training completion, and issued AI certificates.</p>
+    </div>
+  </div>
+  <div class="mod-hero-actions">
+    <a href="students.php?action=new" class="btn btn-primary"><i class="fas fa-plus"></i> Add Student</a>
+  </div>
+</div>
+
+<!-- Quick Stats Strip -->
+<div class="mod-stats-grid">
+  <div class="mod-stat-card">
+    <div class="msc-icon msc-purple"><i class="fas fa-user-graduate"></i></div>
+    <div class="msc-info">
+      <span class="msc-label">Total Enrolled</span>
+      <div class="msc-value"><?= number_format($tot_enrolled) ?></div>
+      <div class="msc-sub"><i class="fas fa-users text-purple"></i> Class 3 to 12</div>
+    </div>
+  </div>
+  <div class="mod-stat-card">
+    <div class="msc-icon msc-blue"><i class="fas fa-circle-check"></i></div>
+    <div class="msc-info">
+      <span class="msc-label">Active Learners</span>
+      <div class="msc-value"><?= number_format($tot_active) ?></div>
+      <div class="msc-sub"><i class="fas fa-book-open-reader text-brand"></i> In Programme</div>
+    </div>
+  </div>
+  <div class="mod-stat-card">
+    <div class="msc-icon msc-green"><i class="fas fa-certificate"></i></div>
+    <div class="msc-info">
+      <span class="msc-label">Certified</span>
+      <div class="msc-value"><?= number_format($tot_certified) ?></div>
+      <div class="msc-sub"><i class="fas fa-award text-green"></i> Certificate Issued</div>
+    </div>
+  </div>
+  <div class="mod-stat-card">
+    <div class="msc-icon msc-amber"><i class="fas fa-layer-group"></i></div>
+    <div class="msc-info">
+      <span class="msc-label">School Batches</span>
+      <div class="msc-value"><?= number_format($tot_batches) ?></div>
+      <div class="msc-sub"><i class="fas fa-school text-amber"></i> Active Groups</div>
+    </div>
+  </div>
+</div>
+
 <div class="card">
+  <!-- Quick Tabs -->
+  <div class="mod-quick-tabs">
+    <a href="students.php" class="mqt-item <?= ($f_stat === '' && $q === '') ? 'is-active' : '' ?>">
+      <i class="fas fa-user-graduate"></i> All Students <span class="mqt-count"><?= $tot ?></span>
+    </a>
+    <a href="students.php?status=completed" class="mqt-item <?= $f_stat === 'completed' ? 'is-active' : '' ?>">
+      <i class="fas fa-award"></i> Completed & Certified <span class="mqt-count"><?= count(array_filter($list, fn($s) => $s['status'] === 'completed')) ?></span>
+    </a>
+    <a href="students.php?status=enrolled" class="mqt-item <?= $f_stat === 'enrolled' ? 'is-active' : '' ?>">
+      <i class="fas fa-clock"></i> Currently Enrolled <span class="mqt-count"><?= count(array_filter($list, fn($s) => $s['status'] === 'enrolled')) ?></span>
+    </a>
+  </div>
+
   <div class="card-head">
-    <h2>Student Database <span class="badge b-grey"><?= number_format($tot) ?></span></h2>
+    <h2>
+      <i class="fas fa-user-graduate text-purple" style="font-size:16px"></i>
+      Enrolment Directory
+    </h2>
     <span class="spacer"></span>
     <form method="GET" class="filters">
       <input type="text" name="q" value="<?= e($q) ?>" placeholder="Search name, school…">
@@ -264,9 +356,11 @@ include __DIR__ . '/_layout.php';
           <option value="<?= e($s) ?>" <?= $f_stat === $s ? 'selected' : '' ?>><?= e(ucfirst($s)) ?></option>
         <?php endforeach; ?>
       </select>
-      <button class="btn btn-ghost btn-sm"><i class="fas fa-magnifying-glass"></i></button>
+      <button class="btn btn-primary btn-sm"><i class="fas fa-magnifying-glass"></i> Filter</button>
+      <?php if ($q || $f_state || $f_class || $f_stat): ?>
+        <a href="students.php" class="btn btn-ghost btn-sm" title="Reset Filters"><i class="fas fa-rotate-left"></i></a>
+      <?php endif; ?>
     </form>
-    <a href="students.php?action=new" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add Student</a>
   </div>
 
   <?php if (!$list): ?>
@@ -274,40 +368,70 @@ include __DIR__ . '/_layout.php';
       <i class="fas fa-user-graduate"></i>
       <h3>No students found</h3>
       <p>Add students as they enrol in programme batches.</p>
-      <a href="students.php?action=new" class="btn btn-primary"><i class="fas fa-plus"></i> Add Student</a>
+      <a href="students.php?action=new" class="btn btn-primary" style="margin-top:14px"><i class="fas fa-plus"></i> Add Student</a>
     </div>
   <?php else: ?>
     <div class="table-wrap">
       <table class="data">
         <thead>
-          <tr><th>Student</th><th>Class</th><th>School</th><th>Location</th><th>Batch</th><th>Certificate</th><th>Status</th><th></th></tr>
+          <tr>
+            <th><i class="fas fa-user-graduate" style="margin-right:6px"></i>Student</th>
+            <th><i class="fas fa-graduation-cap" style="margin-right:6px"></i>Class</th>
+            <th><i class="fas fa-school" style="margin-right:6px"></i>School</th>
+            <th><i class="fas fa-location-dot" style="margin-right:6px"></i>Location</th>
+            <th><i class="fas fa-layer-group" style="margin-right:6px"></i>Batch</th>
+            <th><i class="fas fa-certificate" style="margin-right:6px"></i>Certificate</th>
+            <th><i class="fas fa-shield-halved" style="margin-right:6px"></i>Status</th>
+            <th style="text-align:right">Actions</th>
+          </tr>
         </thead>
         <tbody>
-          <?php foreach ($list as $r): ?>
+          <?php foreach ($list as $r): 
+            $initials = strtoupper(substr($r['full_name'], 0, 2));
+          ?>
             <tr>
               <td>
-                <div class="cell-main"><?= e($r['full_name']) ?></div>
-                <div class="cell-sub"><?= e($r['guardian_phone'] ?: $r['email'] ?: '—') ?></div>
+                <div class="entity-cell">
+                  <div class="entity-avatar ea-purple">
+                    <?= e($initials) ?>
+                  </div>
+                  <div>
+                    <div class="cell-main"><?= e($r['full_name']) ?></div>
+                    <div class="cell-sub">
+                      <?php if ($r['guardian_phone']): ?>
+                        <i class="fas fa-phone" style="font-size:11px"></i> <?= e($r['guardian_phone']) ?>
+                      <?php else: ?>
+                        <i class="fas fa-id-badge" style="font-size:11px"></i> ID #<?= (int)$r['id'] ?>
+                      <?php endif; ?>
+                    </div>
+                  </div>
+                </div>
               </td>
-              <td><?= $r['class_level'] ? '<span class="badge b-blue">Class ' . e($r['class_level']) . '</span>' : '—' ?></td>
-              <td class="cell-sub"><?= e($r['school_name'] ?: '—') ?></td>
+              <td><?= $r['class_level'] ? '<span class="badge b-blue"><span class="badge-dot"></span>Class ' . e($r['class_level']) . '</span>' : '—' ?></td>
               <td>
-                <div><?= e($r['state_name'] ?: '—') ?></div>
-                <div class="cell-sub"><?= e($r['district'] ?: $r['city'] ?: '') ?></div>
+                <div style="font-weight:700;color:var(--ink)"><?= e($r['school_name'] ?: '—') ?></div>
               </td>
-              <td class="cell-sub"><?= e($r['batch_code'] ?: '—') ?></td>
+              <td>
+                <div style="font-weight:700;color:var(--ink)"><?= e($r['state_name'] ?: '—') ?></div>
+                <div class="cell-sub"><?= e($r['district'] ?: $r['city'] ?: 'Central') ?></div>
+              </td>
+              <td class="cell-sub" style="font-weight:600"><?= e($r['batch_code'] ?: '—') ?></td>
               <td>
                 <?php if ($r['is_certified']): ?>
-                  <span class="badge b-green">Issued</span>
-                  <div class="cell-sub"><?= e($r['certificate_id']) ?></div>
+                  <span class="badge b-green"><span class="badge-dot"></span>Issued</span>
+                  <div class="cell-sub" style="font-family:monospace;font-size:11px"><?= e($r['certificate_id']) ?></div>
                 <?php else: ?>
                   <span class="badge b-grey">Pending</span>
                 <?php endif; ?>
               </td>
-              <td><span class="badge <?= $r['status'] === 'completed' ? 'b-green' : ($r['status'] === 'enrolled' ? 'b-blue' : 'b-red') ?>"><?= e(ucfirst($r['status'])) ?></span></td>
               <td>
-                <div class="row-actions">
-                  <a href="students.php?action=edit&id=<?= (int)$r['id'] ?>" class="icon-btn ib-edit" title="Edit"><i class="fas fa-pen"></i></a>
+                <span class="badge <?= $r['status'] === 'completed' ? 'b-green' : ($r['status'] === 'enrolled' ? 'b-blue' : 'b-red') ?>">
+                  <span class="badge-dot"></span><?= e(ucfirst($r['status'])) ?>
+                </span>
+              </td>
+              <td style="text-align:right">
+                <div class="row-actions" style="justify-content:flex-end">
+                  <a href="students.php?action=edit&id=<?= (int)$r['id'] ?>" class="icon-btn ib-edit" title="Edit Student"><i class="fas fa-pen"></i></a>
                   <a href="students.php?action=delete&id=<?= (int)$r['id'] ?>" class="icon-btn ib-del" title="Delete"
                      data-confirm="Delete student &quot;<?= e($r['full_name']) ?>&quot;?"><i class="fas fa-trash"></i></a>
                 </div>
@@ -318,15 +442,103 @@ include __DIR__ . '/_layout.php';
       </table>
     </div>
 
-    <?php if ($pgs > 1): ?>
-      <div class="pager">
-        <?php for ($i = 1; $i <= $pgs; $i++): ?>
-          <a href="?page=<?= $i ?><?= $q !== '' ? '&q=' . urlencode($q) : '' ?>"
-             class="btn btn-sm <?= $i === $pg ? 'btn-primary' : 'btn-ghost' ?>"><?= $i ?></a>
-        <?php endfor; ?>
+    <!-- Table Footer Bar -->
+    <div class="table-footer-bar">
+      <div class="tfb-info">
+        <span>Showing <strong><?= count($list) ?></strong> of <strong><?= number_format($tot) ?></strong> students</span>
+        <span class="tfb-sync"><span class="tfb-sync-dot"></span> Records Live</span>
       </div>
-    <?php endif; ?>
+      <div class="tfb-pager">
+        <?php if ($pg > 1): ?>
+          <a href="?page=<?= $pg - 1 ?><?= $q !== '' ? '&q=' . urlencode($q) : '' ?>" class="tfb-btn"><i class="fas fa-chevron-left"></i> Previous</a>
+        <?php else: ?>
+          <button class="tfb-btn disabled"><i class="fas fa-chevron-left"></i> Previous</button>
+        <?php endif; ?>
+        <span style="font-size:12px;font-weight:700;padding:0 8px;color:var(--ink)"><?= $pg ?> of <?= $pgs ?></span>
+        <?php if ($pg < $pgs): ?>
+          <a href="?page=<?= $pg + 1 ?><?= $q !== '' ? '&q=' . urlencode($q) : '' ?>" class="tfb-btn">Next <i class="fas fa-chevron-right"></i></a>
+        <?php else: ?>
+          <button class="tfb-btn disabled">Next <i class="fas fa-chevron-right"></i></button>
+        <?php endif; ?>
+      </div>
+    </div>
   <?php endif; ?>
+</div>
+
+<!-- Secondary Insights Grid -->
+<div class="mod-bottom-grid">
+  <div class="mbg-card">
+    <div class="mbg-header">
+      <div class="mbg-title"><i class="fas fa-chart-simple text-purple"></i> Learning & Certification Progress</div>
+      <span class="mbg-tag">Metrics</span>
+    </div>
+    <div class="mbg-metric-row">
+      <div class="mmr-item">
+        <div class="mmr-label-bar">
+          <span>Certification Completion Rate</span>
+          <span class="mmr-val"><?= $tot > 0 ? round(($tot_certified / $tot) * 100) : 0 ?>% Complete</span>
+        </div>
+        <div class="mmr-bar-track">
+          <div class="mmr-bar-fill fill-green" style="width: <?= $tot > 0 ? round(($tot_certified / $tot) * 100) : 0 ?>%"></div>
+        </div>
+      </div>
+      <div class="mmr-item">
+        <div class="mmr-label-bar">
+          <span>Active Learning Enrolment</span>
+          <span class="mmr-val"><?= $tot > 0 ? round(($tot_active / $tot) * 100) : 0 ?>% In Progress</span>
+        </div>
+        <div class="mmr-bar-track">
+          <div class="mmr-bar-fill fill-purple" style="width: <?= $tot > 0 ? round(($tot_active / $tot) * 100) : 0 ?>%"></div>
+        </div>
+      </div>
+      <div class="mmr-item">
+        <div class="mmr-label-bar">
+          <span>Target Cohort Benchmark</span>
+          <span class="mmr-val"><?= number_format($tot) ?> / 500 Students</span>
+        </div>
+        <div class="mmr-bar-track">
+          <div class="mmr-bar-fill" style="width: <?= min(100, round(($tot / 500) * 100)) ?>%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mbg-card">
+    <div class="mbg-header">
+      <div class="mbg-title"><i class="fas fa-bolt text-amber"></i> Student Operations</div>
+      <span class="mbg-tag">Shortcuts</span>
+    </div>
+    <div class="quick-links-grid">
+      <a href="students.php?action=new" class="qlg-item">
+        <div class="qlg-icon qi-purple"><i class="fas fa-user-plus"></i></div>
+        <div class="qlg-text">
+          <span class="qlg-name">Enrol Student</span>
+          <span class="qlg-desc">New learner profile</span>
+        </div>
+      </a>
+      <a href="batches.php" class="qlg-item">
+        <div class="qlg-icon qi-blue"><i class="fas fa-layer-group"></i></div>
+        <div class="qlg-text">
+          <span class="qlg-name">Training Batches</span>
+          <span class="qlg-desc">Assign cohorts</span>
+        </div>
+      </a>
+      <a href="educators.php" class="qlg-item">
+        <div class="qlg-icon qi-green"><i class="fas fa-chalkboard-user"></i></div>
+        <div class="qlg-text">
+          <span class="qlg-name">Assigned Faculty</span>
+          <span class="qlg-desc">Batch trainers</span>
+        </div>
+      </a>
+      <a href="partners.php" class="qlg-item">
+        <div class="qlg-icon qi-amber"><i class="fas fa-school"></i></div>
+        <div class="qlg-text">
+          <span class="qlg-name">Partner Schools</span>
+          <span class="qlg-desc">Host institutions</span>
+        </div>
+      </a>
+    </div>
+  </div>
 </div>
 
 <?php include __DIR__ . '/_layout_end.php'; ?>

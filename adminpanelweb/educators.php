@@ -98,9 +98,25 @@ if ($action === 'new' || $action === 'edit') {
     $admin_sub    = 'Gemini-certified educator database with L1 / L2 training levels.';
     include __DIR__ . '/_layout.php';
     ?>
+    <!-- Form Hero Header -->
+    <div class="mod-hero-strip">
+      <div class="mod-hero-left">
+        <div class="mod-hero-icon mhi-green">
+          <i class="fas fa-chalkboard-user"></i>
+        </div>
+        <div>
+          <h2 class="mod-hero-title"><?= e($admin_title) ?></h2>
+          <p class="mod-hero-sub">Register AI mentor details, Gemini certification credentials, and batch assignments.</p>
+        </div>
+      </div>
+      <div class="mod-hero-actions">
+        <a href="educators.php" class="btn btn-ghost"><i class="fas fa-arrow-left"></i> Back to Faculty Roster</a>
+      </div>
+    </div>
+
     <div class="card">
       <div class="card-head">
-        <h2><?= e($admin_title) ?></h2>
+        <h2><i class="fas fa-id-card-clip text-green" style="font-size:16px"></i> Educator Profile Form</h2>
         <span class="spacer"></span>
         <a href="educators.php" class="btn btn-ghost btn-sm"><i class="fas fa-arrow-left"></i> Back</a>
       </div>
@@ -261,7 +277,10 @@ $list = rows($pdo, "SELECT e.*, s.name AS state_name, p.name AS partner_name, b.
                     LEFT JOIN batches  b ON b.id = e.batch_id
                     WHERE $w ORDER BY e.created_at DESC", $args);
 
-$total_cert = (int)scalar($pdo, "SELECT COUNT(*) FROM educators WHERE gemini_certified = 1");
+$total_faculty = count($list);
+$total_active  = count(array_filter($list, fn($e) => $e['status'] === 'active'));
+$total_levels  = count(array_filter($list, fn($e) => in_array($e['level'], ['L1', 'L2'])));
+$total_cert    = count(array_filter($list, fn($e) => !empty($e['gemini_certified'])));
 
 $admin_title  = 'Educators';
 $admin_active = 'educators';
@@ -269,11 +288,79 @@ $admin_sub    = 'Gemini-certified educator database with L1 / L2 training levels
 include __DIR__ . '/_layout.php';
 ?>
 
+<!-- Module Hero Header -->
+<div class="mod-hero-strip">
+  <div class="mod-hero-left">
+    <div class="mod-hero-icon mhi-green">
+      <i class="fas fa-chalkboard-user"></i>
+    </div>
+    <div>
+      <h2 class="mod-hero-title">
+        Educators & Master Trainers
+        <span class="mod-hero-badge"><?= $total_faculty ?> Registered</span>
+      </h2>
+      <p class="mod-hero-sub">AI educators, certified Google Gemini instructors, and school batch mentors.</p>
+    </div>
+  </div>
+  <div class="mod-hero-actions">
+    <a href="educators.php?action=new" class="btn btn-primary"><i class="fas fa-plus"></i> Add Educator</a>
+  </div>
+</div>
+
+<!-- Quick Stats Strip -->
+<div class="mod-stats-grid">
+  <div class="mod-stat-card">
+    <div class="msc-icon msc-green"><i class="fas fa-chalkboard-user"></i></div>
+    <div class="msc-info">
+      <span class="msc-label">Total Faculty</span>
+      <div class="msc-value"><?= number_format($total_faculty) ?></div>
+      <div class="msc-sub"><i class="fas fa-users text-green"></i> AI Educators</div>
+    </div>
+  </div>
+  <div class="mod-stat-card">
+    <div class="msc-icon msc-blue"><i class="fas fa-award"></i></div>
+    <div class="msc-info">
+      <span class="msc-label">Gemini Certified</span>
+      <div class="msc-value"><?= number_format($total_cert) ?></div>
+      <div class="msc-sub"><i class="fas fa-certificate text-brand"></i> Verified by Google</div>
+    </div>
+  </div>
+  <div class="mod-stat-card">
+    <div class="msc-icon msc-purple"><i class="fas fa-layer-group"></i></div>
+    <div class="msc-info">
+      <span class="msc-label">L1 / L2 Qualified</span>
+      <div class="msc-value"><?= number_format($total_levels) ?></div>
+      <div class="msc-sub"><i class="fas fa-graduation-cap text-purple"></i> Advanced Trainers</div>
+    </div>
+  </div>
+  <div class="mod-stat-card">
+    <div class="msc-icon msc-amber"><i class="fas fa-signal"></i></div>
+    <div class="msc-info">
+      <span class="msc-label">Active Trainers</span>
+      <div class="msc-value"><?= number_format($total_active) ?></div>
+      <div class="msc-sub"><i class="fas fa-circle-check text-amber"></i> On Duty</div>
+    </div>
+  </div>
+</div>
+
 <div class="card">
+  <!-- Quick Tabs -->
+  <div class="mod-quick-tabs">
+    <a href="educators.php" class="mqt-item <?= ($f_cert === '' && $f_level === '' && $q === '') ? 'is-active' : '' ?>">
+      <i class="fas fa-users"></i> All Faculty <span class="mqt-count"><?= $total_faculty ?></span>
+    </a>
+    <a href="educators.php?cert=1" class="mqt-item <?= $f_cert === '1' ? 'is-active' : '' ?>">
+      <i class="fas fa-award"></i> Gemini Certified <span class="mqt-count"><?= $total_cert ?></span>
+    </a>
+    <a href="educators.php?level=L2" class="mqt-item <?= $f_level === 'L2' ? 'is-active' : '' ?>">
+      <i class="fas fa-star"></i> L2 Senior Mentors <span class="mqt-count"><?= count(array_filter($list, fn($e) => $e['level'] === 'L2')) ?></span>
+    </a>
+  </div>
+
   <div class="card-head">
-    <h2>Educator Database
-      <span class="badge b-grey"><?= count($list) ?></span>
-      <span class="badge b-green"><?= $total_cert ?> Gemini certified</span>
+    <h2>
+      <i class="fas fa-chalkboard-user text-green" style="font-size:16px"></i>
+      Faculty Roster
     </h2>
     <span class="spacer"></span>
     <form method="GET" class="filters">
@@ -295,9 +382,11 @@ include __DIR__ . '/_layout.php';
         <option value="1" <?= $f_cert === '1' ? 'selected' : '' ?>>Gemini certified</option>
         <option value="0" <?= $f_cert === '0' ? 'selected' : '' ?>>Not certified</option>
       </select>
-      <button class="btn btn-ghost btn-sm"><i class="fas fa-magnifying-glass"></i></button>
+      <button class="btn btn-primary btn-sm"><i class="fas fa-magnifying-glass"></i> Filter</button>
+      <?php if ($q || $f_state || $f_level || $f_cert !== ''): ?>
+        <a href="educators.php" class="btn btn-ghost btn-sm" title="Reset Filters"><i class="fas fa-rotate-left"></i></a>
+      <?php endif; ?>
     </form>
-    <a href="educators.php?action=new" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add Educator</a>
   </div>
 
   <?php if (!$list): ?>
@@ -305,41 +394,75 @@ include __DIR__ . '/_layout.php';
       <i class="fas fa-chalkboard-user"></i>
       <h3>No educators found</h3>
       <p>Add educators as they join training batches.</p>
-      <a href="educators.php?action=new" class="btn btn-primary"><i class="fas fa-plus"></i> Add Educator</a>
+      <a href="educators.php?action=new" class="btn btn-primary" style="margin-top:14px"><i class="fas fa-plus"></i> Add Educator</a>
     </div>
   <?php else: ?>
     <div class="table-wrap">
       <table class="data">
         <thead>
-          <tr><th>Educator</th><th>Location</th><th>Partner / Batch</th><th>Level</th><th>Certification</th><th>Status</th><th></th></tr>
+          <tr>
+            <th><i class="fas fa-user-tie" style="margin-right:6px"></i>Educator</th>
+            <th><i class="fas fa-location-dot" style="margin-right:6px"></i>Location</th>
+            <th><i class="fas fa-school" style="margin-right:6px"></i>Partner / Batch</th>
+            <th><i class="fas fa-layer-group" style="margin-right:6px"></i>Level</th>
+            <th><i class="fas fa-certificate" style="margin-right:6px"></i>Certification</th>
+            <th><i class="fas fa-shield-halved" style="margin-right:6px"></i>Status</th>
+            <th style="text-align:right">Actions</th>
+          </tr>
         </thead>
         <tbody>
-          <?php foreach ($list as $r): ?>
+          <?php foreach ($list as $r): 
+            $initials = strtoupper(substr($r['full_name'], 0, 2));
+          ?>
             <tr>
               <td>
-                <div class="cell-main"><?= e($r['full_name']) ?></div>
-                <div class="cell-sub"><?= e($r['phone'] ?: $r['email'] ?: '—') ?><?= $r['experience_years'] ? ' · ' . (int)$r['experience_years'] . ' yr exp' : '' ?></div>
+                <div class="entity-cell">
+                  <div class="entity-avatar ea-green">
+                    <?= e($initials) ?>
+                  </div>
+                  <div>
+                    <div class="cell-main"><?= e($r['full_name']) ?></div>
+                    <div class="cell-sub">
+                      <i class="fas fa-phone" style="font-size:11px"></i> <?= e($r['phone'] ?: 'No Phone') ?>
+                      <?php if ($r['experience_years']): ?>
+                        · <i class="fas fa-briefcase" style="font-size:11px"></i> <?= (int)$r['experience_years'] ?> yrs exp
+                      <?php endif; ?>
+                    </div>
+                  </div>
+                </div>
               </td>
               <td>
-                <div><?= e($r['state_name'] ?: '—') ?></div>
-                <div class="cell-sub"><?= e($r['district'] ?: $r['city'] ?: '') ?></div>
+                <div style="font-weight:700;color:var(--ink)"><?= e($r['state_name'] ?: '—') ?></div>
+                <div class="cell-sub"><?= e($r['district'] ?: $r['city'] ?: 'Central') ?></div>
               </td>
               <td>
-                <div class="cell-sub"><?= e($r['partner_name'] ?: '—') ?></div>
-                <div class="cell-sub"><?= e($r['batch_code'] ?: '') ?></div>
-              </td>
-              <td><span class="badge <?= $r['level'] === 'L2' ? 'b-green' : ($r['level'] === 'L1' ? 'b-blue' : 'b-grey') ?>"><?= e($r['level']) ?></span></td>
-              <td>
-                <?php if ($r['gemini_certified']): ?><span class="badge b-green">Gemini</span><?php endif; ?>
-                <?php if ($r['is_work_certified']): ?><span class="badge b-yellow">Work</span><?php endif; ?>
-                <?php if (!$r['gemini_certified'] && !$r['is_work_certified']): ?><span class="badge b-grey">Pending</span><?php endif; ?>
+                <div style="font-weight:700;color:var(--ink)"><?= e($r['partner_name'] ?: 'Independent') ?></div>
+                <div class="cell-sub"><?= e($r['batch_code'] ?: 'Unassigned') ?></div>
               </td>
               <td>
-                <span class="badge <?= $r['status'] === 'active' ? 'b-green' : ($r['status'] === 'training' ? 'b-yellow' : 'b-grey') ?>"><?= e(ucfirst($r['status'])) ?></span>
+                <span class="badge <?= $r['level'] === 'L2' ? 'b-purple' : ($r['level'] === 'L1' ? 'b-blue' : 'b-grey') ?>">
+                  <span class="badge-dot"></span><?= e($r['level']) ?>
+                </span>
               </td>
               <td>
-                <div class="row-actions">
-                  <a href="educators.php?action=edit&id=<?= (int)$r['id'] ?>" class="icon-btn ib-edit" title="Edit"><i class="fas fa-pen"></i></a>
+                <?php if ($r['gemini_certified']): ?>
+                  <span class="badge b-green"><span class="badge-dot"></span>Gemini</span>
+                <?php endif; ?>
+                <?php if ($r['is_work_certified']): ?>
+                  <span class="badge b-yellow"><span class="badge-dot"></span>Work</span>
+                <?php endif; ?>
+                <?php if (!$r['gemini_certified'] && !$r['is_work_certified']): ?>
+                  <span class="badge b-grey">Pending</span>
+                <?php endif; ?>
+              </td>
+              <td>
+                <span class="badge <?= $r['status'] === 'active' ? 'b-green' : ($r['status'] === 'training' ? 'b-yellow' : 'b-grey') ?>">
+                  <span class="badge-dot"></span><?= e(ucfirst($r['status'])) ?>
+                </span>
+              </td>
+              <td style="text-align:right">
+                <div class="row-actions" style="justify-content:flex-end">
+                  <a href="educators.php?action=edit&id=<?= (int)$r['id'] ?>" class="icon-btn ib-edit" title="Edit Educator"><i class="fas fa-pen"></i></a>
                   <a href="educators.php?action=delete&id=<?= (int)$r['id'] ?>" class="icon-btn ib-del" title="Delete"
                      data-confirm="Delete educator &quot;<?= e($r['full_name']) ?>&quot;?"><i class="fas fa-trash"></i></a>
                 </div>
@@ -349,7 +472,96 @@ include __DIR__ . '/_layout.php';
         </tbody>
       </table>
     </div>
+
+    <!-- Table Footer Bar -->
+    <div class="table-footer-bar">
+      <div class="tfb-info">
+        <span>Showing <strong><?= count($list) ?></strong> of <strong><?= $total_faculty ?></strong> instructors</span>
+        <span class="tfb-sync"><span class="tfb-sync-dot"></span> Faculty Active</span>
+      </div>
+      <div class="tfb-pager">
+        <button class="tfb-btn disabled"><i class="fas fa-chevron-left"></i> Previous</button>
+        <span style="font-size:12px;font-weight:700;padding:0 8px;color:var(--ink)">1 of 1</span>
+        <button class="tfb-btn disabled">Next <i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
   <?php endif; ?>
+</div>
+
+<!-- Secondary Insights Grid -->
+<div class="mod-bottom-grid">
+  <div class="mbg-card">
+    <div class="mbg-header">
+      <div class="mbg-title"><i class="fas fa-chart-simple text-green"></i> Faculty Qualifications</div>
+      <span class="mbg-tag">Overview</span>
+    </div>
+    <div class="mbg-metric-row">
+      <div class="mmr-item">
+        <div class="mmr-label-bar">
+          <span>Gemini Certification Rate</span>
+          <span class="mmr-val"><?= $total_faculty > 0 ? round(($total_cert / $total_faculty) * 100) : 0 ?>% Verified</span>
+        </div>
+        <div class="mmr-bar-track">
+          <div class="mmr-bar-fill fill-green" style="width: <?= $total_faculty > 0 ? round(($total_cert / $total_faculty) * 100) : 0 ?>%"></div>
+        </div>
+      </div>
+      <div class="mmr-item">
+        <div class="mmr-label-bar">
+          <span>L1 / L2 Progression</span>
+          <span class="mmr-val"><?= $total_faculty > 0 ? round(($total_levels / $total_faculty) * 100) : 0 ?>% Advanced</span>
+        </div>
+        <div class="mmr-bar-track">
+          <div class="mmr-bar-fill fill-purple" style="width: <?= $total_faculty > 0 ? round(($total_levels / $total_faculty) * 100) : 0 ?>%"></div>
+        </div>
+      </div>
+      <div class="mmr-item">
+        <div class="mmr-label-bar">
+          <span>Active Deployment</span>
+          <span class="mmr-val"><?= $total_faculty > 0 ? round(($total_active / $total_faculty) * 100) : 0 ?>% On Duty</span>
+        </div>
+        <div class="mmr-bar-track">
+          <div class="mmr-bar-fill fill-amber" style="width: <?= $total_faculty > 0 ? round(($total_active / $total_faculty) * 100) : 0 ?>%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mbg-card">
+    <div class="mbg-header">
+      <div class="mbg-title"><i class="fas fa-bolt text-amber"></i> Faculty Operations</div>
+      <span class="mbg-tag">Shortcuts</span>
+    </div>
+    <div class="quick-links-grid">
+      <a href="educators.php?action=new" class="qlg-item">
+        <div class="qlg-icon qi-green"><i class="fas fa-user-plus"></i></div>
+        <div class="qlg-text">
+          <span class="qlg-name">Register Trainer</span>
+          <span class="qlg-desc">Add new AI educator</span>
+        </div>
+      </a>
+      <a href="batches.php" class="qlg-item">
+        <div class="qlg-icon qi-blue"><i class="fas fa-layer-group"></i></div>
+        <div class="qlg-text">
+          <span class="qlg-name">Assign Cohort</span>
+          <span class="qlg-desc">Link to batch</span>
+        </div>
+      </a>
+      <a href="applications.php" class="qlg-item">
+        <div class="qlg-icon qi-purple"><i class="fas fa-id-card"></i></div>
+        <div class="qlg-text">
+          <span class="qlg-name">Job Applications</span>
+          <span class="qlg-desc">Review educator leads</span>
+        </div>
+      </a>
+      <a href="partners.php" class="qlg-item">
+        <div class="qlg-icon qi-amber"><i class="fas fa-school"></i></div>
+        <div class="qlg-text">
+          <span class="qlg-name">Partner Schools</span>
+          <span class="qlg-desc">Affiliated campuses</span>
+        </div>
+      </a>
+    </div>
+  </div>
 </div>
 
 <?php include __DIR__ . '/_layout_end.php'; ?>

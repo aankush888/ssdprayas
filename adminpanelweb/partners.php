@@ -88,9 +88,25 @@ if ($action === 'new' || $action === 'edit') {
     $admin_sub    = 'Schools, institutes and government departments partnered with SSD Prayas.';
     include __DIR__ . '/_layout.php';
     ?>
+    <!-- Form Hero Header -->
+    <div class="mod-hero-strip">
+      <div class="mod-hero-left">
+        <div class="mod-hero-icon mhi-blue">
+          <i class="fas fa-school"></i>
+        </div>
+        <div>
+          <h2 class="mod-hero-title"><?= e($admin_title) ?></h2>
+          <p class="mod-hero-sub">Register and manage school details, district coverage, and official MoU agreements.</p>
+        </div>
+      </div>
+      <div class="mod-hero-actions">
+        <a href="partners.php" class="btn btn-ghost"><i class="fas fa-arrow-left"></i> Back to Directory</a>
+      </div>
+    </div>
+
     <div class="card">
       <div class="card-head">
-        <h2><?= e($admin_title) ?></h2>
+        <h2><i class="fas fa-file-pen text-brand" style="font-size:16px"></i> Institution Information Form</h2>
         <span class="spacer"></span>
         <a href="partners.php" class="btn btn-ghost btn-sm"><i class="fas fa-arrow-left"></i> Back</a>
       </div>
@@ -222,11 +238,87 @@ $admin_title  = 'Partners';
 $admin_active = 'partners';
 $admin_sub    = 'Schools, institutes and government departments partnered with SSD Prayas.';
 include __DIR__ . '/_layout.php';
+
+$total_partners = count($list);
+$govt_partners  = count(array_filter($list, fn($p) => $p['partner_type'] === 'government'));
+$total_students = array_sum(array_column($list, 'students_count'));
+$mou_signed     = count(array_filter($list, fn($p) => !empty($p['mou_signed'])));
 ?>
 
+<!-- Module Hero Header -->
+<div class="mod-hero-strip">
+  <div class="mod-hero-left">
+    <div class="mod-hero-icon mhi-blue">
+      <i class="fas fa-handshake"></i>
+    </div>
+    <div>
+      <h2 class="mod-hero-title">
+        Partner Network & Institutions
+        <span class="mod-hero-badge"><?= $total_partners ?> Registered</span>
+      </h2>
+      <p class="mod-hero-sub">Manage affiliated schools, colleges, state government departments, and signed MoUs.</p>
+    </div>
+  </div>
+  <div class="mod-hero-actions">
+    <a href="partners.php?action=new" class="btn btn-primary"><i class="fas fa-plus"></i> Add Partner</a>
+  </div>
+</div>
+
+<!-- Quick Stats Strip -->
+<div class="mod-stats-grid">
+  <div class="mod-stat-card">
+    <div class="msc-icon msc-blue"><i class="fas fa-handshake"></i></div>
+    <div class="msc-info">
+      <span class="msc-label">Total Partners</span>
+      <div class="msc-value"><?= number_format($total_partners) ?></div>
+      <div class="msc-sub"><i class="fas fa-school text-brand"></i> Active Institutions</div>
+    </div>
+  </div>
+  <div class="mod-stat-card">
+    <div class="msc-icon msc-green"><i class="fas fa-building-columns"></i></div>
+    <div class="msc-info">
+      <span class="msc-label">Govt Partners</span>
+      <div class="msc-value"><?= number_format($govt_partners) ?></div>
+      <div class="msc-sub"><i class="fas fa-landmark text-green"></i> State Schools</div>
+    </div>
+  </div>
+  <div class="mod-stat-card">
+    <div class="msc-icon msc-purple"><i class="fas fa-user-graduate"></i></div>
+    <div class="msc-info">
+      <span class="msc-label">Student Reach</span>
+      <div class="msc-value"><?= number_format($total_students) ?></div>
+      <div class="msc-sub"><i class="fas fa-users text-purple"></i> Covered Learners</div>
+    </div>
+  </div>
+  <div class="mod-stat-card">
+    <div class="msc-icon msc-amber"><i class="fas fa-file-contract"></i></div>
+    <div class="msc-info">
+      <span class="msc-label">MoUs Signed</span>
+      <div class="msc-value"><?= number_format($mou_signed) ?></div>
+      <div class="msc-sub"><i class="fas fa-check-circle text-amber"></i> Official Agreements</div>
+    </div>
+  </div>
+</div>
+
 <div class="card">
+  <!-- Quick Tabs -->
+  <div class="mod-quick-tabs">
+    <a href="partners.php" class="mqt-item <?= ($f_status === '' && $q === '') ? 'is-active' : '' ?>">
+      <i class="fas fa-list-check"></i> All Partners <span class="mqt-count"><?= $total_partners ?></span>
+    </a>
+    <a href="partners.php?status=active" class="mqt-item <?= $f_status === 'active' ? 'is-active' : '' ?>">
+      <i class="fas fa-circle-check"></i> Active <span class="mqt-count"><?= count(array_filter($list, fn($p) => $p['status'] === 'active')) ?></span>
+    </a>
+    <a href="partners.php?status=pending" class="mqt-item <?= $f_status === 'pending' ? 'is-active' : '' ?>">
+      <i class="fas fa-clock"></i> Pending <span class="mqt-count"><?= count(array_filter($list, fn($p) => $p['status'] === 'pending')) ?></span>
+    </a>
+  </div>
+
   <div class="card-head">
-    <h2>Partner Database <span class="badge b-grey"><?= count($list) ?></span></h2>
+    <h2>
+      <i class="fas fa-database text-brand" style="font-size:16px"></i>
+      Institution Directory
+    </h2>
     <span class="spacer"></span>
     <form method="GET" class="filters">
       <input type="text" name="q" value="<?= e($q) ?>" placeholder="Search name, city…">
@@ -242,55 +334,79 @@ include __DIR__ . '/_layout.php';
           <option value="<?= e($s) ?>" <?= $f_status === $s ? 'selected' : '' ?>><?= e(ucfirst($s)) ?></option>
         <?php endforeach; ?>
       </select>
-      <button class="btn btn-ghost btn-sm"><i class="fas fa-magnifying-glass"></i></button>
+      <button class="btn btn-primary btn-sm"><i class="fas fa-magnifying-glass"></i> Filter</button>
+      <?php if ($q || $f_state || $f_status): ?>
+        <a href="partners.php" class="btn btn-ghost btn-sm" title="Reset Filters"><i class="fas fa-rotate-left"></i></a>
+      <?php endif; ?>
     </form>
-    <a href="partners.php?action=new" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add Partner</a>
   </div>
 
   <?php if (!$list): ?>
     <div class="empty-state">
       <i class="fas fa-handshake"></i>
       <h3>No partners found</h3>
-      <p>Add your first partner school, institute or department.</p>
-      <a href="partners.php?action=new" class="btn btn-primary"><i class="fas fa-plus"></i> Add Partner</a>
+      <p>Add your first partner school, institute or government department.</p>
+      <a href="partners.php?action=new" class="btn btn-primary" style="margin-top:14px"><i class="fas fa-plus"></i> Add Partner</a>
     </div>
   <?php else: ?>
     <div class="table-wrap">
       <table class="data">
         <thead>
-          <tr><th>Partner</th><th>Type</th><th>Location</th><th>Coverage</th><th>MoU</th><th>Status</th><th></th></tr>
+          <tr>
+            <th><i class="fas fa-school" style="margin-right:6px"></i>Partner Institution</th>
+            <th><i class="fas fa-tag" style="margin-right:6px"></i>Type</th>
+            <th><i class="fas fa-location-dot" style="margin-right:6px"></i>Location</th>
+            <th><i class="fas fa-chart-pie" style="margin-right:6px"></i>Coverage</th>
+            <th><i class="fas fa-file-signature" style="margin-right:6px"></i>MoU Status</th>
+            <th><i class="fas fa-shield-halved" style="margin-right:6px"></i>Status</th>
+            <th style="text-align:right">Actions</th>
+          </tr>
         </thead>
         <tbody>
           <?php foreach ($list as $r): ?>
             <tr>
               <td>
-                <div class="cell-main"><?= e($r['name']) ?></div>
-                <div class="cell-sub"><?= e($r['contact_person'] ?: '—') ?><?= $r['phone'] ? ' · ' . e($r['phone']) : '' ?></div>
+                <div class="entity-cell">
+                  <div class="entity-avatar ea-blue">
+                    <i class="fas fa-school"></i>
+                  </div>
+                  <div>
+                    <div class="cell-main"><?= e($r['name']) ?></div>
+                    <div class="cell-sub">
+                      <?php if ($r['contact_person']): ?>
+                        <i class="fas fa-user" style="font-size:11px"></i> <?= e($r['contact_person']) ?>
+                      <?php endif; ?>
+                      <?php if ($r['phone']): ?>
+                        · <i class="fas fa-phone" style="font-size:11px"></i> <?= e($r['phone']) ?>
+                      <?php endif; ?>
+                    </div>
+                  </div>
+                </div>
               </td>
               <td><span class="badge b-blue"><?= e(ucfirst($r['partner_type'])) ?></span></td>
               <td>
-                <div><?= e($r['state_name'] ?: '—') ?></div>
-                <div class="cell-sub"><?= e($r['district'] ?: $r['city'] ?: '') ?></div>
+                <div style="font-weight:700;color:var(--ink)"><?= e($r['state_name'] ?: '—') ?></div>
+                <div class="cell-sub"><?= e($r['district'] ?: $r['city'] ?: 'Regional') ?></div>
               </td>
               <td>
-                <div class="cell-sub"><?= number_format($r['schools_count']) ?> schools</div>
-                <div class="cell-sub"><?= number_format($r['students_count']) ?> students</div>
+                <div style="font-weight:700;color:var(--ink)"><?= number_format($r['schools_count']) ?> school<?= $r['schools_count'] > 1 ? 's' : '' ?></div>
+                <div class="cell-sub"><?= number_format($r['students_count']) ?> students enrolled</div>
               </td>
               <td>
                 <?php if ($r['mou_signed']): ?>
-                  <span class="badge b-green">Signed</span>
+                  <span class="badge b-green"><span class="badge-dot"></span>Signed</span>
                 <?php else: ?>
-                  <span class="badge b-grey">Pending</span>
+                  <span class="badge b-yellow"><span class="badge-dot"></span>In Discussion</span>
                 <?php endif; ?>
               </td>
               <td>
                 <span class="badge <?= $r['status'] === 'active' ? 'b-green' : ($r['status'] === 'pending' ? 'b-yellow' : 'b-grey') ?>">
-                  <?= e(ucfirst($r['status'])) ?>
+                  <span class="badge-dot"></span><?= e(ucfirst($r['status'])) ?>
                 </span>
               </td>
-              <td>
-                <div class="row-actions">
-                  <a href="partners.php?action=edit&id=<?= (int)$r['id'] ?>" class="icon-btn ib-edit" title="Edit"><i class="fas fa-pen"></i></a>
+              <td style="text-align:right">
+                <div class="row-actions" style="justify-content:flex-end">
+                  <a href="partners.php?action=edit&id=<?= (int)$r['id'] ?>" class="icon-btn ib-edit" title="Edit Partner"><i class="fas fa-pen"></i></a>
                   <a href="partners.php?action=delete&id=<?= (int)$r['id'] ?>" class="icon-btn ib-del" title="Delete"
                      data-confirm="Delete partner &quot;<?= e($r['name']) ?>&quot;? This cannot be undone."><i class="fas fa-trash"></i></a>
                 </div>
@@ -300,7 +416,96 @@ include __DIR__ . '/_layout.php';
         </tbody>
       </table>
     </div>
+
+    <!-- Table Footer Bar -->
+    <div class="table-footer-bar">
+      <div class="tfb-info">
+        <span>Showing <strong><?= count($list) ?></strong> of <strong><?= $total_partners ?></strong> institutions</span>
+        <span class="tfb-sync"><span class="tfb-sync-dot"></span> Network Active</span>
+      </div>
+      <div class="tfb-pager">
+        <button class="tfb-btn disabled"><i class="fas fa-chevron-left"></i> Previous</button>
+        <span style="font-size:12px;font-weight:700;padding:0 8px;color:var(--ink)">1 of 1</span>
+        <button class="tfb-btn disabled">Next <i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
   <?php endif; ?>
+</div>
+
+<!-- Secondary Insights Grid to fill viewport with valuable data -->
+<div class="mod-bottom-grid">
+  <div class="mbg-card">
+    <div class="mbg-header">
+      <div class="mbg-title"><i class="fas fa-chart-simple text-brand"></i> Partnership Distribution</div>
+      <span class="mbg-tag">Live Metrics</span>
+    </div>
+    <div class="mbg-metric-row">
+      <div class="mmr-item">
+        <div class="mmr-label-bar">
+          <span>MoU Formalization</span>
+          <span class="mmr-val"><?= $total_partners > 0 ? round(($mou_signed / $total_partners) * 100) : 0 ?>% Complete</span>
+        </div>
+        <div class="mmr-bar-track">
+          <div class="mmr-bar-fill fill-green" style="width: <?= $total_partners > 0 ? round(($mou_signed / $total_partners) * 100) : 0 ?>%"></div>
+        </div>
+      </div>
+      <div class="mmr-item">
+        <div class="mmr-label-bar">
+          <span>Government Sector Share</span>
+          <span class="mmr-val"><?= $total_partners > 0 ? round(($govt_partners / $total_partners) * 100) : 0 ?>% Govt Schools</span>
+        </div>
+        <div class="mmr-bar-track">
+          <div class="mmr-bar-fill fill-purple" style="width: <?= $total_partners > 0 ? round(($govt_partners / $total_partners) * 100) : 0 ?>%"></div>
+        </div>
+      </div>
+      <div class="mmr-item">
+        <div class="mmr-label-bar">
+          <span>Student Coverage Target</span>
+          <span class="mmr-val"><?= number_format($total_students) ?> / 1,000 Target</span>
+        </div>
+        <div class="mmr-bar-track">
+          <div class="mmr-bar-fill" style="width: <?= min(100, round(($total_students / 1000) * 100)) ?>%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mbg-card">
+    <div class="mbg-header">
+      <div class="mbg-title"><i class="fas fa-bolt text-amber"></i> Quick Partner Operations</div>
+      <span class="mbg-tag">Shortcuts</span>
+    </div>
+    <div class="quick-links-grid">
+      <a href="partners.php?action=new" class="qlg-item">
+        <div class="qlg-icon qi-blue"><i class="fas fa-plus"></i></div>
+        <div class="qlg-text">
+          <span class="qlg-name">Add Partner</span>
+          <span class="qlg-desc">Register new school</span>
+        </div>
+      </a>
+      <a href="batches.php?action=new" class="qlg-item">
+        <div class="qlg-icon qi-green"><i class="fas fa-calendar-plus"></i></div>
+        <div class="qlg-text">
+          <span class="qlg-name">Assign Cohort</span>
+          <span class="qlg-desc">Create training batch</span>
+        </div>
+      </a>
+      <a href="students.php" class="qlg-item">
+        <div class="qlg-icon qi-purple"><i class="fas fa-user-graduate"></i></div>
+        <div class="qlg-text">
+          <span class="qlg-name">View Students</span>
+          <span class="qlg-desc">Enrolled learners</span>
+        </div>
+      </a>
+      <a href="educators.php" class="qlg-item">
+        <div class="qlg-icon qi-amber"><i class="fas fa-chalkboard-user"></i></div>
+        <div class="qlg-text">
+          <span class="qlg-name">Faculty List</span>
+          <span class="qlg-desc">Assigned AI mentors</span>
+        </div>
+      </a>
+    </div>
+  </div>
 </div>
 
 <?php include __DIR__ . '/_layout_end.php'; ?>
