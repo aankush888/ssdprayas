@@ -6,7 +6,7 @@ $page       = $page       ?? 'home';
 $page_title = $page_title ?? SITE_NAME . ' | ' . SITE_TAGLINE;
 $page_desc  = $page_desc  ?? 'SSD Prayas delivers NEP 2020-aligned AI skilling for school students (Class 3-12), educators and working professionals — online and offline, across India.';
 $page_image  = $page_image  ?? asset('img/og-default.png');
-$page_robots = $page_robots ?? 'index, follow';
+$page_robots = $page_robots ?? 'noindex, follow';
 
 // Anchors live on the homepage, so off-home pages need an absolute link.
 $home = ($page === 'home') ? '' : url('/');

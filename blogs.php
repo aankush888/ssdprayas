@@ -4,6 +4,7 @@ require_once __DIR__ . '/includes/functions.php';
 $page       = 'blogs';
 $page_title = 'The SSD Prayas Blog | Insights & Stories on AI Education';
 $page_desc  = 'Stories, ideas and insights on AI education, NEP 2020, educator training and what is really working inside Indian classrooms.';
+$page_robots = 'noindex, follow';
 
 $per_page = 5; // 5 blog cards + 1 newsletter card on page 1 for a balanced 6-card grid
 $current  = max(1, (int)($_GET['page'] ?? 1));

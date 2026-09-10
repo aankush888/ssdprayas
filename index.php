@@ -4,6 +4,7 @@ require_once __DIR__ . '/includes/functions.php';
 $page       = 'home';
 $page_title = SITE_NAME . ' | AI Skilling for Students, Educators & Professionals';
 $page_desc  = 'SSD Prayas delivers NEP 2020-aligned AI skilling across India — Class 3 to 12 students, school educators and working professionals. Online and offline, with government and school partnerships.';
+$page_robots = 'noindex, follow';
 
 /* ---------- Page data ---------- */
 $stats  = impact_stats($pdo);
@@ -365,7 +366,7 @@ include __DIR__ . '/includes/header.php';
       <?php foreach ($posts as $post): ?>
         <article class="home-blog-card reveal">
           <a href="<?= e(url('blog/' . $post['slug'])) ?>" class="hbc-thumb">
-            <img src="<?= e(url_v($post['image'])) ?>" alt="<?= e($post['title']) ?>" loading="lazy">
+            <img src="<?= e(blog_image_url($post)) ?>" alt="<?= e($post['title']) ?>" loading="lazy">
           </a>
           <div class="hbc-body">
             <span class="hbc-tag"><?= e($post['tag']) ?></span>

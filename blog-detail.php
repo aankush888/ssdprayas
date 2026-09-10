@@ -25,7 +25,7 @@ try {
 $page       = 'blog';
 $page_title = ($blog['meta_title'] ?: $blog['title']) . ' | ' . SITE_NAME;
 $page_desc  = $blog['meta_description'] ?: mb_strimwidth(strip_tags($blog['excerpt']), 0, 155, '…');
-$page_image = url($blog['image']);
+$page_image = url(blog_image($blog));
 
 $share_url = url('blog/' . $blog['slug']);
 
@@ -64,7 +64,7 @@ include __DIR__ . '/includes/header.php';
   <div class="container-sm">
 
     <?php if ($blog['image']): ?>
-      <img class="article-hero-img" src="<?= e(url_v($blog['image'])) ?>" alt="<?= e($blog['title']) ?>">
+      <img class="article-hero-img" src="<?= e(blog_image_url($blog)) ?>" alt="<?= e($blog['title']) ?>">
     <?php endif; ?>
 
     <div class="article-body" style="margin-top:38px">
@@ -102,7 +102,7 @@ include __DIR__ . '/includes/header.php';
       <?php foreach ($related as $post): ?>
         <article class="post-card reveal">
           <a href="<?= e(url('blog/' . $post['slug'])) ?>" class="post-thumb">
-            <img src="<?= e(url_v($post['image'])) ?>" alt="<?= e($post['title']) ?>" loading="lazy">
+            <img src="<?= e(blog_image_url($post)) ?>" alt="<?= e($post['title']) ?>" loading="lazy">
           </a>
           <div class="post-body">
             <span class="post-tag"><?= e($post['tag']) ?></span>

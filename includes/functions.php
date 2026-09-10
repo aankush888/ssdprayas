@@ -48,6 +48,43 @@ function url_v($path) {
     return is_file($file) ? $u . '?v=' . filemtime($file) : $u;
 }
 
+/**
+ * Resolves a blog post's featured image.
+ * If the image is the legacy generic placeholder ('student-laptop.png' or empty),
+ * returns the dedicated high-res asset matching the blog's slug.
+ */
+function blog_image($post) {
+    if (is_string($post)) {
+        $img  = $post;
+        $slug = '';
+    } else {
+        $img  = $post['image'] ?? '';
+        $slug = $post['slug'] ?? '';
+    }
+
+    $slug_map = [
+        'why-ai-in-cbse-schools-is-no-longer-optional-and-why-it-should-start-early' => 'assets/img/blog-1.jpg',
+        'ai-in-schools-the-future-of-smart-education'                                => 'assets/img/blog-2.jpg',
+        'nep-2020-and-the-ai-revolution'                                            => 'assets/img/blog-3.jpg',
+        'top-5-ai-skills'                                                           => 'assets/img/blog-4.jpg',
+        'how-educators-can-bring-ai-to-their-classrooms'                             => 'assets/img/blog-5.jpg',
+    ];
+
+    if (empty($img) || strpos($img, 'student-laptop.png') !== false) {
+        if ($slug && isset($slug_map[$slug])) {
+            return $slug_map[$slug];
+        }
+        return 'assets/img/blog-1.jpg';
+    }
+
+    return $img;
+}
+
+/** Blog image URL with cache-busting */
+function blog_image_url($post) {
+    return url_v(blog_image($post));
+}
+
 /** WhatsApp click-to-chat link. */
 function whatsapp_link($text = '') {
     return 'https://wa.me/' . CONTACT_PHONE_RAW . ($text ? '?text=' . rawurlencode($text) : '');

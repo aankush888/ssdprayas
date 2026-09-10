@@ -6,7 +6,7 @@ require_csrf();
 $id  = (int)($_GET['id'] ?? 0);
 $row = [
     'id' => 0, 'title' => '', 'slug' => '', 'tag' => '', 'excerpt' => '', 'content' => '',
-    'image' => 'assets/student-laptop.png', 'author' => 'SSD Prayas Team', 'status' => 'published',
+    'image' => 'assets/img/blog-1.jpg', 'author' => 'SSD Prayas Team', 'status' => 'published',
     'meta_title' => '', 'meta_description' => '',
 ];
 
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title   = trim($_POST['title'] ?? '');
     $slug    = slugify($_POST['slug'] ?? '') ?: slugify($title);
 
-    $image = trim($_POST['existing_image'] ?? '') ?: 'assets/student-laptop.png';
+    $image = trim($_POST['existing_image'] ?? '') ?: 'assets/img/blog-1.jpg';
     if (!empty($_POST['ai_image_url'])) {
         // Only accept an https image URL from the AI generator.
         $candidate = filter_var($_POST['ai_image_url'], FILTER_VALIDATE_URL);
