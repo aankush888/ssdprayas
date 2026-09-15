@@ -1,9 +1,10 @@
 <?php
 require_once __DIR__ . '/includes/functions.php';
 
-$page       = 'government';
-$page_title = 'Government Projects | ' . SITE_NAME;
-$page_desc  = 'SSD Prayas delivers government and institutional AI skilling at state scale — managing partner onboarding, educator training batches, student enrolment and certification tracking through a single monitored system.';
+$page          = 'government';
+$page_title    = 'Government AI Skilling Projects Across India | SSD Prayas';
+$page_desc     = 'State-scale AI skilling for government departments — partner onboarding, L1/L2 educator batches, student enrolment and certification tracking.';
+$page_robots   = 'index, follow';
 
 $stats  = impact_stats($pdo);
 $states = rows($pdo, "SELECT id, name FROM states WHERE is_active = 1 ORDER BY sort_order, name");

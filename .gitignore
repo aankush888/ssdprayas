@@ -1,6 +1,8 @@
 # Local configuration — copy config.example.php to config.php and fill it in.
 # Keeps DB credentials and the Gemini API key out of the repository.
 /config.php
+/config.local.php
+/config.server.php
 
 # Previous "AI for Schools" site, kept locally for reference only.
 # Contains a hard-coded live API key — must never be pushed.

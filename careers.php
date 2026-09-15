@@ -1,9 +1,10 @@
 <?php
 require_once __DIR__ . '/includes/functions.php';
 
-$page       = 'careers';
-$page_title = 'Careers | ' . SITE_NAME;
-$page_desc  = 'Join SSD Prayas as an AI Educator. Hybrid roles across multiple states — train school students and teachers in practical Artificial Intelligence. Apply with your resume.';
+$page          = 'careers';
+$page_title    = 'Careers at SSD Prayas – Hiring AI Educators';
+$page_desc     = 'Join SSD Prayas as an AI Educator. Hybrid roles across Indian states, training students and teachers in practical AI. Apply with your resume.';
+$page_robots   = 'index, follow';
 
 $form_ok  = '';
 $form_err = '';

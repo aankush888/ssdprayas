@@ -1,9 +1,10 @@
 <?php
 require_once __DIR__ . '/includes/functions.php';
 
-$page       = 'programmes';
-$page_title = 'Programmes | ' . SITE_NAME;
-$page_desc  = 'SSD Prayas AI programmes: a grade-wise curriculum for Class 3 to 12, L1 and L2 educator training, and applied AI upskilling for working professionals.';
+$page          = 'programmes';
+$page_title    = 'AI Programmes for Students, Educators & Professionals | SSD Prayas';
+$page_desc     = 'Grade-wise AI curriculum for Class 3–12, L1/L2 educator training, and applied AI upskilling for working professionals — online or offline.';
+$page_robots   = 'index, follow';
 
 $stats = impact_stats($pdo);
 

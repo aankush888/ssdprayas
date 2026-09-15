@@ -1,9 +1,10 @@
 <?php
 require_once __DIR__ . '/includes/functions.php';
 
-$page       = 'about';
-$page_title = 'About Us | ' . SITE_NAME;
-$page_desc  = 'SSD Prayas is an AI skilling mission taking practical Artificial Intelligence education to students, educators and professionals across India — online, offline and at government scale.';
+$page          = 'about';
+$page_title    = 'About SSD Prayas – Our AI Education Mission';
+$page_desc     = 'SSD Prayas brings practical AI education to students, educators and professionals across India — online, offline and at government scale.';
+$page_robots   = 'index, follow';
 
 $stats  = impact_stats($pdo);
 $states = rows($pdo, "SELECT name FROM states WHERE is_active = 1 ORDER BY sort_order, name");

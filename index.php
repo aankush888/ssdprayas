@@ -1,10 +1,11 @@
 <?php
 require_once __DIR__ . '/includes/functions.php';
 
-$page       = 'home';
-$page_title = SITE_NAME . ' | AI Education for Students, Educators & Professionals';
-$page_desc  = 'SSD Prayas delivers NEP 2020-aligned AI education across India — Class 3 to 12 students, school educators and working professionals. Online and offline, with government and school partnerships.';
-$page_robots = 'noindex, follow';
+$page          = 'home';
+$page_title    = 'AI Education Company India – AI Courses & Certification – SSD Prayas';
+$page_desc     = 'SSD Prayas — India\'s AI education company. Online AI courses, certification & beginner programmes for students, educators & professionals.';
+$page_keywords = 'ai education company, best ai learning platform india, ai for education, ai education india, ai certification, online ai classes for students, ai course for beginners india, ssd prayas, nep 2020 ai education, ai skilling india';
+$page_robots   = 'index, follow';
 
 /* ---------- Page data ---------- */
 $stats  = impact_stats($pdo);
@@ -24,7 +25,8 @@ include __DIR__ . '/includes/header.php';
 <main class="page-home">
 
 <!-- ============ HERO SECTION ============ -->
-<section class="home-hero" id="home">
+<section class="home-hero" id="home" aria-label="Best AI Learning Platform in India – SSD Prayas">
+  <img src="<?= e(asset('img/home-hero.png?v=hd')) ?>" alt="Best AI Learning Platform in India – SSD Prayas" class="visually-hidden" width="1200" height="630">
   <div class="container">
     <div class="home-hero-content">
       
@@ -176,7 +178,7 @@ include __DIR__ . '/includes/header.php';
         <!-- Card 1: Students -->
         <article class="home-track-card">
           <div class="htrack-media">
-            <img src="<?= e(asset('img/card-students.jpg')) ?>" alt="Students in a school computer lab learning with AI" loading="lazy">
+            <img src="<?= e(asset('img/card-students.jpg')) ?>" alt="AI training for Schools by SSD Prayas" loading="lazy">
             <span class="htrack-tag is-blue">FOR STUDENTS</span>
           </div>
           <div class="htrack-info">
@@ -189,7 +191,7 @@ include __DIR__ . '/includes/header.php';
         <!-- Card 2: Educators -->
         <article class="home-track-card">
           <div class="htrack-media">
-            <img src="<?= e(asset('img/card-educators.jpg')) ?>" alt="Teacher guiding a student at a computer" loading="lazy">
+            <img src="<?= e(asset('img/card-educators.jpg')) ?>" alt="AI Training for Educators by SSD Prayas" loading="lazy">
             <span class="htrack-tag is-green">FOR EDUCATORS</span>
           </div>
           <div class="htrack-info">
@@ -202,7 +204,7 @@ include __DIR__ . '/includes/header.php';
         <!-- Card 3: Professionals -->
         <article class="home-track-card">
           <div class="htrack-media">
-            <img src="<?= e(asset('img/card-professionals.jpg')) ?>" alt="Working professional upskilling on a laptop" loading="lazy">
+            <img src="<?= e(asset('img/card-professionals.jpg')) ?>" alt="AI Training for Professionals" loading="lazy">
             <span class="htrack-tag is-orange">FOR PROFESSIONALS</span>
           </div>
           <div class="htrack-info">
@@ -215,7 +217,7 @@ include __DIR__ . '/includes/header.php';
         <!-- Card 4: Everyone -->
         <article class="home-track-card">
           <div class="htrack-media">
-            <img src="<?= e(asset('img/card-everyone.jpg')) ?>" alt="Lifelong learners and everyday citizens mastering AI skills" loading="lazy">
+            <img src="<?= e(asset('img/card-everyone.jpg')) ?>" alt="AI Training for Everyone" loading="lazy">
             <span class="htrack-tag is-purple">FOR EVERYONE</span>
           </div>
           <div class="htrack-info">
@@ -547,56 +549,6 @@ include __DIR__ . '/includes/header.php';
       </div>
     </div>
   </div>
-
-  <!-- FAQPage Schema for Google Rich Snippets -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What makes SSD Prayas the best AI learning platform in India for schools?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Most platforms hand a school a login and call it done. We don't. SSD Prayas trains your own teachers, delivers the curriculum inside your existing classroom setup, and certifies both students and staff — so the learning doesn't disappear the moment a subscription ends. That combination of hands-on delivery, teacher independence, and NEP 2020 alignment is what schools tell us sets us apart from platforms that are really just video libraries with a login screen."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is there an AI course for beginners in India, or do students need coding experience first?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No coding background is needed to start. Our beginner-level modules are built for students who've never written a line of code — the early classes focus on how AI actually works in plain language, with simple hands-on tools, before anything resembling 'programming' shows up. Coding gets introduced gradually as students move into higher grades or more advanced tracks, not on day one."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you offer online AI classes for students, or is everything in-person?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Both, depending on what a school needs. Some partner schools run sessions fully offline in their existing computer labs; others prefer online delivery, and a fair number end up doing a mix of the two. The curriculum itself doesn't change based on format — what changes is how it's delivered, and we build that around the school's infrastructure rather than forcing one model on everyone."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What does the AI certification actually cover, and is it recognised outside SSD Prayas?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Certification is tied to completed, assessed work — not attendance. Students and educators go through an assessment and verification check before any certificate is issued, so it reflects what was actually learned, not just a completed calendar. For working professionals in particular, the certificate is designed to be something you can genuinely point to in a resume or interview, not a participation trophy."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can working professionals join, or is this only for schools and students?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Professionals are one of our three main tracks, alongside students and educators. The professional track is applied rather than academic — real tools, real workflows, project-based learning — aimed at people upskilling for their current job or pivoting into AI-adjacent roles, not at people looking for a theory-heavy refresher course."
-        }
-      }
-    ]
-  }
-  </script>
 </section>
 
 </main>

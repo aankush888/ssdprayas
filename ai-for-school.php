@@ -1,10 +1,11 @@
 <?php
 require_once __DIR__ . '/includes/functions.php';
 
-$page        = 'ai-for-school';
-$page_title  = 'AI for School Programme | ' . SITE_NAME;
-$page_desc   = 'Our flagship school engagement: SSD Prayas trains your educators, delivers a NEP 2020-aligned AI curriculum in your existing computer lab, and certifies both teachers and students.';
-$page_robots = 'noindex, follow';
+$page          = 'ai-for-school';
+$page_title    = 'AI for Schools in India – AI Training – SSD Prayas';
+$page_desc     = 'SSD Prayas delivers AI education for schools across India — training educators, teaching AI in schools with a NEP 2020 curriculum and certification.';
+$page_keywords = 'ai for schools in india, ai training for schools, ai education for schools, teaching ai in schools, ai teaching school, nep 2020 ai curriculum, ai for school programme, school ai certification';
+$page_robots   = 'index, follow';
 
 $stats = impact_stats($pdo);
 

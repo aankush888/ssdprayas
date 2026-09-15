@@ -1,5 +1,9 @@
 RewriteEngine On
 
+# 301 Redirect: Force non-www (https://www.ssdprayas.com -> https://ssdprayas.com)
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
 # Force extensionless, index-free URLs.
 # GET only — redirecting a POST would drop the form data.
 # The admin panel keeps its .php URLs.
@@ -24,7 +28,7 @@ RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*?)/?$ $1.php [L]
 
 # Keep config, includes and backups off the web
-<FilesMatch "^(config\.php)$">
+<FilesMatch "^(config\.php|config\.local\.php|config\.server\.php)$">
     Require all denied
 </FilesMatch>
 

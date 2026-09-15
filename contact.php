@@ -1,9 +1,10 @@
 <?php
 require_once __DIR__ . '/includes/functions.php';
 
-$page       = 'contact';
-$page_title = 'Contact Us | ' . SITE_NAME;
-$page_desc  = 'Talk to SSD Prayas about bringing AI education to your school, institution or team. Call, WhatsApp or send us an enquiry — we respond within 24 hours.';
+$page          = 'contact';
+$page_title    = 'Contact SSD Prayas – Start Your AI Journey';
+$page_desc     = 'Talk to SSD Prayas about bringing AI education to your school or organisation. Call, WhatsApp or send an enquiry — we respond within 24 hours.';
+$page_robots   = 'index, follow';
 
 $form_ok  = '';
 $form_err = '';
