@@ -68,6 +68,9 @@ function blog_image($post) {
         'nep-2020-and-the-ai-revolution'                                            => 'assets/img/blog-3.jpg',
         'top-5-ai-skills'                                                           => 'assets/img/blog-4.jpg',
         'how-educators-can-bring-ai-to-their-classrooms'                             => 'assets/img/blog-5.jpg',
+        'how-do-i-learn-ai-as-a-student-in-india'                                    => 'assets/img/blog-6.jpg',
+        'how-school-students-in-india-can-learn-artificial-intelligence'             => 'assets/img/blog-7.jpg',
+        'artificial-intelligence-for-kids-india'                                     => 'assets/img/blog-7.jpg',
     ];
 
     if (empty($img) || strpos($img, 'student-laptop.png') !== false) {

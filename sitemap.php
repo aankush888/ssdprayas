@@ -17,9 +17,13 @@ $posts = rows($pdo, "SELECT slug, updated_at, created_at FROM blogs WHERE status
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<?php foreach ($static as [$path, $priority, $freq]): ?>
+<?php foreach ($static as [$path, $priority, $freq]): 
+  $file = __DIR__ . '/' . ($path === '/' ? 'index.php' : $path . '.php');
+  $mtime = file_exists($file) ? filemtime($file) : time();
+?>
   <url>
     <loc><?= e(url($path)) ?></loc>
+    <lastmod><?= date('c', $mtime) ?></lastmod>
     <changefreq><?= $freq ?></changefreq>
     <priority><?= $priority ?></priority>
   </url>

@@ -11,29 +11,34 @@ $page_keywords = $page_keywords ?? 'SSD Prayas, AI education India, AI course fo
 
 // Anchors live on the homepage, so off-home pages need an absolute link.
 $home = ($page === 'home') ? '' : url('/');
+$canonical_url = $page_canonical ?? url($page === 'home' ? '/' : $page);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="CJXHhq68rWJ2jj791RqN6AUrDULSDZQRE0TDRzbtILs">
 
 <title><?= e($page_title) ?></title>
 <meta name="description" content="<?= e($page_desc) ?>">
 <meta name="robots" content="<?= e($page_robots) ?>">
 <meta name="author" content="<?= e(SITE_NAME) ?>">
 <meta name="keywords" content="<?= e($page_keywords) ?>">
-<link rel="canonical" href="<?= e(url($page === 'home' ? '/' : $page)) ?>">
+<link rel="canonical" href="<?= e($canonical_url) ?>">
 
 <link rel="icon" type="image/png" href="<?= e(url('favicon.png')) ?>">
 <link rel="apple-touch-icon" href="<?= e(asset('img/apple-touch-icon.png')) ?>">
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="<?= ($page === 'blog') ? 'article' : 'website' ?>">
 <meta property="og:site_name" content="<?= e(SITE_NAME) ?>">
 <meta property="og:title" content="<?= e($page_title) ?>">
 <meta property="og:description" content="<?= e($page_desc) ?>">
-<meta property="og:url" content="<?= e(url($page === 'home' ? '/' : $page)) ?>">
+<meta property="og:url" content="<?= e($canonical_url) ?>">
 <meta property="og:image" content="<?= e($page_image) ?>">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="<?= e($page_title) ?>">
 <meta name="twitter:description" content="<?= e($page_desc) ?>">
@@ -41,11 +46,12 @@ $home = ($page === 'home') ? '' : url('/');
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="<?= e(asset_v('css/main.css')) ?>">
 
-<!-- Organization Schema -->
+<!-- Enhanced Organization Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -53,14 +59,40 @@ $home = ($page === 'home') ? '' : url('/');
   "name": "SSD Prayas",
   "url": "https://ssdprayas.com/",
   "logo": "https://ssdprayas.com/assets/ssdprayaslogo-1.png",
+  "description": "India's AI education company delivering NEP 2020-aligned AI skilling for schools, educators, and professionals.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2nd Floor, 24, 7 Annexe, Danish Kunj, Kolar Rd",
+    "addressLocality": "Bhopal",
+    "addressRegion": "Madhya Pradesh",
+    "postalCode": "462039",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-9810450465",
+    "contactType": "Customer Support",
+    "areaServed": "IN",
+    "availableLanguage": ["English", "Hindi"]
+  },
   "sameAs": [
     "https://www.facebook.com/ssdprayas",
-    "https://www.instagram.com/ssdprayas/"
+    "https://www.instagram.com/ssdprayas/",
+    "https://www.linkedin.com/company/aiforschoolsindia/"
   ]
 }
 </script>
 
 <?php if ($page === 'home'): ?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "SSD Prayas",
+  "alternateName": ["SSDPrayas", "SSD Prayas AI", "AI for Schools India"],
+  "url": "https://ssdprayas.com/"
+}
+</script>
 <!-- FAQ Schema Code Placement in Head Section -->
 <script type="application/ld+json">
 {

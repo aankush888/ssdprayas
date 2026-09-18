@@ -167,7 +167,7 @@ include __DIR__ . '/includes/header.php';
               <a href="<?= e(url('contact')) ?>" class="phc-link link-blue">Explore Programme <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="phc-visual bg-blue-arch">
-              <img src="<?= e(asset('img/prog-student-portrait.png')) ?>" alt="AI for Students" loading="lazy">
+              <img src="<?= e(asset('img/prog-student-portrait.png')) ?>" alt="AI for Students" loading="lazy" width="115" height="115">
             </div>
           </article>
 
@@ -180,7 +180,7 @@ include __DIR__ . '/includes/header.php';
               <a href="<?= e(url('contact')) ?>" class="phc-link link-green">Explore Training <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="phc-visual bg-green-arch">
-              <img src="<?= e(asset('img/prog-educator-portrait.png')) ?>" alt="AI for Educators" loading="lazy">
+              <img src="<?= e(asset('img/prog-educator-portrait.png')) ?>" alt="AI for Educators" loading="lazy" width="125" height="115">
             </div>
           </article>
 
@@ -193,7 +193,7 @@ include __DIR__ . '/includes/header.php';
               <a href="<?= e(url('contact')) ?>" class="phc-link link-orange">Explore Courses <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="phc-visual bg-orange-arch">
-              <img src="<?= e(asset('img/prog-prof-portrait.png')) ?>" alt="AI for Professionals" loading="lazy">
+              <img src="<?= e(asset('img/prog-prof-portrait.png')) ?>" alt="AI for Professionals" loading="lazy" width="130" height="115">
             </div>
           </article>
         </div>
@@ -209,7 +209,7 @@ include __DIR__ . '/includes/header.php';
               <a href="<?= e(url('contact')) ?>" class="phc-link link-blue" tabindex="-1">Explore Programme <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="phc-visual bg-blue-arch">
-              <img src="<?= e(asset('img/prog-student-portrait.png')) ?>" alt="AI for Students" loading="lazy">
+              <img src="<?= e(asset('img/prog-student-portrait.png')) ?>" alt="AI for Students" loading="lazy" width="115" height="115">
             </div>
           </article>
 
@@ -222,7 +222,7 @@ include __DIR__ . '/includes/header.php';
               <a href="<?= e(url('contact')) ?>" class="phc-link link-green" tabindex="-1">Explore Training <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="phc-visual bg-green-arch">
-              <img src="<?= e(asset('img/prog-educator-portrait.png')) ?>" alt="AI for Educators" loading="lazy">
+              <img src="<?= e(asset('img/prog-educator-portrait.png')) ?>" alt="AI for Educators" loading="lazy" width="125" height="115">
             </div>
           </article>
 
@@ -235,7 +235,7 @@ include __DIR__ . '/includes/header.php';
               <a href="<?= e(url('contact')) ?>" class="phc-link link-orange" tabindex="-1">Explore Courses <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="phc-visual bg-orange-arch">
-              <img src="<?= e(asset('img/prog-prof-portrait.png')) ?>" alt="AI for Professionals" loading="lazy">
+              <img src="<?= e(asset('img/prog-prof-portrait.png')) ?>" alt="AI for Professionals" loading="lazy" width="130" height="115">
             </div>
           </article>
         </div>
@@ -251,7 +251,7 @@ include __DIR__ . '/includes/header.php';
               <a href="<?= e(url('contact')) ?>" class="phc-link link-blue" tabindex="-1">Explore Programme <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="phc-visual bg-blue-arch">
-              <img src="<?= e(asset('img/prog-student-portrait.png')) ?>" alt="AI for Students" loading="lazy">
+              <img src="<?= e(asset('img/prog-student-portrait.png')) ?>" alt="AI for Students" loading="lazy" width="115" height="115">
             </div>
           </article>
 
@@ -264,7 +264,7 @@ include __DIR__ . '/includes/header.php';
               <a href="<?= e(url('contact')) ?>" class="phc-link link-green" tabindex="-1">Explore Training <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="phc-visual bg-green-arch">
-              <img src="<?= e(asset('img/prog-educator-portrait.png')) ?>" alt="AI for Educators" loading="lazy">
+              <img src="<?= e(asset('img/prog-educator-portrait.png')) ?>" alt="AI for Educators" loading="lazy" width="125" height="115">
             </div>
           </article>
 
@@ -277,7 +277,7 @@ include __DIR__ . '/includes/header.php';
               <a href="<?= e(url('contact')) ?>" class="phc-link link-orange" tabindex="-1">Explore Courses <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="phc-visual bg-orange-arch">
-              <img src="<?= e(asset('img/prog-prof-portrait.png')) ?>" alt="AI for Professionals" loading="lazy">
+              <img src="<?= e(asset('img/prog-prof-portrait.png')) ?>" alt="AI for Professionals" loading="lazy" width="130" height="115">
             </div>
           </article>
         </div>
@@ -293,7 +293,7 @@ include __DIR__ . '/includes/header.php';
               <a href="<?= e(url('contact')) ?>" class="phc-link link-blue" tabindex="-1">Explore Programme <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="phc-visual bg-blue-arch">
-              <img src="<?= e(asset('img/prog-student-portrait.png')) ?>" alt="AI for Students" loading="lazy">
+              <img src="<?= e(asset('img/prog-student-portrait.png')) ?>" alt="AI for Students" loading="lazy" width="115" height="115">
             </div>
           </article>
 
@@ -306,7 +306,7 @@ include __DIR__ . '/includes/header.php';
               <a href="<?= e(url('contact')) ?>" class="phc-link link-green" tabindex="-1">Explore Training <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="phc-visual bg-green-arch">
-              <img src="<?= e(asset('img/prog-educator-portrait.png')) ?>" alt="AI for Educators" loading="lazy">
+              <img src="<?= e(asset('img/prog-educator-portrait.png')) ?>" alt="AI for Educators" loading="lazy" width="125" height="115">
             </div>
           </article>
 
@@ -319,7 +319,7 @@ include __DIR__ . '/includes/header.php';
               <a href="<?= e(url('contact')) ?>" class="phc-link link-orange" tabindex="-1">Explore Courses <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="phc-visual bg-orange-arch">
-              <img src="<?= e(asset('img/prog-prof-portrait.png')) ?>" alt="AI for Professionals" loading="lazy">
+              <img src="<?= e(asset('img/prog-prof-portrait.png')) ?>" alt="AI for Professionals" loading="lazy" width="130" height="115">
             </div>
           </article>
         </div>

@@ -1,8 +1,13 @@
 RewriteEngine On
 
-# 301 Redirect: Force non-www (https://www.ssdprayas.com -> https://ssdprayas.com)
-RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+# 301 Redirect: Force HTTPS and non-www (Single-hop canonical for ssdprayas.com)
+RewriteCond %{HTTP_HOST} ^www\.ssdprayas\.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^ssdprayas\.com$ [NC]
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://ssdprayas.com%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^www\.ssdprayas\.com$ [NC]
+RewriteRule ^ https://ssdprayas.com%{REQUEST_URI} [R=301,L]
 
 # Force extensionless, index-free URLs.
 # GET only — redirecting a POST would drop the form data.
@@ -47,4 +52,9 @@ RewriteRule ^(.*?)/?$ $1.php [L]
     ExpiresByType image/svg+xml "access plus 1 month"
     ExpiresByType text/css   "access plus 1 week"
     ExpiresByType application/javascript "access plus 1 week"
+</IfModule>
+
+# GZIP compression for text, css, js, json, svg
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json image/svg+xml
 </IfModule>

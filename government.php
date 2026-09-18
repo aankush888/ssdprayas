@@ -245,7 +245,7 @@ include __DIR__ . '/includes/header.php';
         <!-- Center column: Illuminated India Map -->
         <div class="grp-center">
           <div class="grp-map-frame">
-            <img src="<?= e(asset_v('img/govt-india-nodes.jpg')) ?>" alt="SSD Prayas Pan-India Network Map" class="grp-map-img">
+            <img src="<?= e(asset_v('img/govt-india-nodes.jpg')) ?>" alt="SSD Prayas Pan-India Network Map" class="grp-map-img" width="1024" height="1024" loading="lazy">
             <div class="grp-map-overlay"></div>
           </div>
         </div>
@@ -304,7 +304,7 @@ include __DIR__ . '/includes/header.php';
 
         <a href="<?= e(url('ai-for-school')) ?>" class="grp-showcase-card">
           <div class="gsc-thumb-wrap">
-            <img src="<?= e(asset_v('img/govt-school-students.jpg')) ?>" alt="Students in school computer lab" class="gsc-thumb">
+            <img src="<?= e(asset_v('img/govt-school-students.jpg')) ?>" alt="Students in school computer lab" class="gsc-thumb" width="1264" height="848" loading="lazy">
           </div>
           <div class="gsc-text">
             <span class="gsc-sub">From Schools</span>
@@ -371,8 +371,8 @@ include __DIR__ . '/includes/header.php';
 
       <article class="govt-step-card reveal">
         <div class="gstep-num gstep-cyan">06</div>
-        <h4>Certification &amp; Report</h4>
-        <p>Certificates are issued and a consolidated report is shared covering coverage, completion and certification.</p>
+        <h4>Certification</h4>
+        <p>Verified certificates are issued to both educators and students under the department umbrella.</p>
       </article>
 
     </div>
@@ -384,7 +384,7 @@ include __DIR__ . '/includes/header.php';
   <div class="container">
     <div class="govt-cta-banner reveal">
       <div class="gcb-watermark" aria-hidden="true">
-        <img src="<?= e(asset_v('img/govt-dome-watermark.svg')) ?>" alt="">
+        <img src="<?= e(asset_v('img/govt-dome-watermark.svg')) ?>" alt="Government Embellishment Watermark" width="400" height="400" loading="lazy">
       </div>
       <div class="gcb-content">
         <span class="gcb-eyebrow">LET'S BUILD IMPACT TOGETHER</span>

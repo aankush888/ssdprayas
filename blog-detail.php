@@ -4,6 +4,11 @@ require_once __DIR__ . '/includes/functions.php';
 $slug = trim($_GET['slug'] ?? '');
 $blog = null;
 
+if ($slug === 'how-school-students-in-india-can-learn-artificial-intelligence') {
+    header('Location: ' . url('blog/artificial-intelligence-for-kids-india'), true, 301);
+    exit;
+}
+
 if ($slug !== '') {
     $stmt = $pdo->prepare("SELECT * FROM blogs WHERE slug = ? AND status = 'published'");
     $stmt->execute([$slug]);
@@ -27,7 +32,62 @@ $page_title = ($blog['meta_title'] ?: $blog['title']) . ' | ' . SITE_NAME;
 $page_desc  = $blog['meta_description'] ?: mb_strimwidth(strip_tags($blog['excerpt']), 0, 155, '…');
 $page_image = url(blog_image($blog));
 
-$share_url = url('blog/' . $blog['slug']);
+$share_url       = url('blog/' . $blog['slug']);
+$page_canonical  = $share_url;
+
+$blog_schema = [
+    '@context' => 'https://schema.org',
+    '@type' => 'BlogPosting',
+    'headline' => $blog['title'],
+    'image' => [ $page_image ],
+    'datePublished' => date('c', strtotime($blog['created_at'])),
+    'dateModified' => date('c', strtotime($blog['updated_at'] ?: $blog['created_at'])),
+    'author' => [
+        '@type' => 'Person',
+        'name' => $blog['author'] ?: (SITE_NAME . ' Team'),
+    ],
+    'publisher' => [
+        '@type' => 'EducationalOrganization',
+        'name' => SITE_NAME,
+        'logo' => [
+            '@type' => 'ImageObject',
+            'url' => url('assets/' . SITE_LOGO),
+        ],
+    ],
+    'description' => $page_desc,
+    'mainEntityOfPage' => [
+        '@type' => 'WebPage',
+        '@id' => $share_url,
+    ],
+];
+
+$breadcrumb_schema = [
+    '@context' => 'https://schema.org',
+    '@type' => 'BreadcrumbList',
+    'itemListElement' => [
+        [
+            '@type' => 'ListItem',
+            'position' => 1,
+            'name' => 'Home',
+            'item' => url('/'),
+        ],
+        [
+            '@type' => 'ListItem',
+            'position' => 2,
+            'name' => 'Blogs',
+            'item' => url('blogs'),
+        ],
+        [
+            '@type' => 'ListItem',
+            'position' => 3,
+            'name' => $blog['title'],
+            'item' => $share_url,
+        ],
+    ],
+];
+
+$custom_schema = '<script type="application/ld+json">' . json_encode($blog_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n"
+               . '<script type="application/ld+json">' . json_encode($breadcrumb_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
 
 $related = rows(
     $pdo,

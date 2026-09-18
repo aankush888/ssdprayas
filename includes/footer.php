@@ -19,7 +19,9 @@
           <a href="<?= e($fb_link) ?>" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           <a href="<?= e($insta_link) ?>" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="<?= e(SOCIAL_LINKEDIN) ?>" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="<?= e(SOCIAL_YOUTUBE) ?>" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <?php if (defined('SOCIAL_YOUTUBE') && SOCIAL_YOUTUBE !== '#' && !empty(SOCIAL_YOUTUBE)): ?>
+            <a href="<?= e(SOCIAL_YOUTUBE) ?>" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <?php endif; ?>
         </div>
       </div>
 
@@ -29,13 +31,13 @@
         <a href="<?= e(url('ai-for-school')) ?>">AI for School Programme</a>
         <a href="<?= e(url('government')) ?>">Government Projects</a>
         <a href="<?= e(url('careers')) ?>">Educator Training</a>
-        <a href="<?= e(url('programmes')) ?>#mode">Online &amp; Offline</a>
+        <a href="<?= e(url('programmes#mode')) ?>">Online &amp; Offline</a>
       </div>
 
       <div>
         <h4>Company</h4>
         <a href="<?= e(url('about')) ?>">About Us</a>
-        <a href="<?= e(url('about')) ?>#leadership">Leadership</a>
+        <a href="<?= e(url('about#leadership')) ?>">Leadership</a>
         <a href="<?= e(url('careers')) ?>">Careers</a>
         <a href="<?= e(url('blogs')) ?>">Blogs</a>
         <a href="<?= e(url('contact')) ?>">Contact Us</a>
@@ -47,14 +49,17 @@
         <a href="<?= e(whatsapp_link()) ?>" target="_blank" rel="noopener"><i class="fab fa-whatsapp" style="width:18px"></i> WhatsApp (same number)</a>
         <a href="mailto:<?= e(SITE_EMAIL) ?>"><i class="fas fa-envelope" style="width:18px"></i> <?= e(SITE_EMAIL) ?></a>
         <a href="mailto:<?= e(SITE_EMAIL_ALT) ?>"><i class="fas fa-envelope" style="width:18px"></i> <?= e(SITE_EMAIL_ALT) ?></a>
-        <a href="<?= e(url('contact')) ?>"><i class="fas fa-location-dot" style="width:18px"></i> The DM Tower, Bhopal</a>
+        <a href="<?= e(url('contact')) ?>" style="display:flex;align-items:flex-start;gap:8px;line-height:1.45;margin-top:2px;">
+          <i class="fas fa-location-dot" style="width:16px;margin-top:3px;flex-shrink:0;"></i>
+          <span><?= e(CONTACT_ADDRESS) ?></span>
+        </a>
       </div>
 
     </div>
 
     <div class="footer-bottom">
       <p>&copy; <?= date('Y') ?> <?= e(SITE_NAME) ?>. All rights reserved.</p>
-      <p>Website by <a href="<?= e(CREDIT_COPYRIGHT_URL) ?>" style="color:#fff;font-weight:600"><?= e(CREDIT_COPYRIGHT) ?></a></p>
+      <p>Website by <?php if (defined('CREDIT_COPYRIGHT_URL') && CREDIT_COPYRIGHT_URL !== '#' && !empty(CREDIT_COPYRIGHT_URL)): ?><a href="<?= e(CREDIT_COPYRIGHT_URL) ?>" target="_blank" rel="noopener" style="color:#fff;font-weight:600"><?= e(CREDIT_COPYRIGHT) ?></a><?php else: ?><span style="color:#fff;font-weight:600"><?= e(CREDIT_COPYRIGHT) ?></span><?php endif; ?></p>
     </div>
   </div>
 </footer>
@@ -64,6 +69,6 @@
   <i class="fab fa-whatsapp"></i>
 </a>
 
-<script src="<?= e(asset_v('js/main.js')) ?>"></script>
+<script defer src="<?= e(asset_v('js/main.js')) ?>"></script>
 </body>
 </html>

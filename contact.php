@@ -168,7 +168,7 @@ include __DIR__ . '/includes/header.php';
                 <div class="ccc-primary-text" style="font-size:13.5px;line-height:1.45;font-weight:600">
                   <?= e(CONTACT_ADDRESS) ?>
                 </div>
-                <a href="https://maps.google.com/?q=The+DM+Tower+Kolar+Road+Bhopal" target="_blank" rel="noopener" class="btn-view-maps">
+                <a href="https://maps.google.com/?q=2nd+Floor+24+7+Annexe+Danish+Kunj+Kolar+Rd+Bhopal" target="_blank" rel="noopener" class="btn-view-maps">
                   View on Maps <span>→</span>
                 </a>
               </div>

@@ -23,7 +23,7 @@ define('SITE_EMAIL_ALT', 'jai@ssdprayas.com');
 // ---------- Contact ----------
 define('CONTACT_PHONE',    '+91 98104 50465');
 define('CONTACT_PHONE_RAW','919810450465');   // WhatsApp same number
-define('CONTACT_ADDRESS',  'The DM Tower, Danish Kunj, Kolar Road, Bhopal, Madhya Pradesh 462039');
+define('CONTACT_ADDRESS',  '2nd Floor, 24, 7 Annexe, Danish Kunj, Kolar Rd, Bhopal, Madhya Pradesh 462039');
 
 // ---------- Social ----------
 define('SOCIAL_FACEBOOK', 'https://www.facebook.com/ssdprayas');

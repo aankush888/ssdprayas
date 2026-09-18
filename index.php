@@ -31,7 +31,7 @@ include __DIR__ . '/includes/header.php';
     <div class="home-hero-content">
       
       <div class="google-partner-pill">
-        <img src="<?= e(asset('img/google.png')) ?>" alt="Google" class="google-logo-sm">
+        <img src="<?= e(asset('img/google.png')) ?>" alt="Google" class="google-logo-sm" width="48" height="48">
         <span>Google for Education Partner</span>
       </div>
 
@@ -178,7 +178,7 @@ include __DIR__ . '/includes/header.php';
         <!-- Card 1: Students -->
         <article class="home-track-card">
           <div class="htrack-media">
-            <img src="<?= e(asset('img/card-students.jpg')) ?>" alt="AI training for Schools by SSD Prayas" loading="lazy">
+            <img src="<?= e(asset('img/card-students.jpg')) ?>" alt="AI training for Schools by SSD Prayas" loading="lazy" width="1000" height="667">
             <span class="htrack-tag is-blue">FOR STUDENTS</span>
           </div>
           <div class="htrack-info">
@@ -191,7 +191,7 @@ include __DIR__ . '/includes/header.php';
         <!-- Card 2: Educators -->
         <article class="home-track-card">
           <div class="htrack-media">
-            <img src="<?= e(asset('img/card-educators.jpg')) ?>" alt="AI Training for Educators by SSD Prayas" loading="lazy">
+            <img src="<?= e(asset('img/card-educators.jpg')) ?>" alt="AI Training for Educators by SSD Prayas" loading="lazy" width="1000" height="667">
             <span class="htrack-tag is-green">FOR EDUCATORS</span>
           </div>
           <div class="htrack-info">
@@ -204,7 +204,7 @@ include __DIR__ . '/includes/header.php';
         <!-- Card 3: Professionals -->
         <article class="home-track-card">
           <div class="htrack-media">
-            <img src="<?= e(asset('img/card-professionals.jpg')) ?>" alt="AI Training for Professionals" loading="lazy">
+            <img src="<?= e(asset('img/card-professionals.jpg')) ?>" alt="AI Training for Professionals" loading="lazy" width="1000" height="643">
             <span class="htrack-tag is-orange">FOR PROFESSIONALS</span>
           </div>
           <div class="htrack-info">
@@ -217,7 +217,7 @@ include __DIR__ . '/includes/header.php';
         <!-- Card 4: Everyone -->
         <article class="home-track-card">
           <div class="htrack-media">
-            <img src="<?= e(asset('img/card-everyone.jpg')) ?>" alt="AI Training for Everyone" loading="lazy">
+            <img src="<?= e(asset('img/card-everyone.jpg')) ?>" alt="AI Training for Everyone" loading="lazy" width="1000" height="667">
             <span class="htrack-tag is-purple">FOR EVERYONE</span>
           </div>
           <div class="htrack-info">
@@ -376,7 +376,7 @@ include __DIR__ . '/includes/header.php';
     <div class="home-testimonial-banner reveal">
       <!-- Left: 3D Robot & Student illustration -->
       <div class="tb-visual">
-        <img src="<?= e(asset('img/robot-testimonial.png')) ?>" alt="AI Learning Together" class="tb-robot-img">
+        <img src="<?= e(asset('img/robot-testimonial.png')) ?>" alt="AI Learning Together" class="tb-robot-img" width="95" height="88">
       </div>
 
       <!-- Right: 3 Testimonial Cards -->
@@ -456,14 +456,14 @@ include __DIR__ . '/includes/header.php';
       <?php foreach ($posts as $post): ?>
         <article class="home-blog-card reveal">
           <a href="<?= e(url('blog/' . $post['slug'])) ?>" class="hbc-thumb">
-            <img src="<?= e(blog_image_url($post)) ?>" alt="<?= e($post['title']) ?>" loading="lazy">
+            <img src="<?= e(blog_image_url($post)) ?>" alt="<?= e($post['title']) ?>" loading="lazy" width="600" height="335">
           </a>
           <div class="hbc-body">
             <span class="hbc-tag"><?= e($post['tag']) ?></span>
             <h3><a href="<?= e(url('blog/' . $post['slug'])) ?>"><?= e($post['title']) ?></a></h3>
             <div class="hbc-footer">
               <span class="hbc-date"><?= date('M j, Y', strtotime($post['created_at'])) ?></span>
-              <a href="<?= e(url('blog/' . $post['slug'])) ?>" class="hbc-link">Read <i class="fas fa-arrow-right"></i></a>
+              <a href="<?= e(url('blog/' . $post['slug'])) ?>" class="hbc-link" aria-label="Read article: <?= e($post['title']) ?>">Read Article <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
         </article>

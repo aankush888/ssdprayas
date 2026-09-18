@@ -56,6 +56,8 @@ function get_blog_read_time($post) {
     if (strpos($slug, 'nep-2020') !== false) return '4 min read';
     if (strpos($slug, 'top-5') !== false) return '7 min read';
     if (strpos($slug, 'educators-can-bring') !== false) return '5 min read';
+    if (strpos($slug, 'how-do-i-learn-ai') !== false) return '6 min read';
+    if (strpos($slug, 'how-school-students') !== false || strpos($slug, 'artificial-intelligence-for-kids') !== false) return '5 min read';
     $words = str_word_count(strip_tags(($post['excerpt'] ?? '') . ' ' . ($post['content'] ?? '')));
     return max(3, ceil($words / 60)) . ' min read';
 }
