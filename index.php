@@ -26,7 +26,7 @@ include __DIR__ . '/includes/header.php';
 
 <!-- ============ HERO SECTION ============ -->
 <section class="home-hero" id="home" aria-label="Best AI Learning Platform in India – SSD Prayas">
-  <img src="<?= e(asset('img/home-hero.png?v=hd')) ?>" alt="Best AI Learning Platform in India – SSD Prayas" class="visually-hidden" width="1200" height="630">
+  <img src="<?= e(asset('img/home-hero.webp?v=hd')) ?>" alt="Best AI Learning Platform in India – SSD Prayas" class="visually-hidden" width="1200" height="630">
   <div class="container">
     <div class="home-hero-content">
       
@@ -178,7 +178,7 @@ include __DIR__ . '/includes/header.php';
         <!-- Card 1: Students -->
         <article class="home-track-card">
           <div class="htrack-media">
-            <img src="<?= e(asset('img/card-students.jpg')) ?>" alt="AI training for Schools by SSD Prayas" loading="lazy" width="1000" height="667">
+            <img src="<?= e(asset('img/card-students.webp')) ?>" alt="AI training for Schools by SSD Prayas" loading="lazy" width="1000" height="667">
             <span class="htrack-tag is-blue">FOR STUDENTS</span>
           </div>
           <div class="htrack-info">
@@ -191,7 +191,7 @@ include __DIR__ . '/includes/header.php';
         <!-- Card 2: Educators -->
         <article class="home-track-card">
           <div class="htrack-media">
-            <img src="<?= e(asset('img/card-educators.jpg')) ?>" alt="AI Training for Educators by SSD Prayas" loading="lazy" width="1000" height="667">
+            <img src="<?= e(asset('img/card-educators.webp')) ?>" alt="AI Training for Educators by SSD Prayas" loading="lazy" width="1000" height="667">
             <span class="htrack-tag is-green">FOR EDUCATORS</span>
           </div>
           <div class="htrack-info">
@@ -204,7 +204,7 @@ include __DIR__ . '/includes/header.php';
         <!-- Card 3: Professionals -->
         <article class="home-track-card">
           <div class="htrack-media">
-            <img src="<?= e(asset('img/card-professionals.jpg')) ?>" alt="AI Training for Professionals" loading="lazy" width="1000" height="643">
+            <img src="<?= e(asset('img/card-professionals.webp')) ?>" alt="AI Training for Professionals" loading="lazy" width="1000" height="643">
             <span class="htrack-tag is-orange">FOR PROFESSIONALS</span>
           </div>
           <div class="htrack-info">
@@ -217,7 +217,7 @@ include __DIR__ . '/includes/header.php';
         <!-- Card 4: Everyone -->
         <article class="home-track-card">
           <div class="htrack-media">
-            <img src="<?= e(asset('img/card-everyone.jpg')) ?>" alt="AI Training for Everyone" loading="lazy" width="1000" height="667">
+            <img src="<?= e(asset('img/card-everyone.webp')) ?>" alt="AI Training for Everyone" loading="lazy" width="1000" height="667">
             <span class="htrack-tag is-purple">FOR EVERYONE</span>
           </div>
           <div class="htrack-info">

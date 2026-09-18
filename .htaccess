@@ -37,11 +37,14 @@ RewriteRule ^(.*?)/?$ $1.php [L]
     Require all denied
 </FilesMatch>
 
-# Basic security headers
+# Basic security headers & browser caching
 <IfModule mod_headers.c>
     Header set X-Content-Type-Options "nosniff"
     Header set X-Frame-Options "SAMEORIGIN"
     Header set Referrer-Policy "strict-origin-when-cross-origin"
+    <FilesMatch "\.(ico|jpg|jpeg|png|gif|webp|svg|css|js|woff|woff2)$">
+        Header set Cache-Control "max-age=2592000, public"
+    </FilesMatch>
 </IfModule>
 
 # Cache static assets
@@ -49,9 +52,11 @@ RewriteRule ^(.*?)/?$ $1.php [L]
     ExpiresActive On
     ExpiresByType image/png  "access plus 1 month"
     ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
     ExpiresByType image/svg+xml "access plus 1 month"
-    ExpiresByType text/css   "access plus 1 week"
-    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType text/css   "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 
 # GZIP compression for text, css, js, json, svg

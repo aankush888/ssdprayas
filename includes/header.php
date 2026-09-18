@@ -44,12 +44,17 @@ $canonical_url = $page_canonical ?? url($page === 'home' ? '/' : $page);
 <meta name="twitter:description" content="<?= e($page_desc) ?>">
 <meta name="twitter:image" content="<?= e($page_image) ?>">
 
+<?php if ($page === 'home'): ?>
+<link rel="preload" fetchpriority="high" as="image" href="<?= e(asset('img/home-hero.webp?v=hd')) ?>" type="image/webp">
+<?php endif; ?>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="<?= e(asset_v('css/main.css')) ?>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+<link rel="stylesheet" href="<?= e(asset_v('css/main.min.css')) ?>">
 
 <!-- Enhanced Organization Schema -->
 <script type="application/ld+json">
