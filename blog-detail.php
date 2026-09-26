@@ -30,7 +30,17 @@ try {
 $page       = 'blog';
 $page_title = ($blog['meta_title'] ?: $blog['title']) . ' | ' . SITE_NAME;
 $page_desc  = $blog['meta_description'] ?: mb_strimwidth(strip_tags($blog['excerpt']), 0, 155, '…');
+$page_keywords = !empty($blog['meta_keywords']) ? $blog['meta_keywords'] : null;
 $page_image = url(blog_image($blog));
+$page_image_alt = !empty($blog['image_alt']) ? $blog['image_alt'] : $blog['title'];
+
+// Open Graph & Twitter Cards
+$page_og_title = !empty($blog['og_title']) ? $blog['og_title'] : $page_title;
+$page_og_desc  = !empty($blog['og_description']) ? $blog['og_description'] : $page_desc;
+$page_og_image = !empty($blog['og_image']) ? url($blog['og_image']) : $page_image;
+$page_twitter_title = !empty($blog['twitter_title']) ? $blog['twitter_title'] : $page_og_title;
+$page_twitter_desc  = !empty($blog['twitter_description']) ? $blog['twitter_description'] : $page_og_desc;
+$page_twitter_image = !empty($blog['twitter_image']) ? url($blog['twitter_image']) : $page_og_image;
 
 $share_url       = url('blog/' . $blog['slug']);
 $page_canonical  = $share_url;
@@ -86,8 +96,22 @@ $breadcrumb_schema = [
     ],
 ];
 
-$custom_schema = '<script type="application/ld+json">' . json_encode($blog_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n"
-               . '<script type="application/ld+json">' . json_encode($breadcrumb_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
+// Build custom schema output: Article + FAQ + Breadcrumbs
+$schemas = [];
+if (!empty(trim($blog['schema_article'] ?? ''))) {
+    $art_raw = trim($blog['schema_article']);
+    $schemas[] = (stripos($art_raw, '<script') !== false) ? $art_raw : '<script type="application/ld+json">' . $art_raw . '</script>';
+} else {
+    $schemas[] = '<script type="application/ld+json">' . json_encode($blog_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
+}
+
+if (!empty(trim($blog['schema_faq'] ?? ''))) {
+    $faq_raw = trim($blog['schema_faq']);
+    $schemas[] = (stripos($faq_raw, '<script') !== false) ? $faq_raw : '<script type="application/ld+json">' . $faq_raw . '</script>';
+}
+
+$schemas[] = '<script type="application/ld+json">' . json_encode($breadcrumb_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
+$custom_schema = implode("\n", $schemas);
 
 $related = rows(
     $pdo,
@@ -124,7 +148,7 @@ include __DIR__ . '/includes/header.php';
   <div class="container-sm">
 
     <?php if ($blog['image']): ?>
-      <img class="article-hero-img" src="<?= e(blog_image_url($blog)) ?>" alt="<?= e($blog['title']) ?>">
+      <img class="article-hero-img" src="<?= e(blog_image_url($blog)) ?>" alt="<?= e($page_image_alt) ?>">
     <?php endif; ?>
 
     <div class="article-body" style="margin-top:38px">

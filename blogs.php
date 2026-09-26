@@ -13,6 +13,11 @@ $offset   = ($current - 1) * $per_page;
 $tag    = trim($_GET['tag'] ?? '');
 $search = trim($_GET['search'] ?? '');
 
+// Prevent filtered tag and search parameter URLs from being indexed
+if ($tag !== '' || $search !== '') {
+    $page_robots = 'noindex, follow';
+}
+
 $where = "status = 'published'";
 $args  = [];
 

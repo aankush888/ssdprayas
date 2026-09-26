@@ -202,7 +202,37 @@ function sync_legacy_blog_images(PDO $pdo) {
     }
 }
 
+/**
+ * Automatically sync blog SEO & OpenGraph columns in database if not present.
+ */
+function sync_blog_schema_columns(PDO $pdo) {
+    static $done = false;
+    if ($done) return;
+    $done = true;
+    try {
+        $stmt = $pdo->query("SHOW COLUMNS FROM blogs LIKE 'image_alt'");
+        if (!$stmt->fetch()) {
+            $pdo->exec("
+                ALTER TABLE blogs
+                  ADD COLUMN image_alt varchar(255) DEFAULT NULL AFTER image,
+                  ADD COLUMN meta_keywords text DEFAULT NULL AFTER meta_description,
+                  ADD COLUMN schema_article longtext DEFAULT NULL AFTER meta_keywords,
+                  ADD COLUMN schema_faq longtext DEFAULT NULL AFTER schema_article,
+                  ADD COLUMN og_title varchar(255) DEFAULT NULL AFTER schema_faq,
+                  ADD COLUMN og_description text DEFAULT NULL AFTER og_title,
+                  ADD COLUMN og_image varchar(255) DEFAULT NULL AFTER og_description,
+                  ADD COLUMN twitter_title varchar(255) DEFAULT NULL AFTER og_image,
+                  ADD COLUMN twitter_description text DEFAULT NULL AFTER twitter_title,
+                  ADD COLUMN twitter_image varchar(255) DEFAULT NULL AFTER twitter_description
+            ");
+        }
+    } catch (PDOException $e) {
+        // fail silently
+    }
+}
+
 if (isset($pdo)) {
     sync_legacy_blog_images($pdo);
+    sync_blog_schema_columns($pdo);
 }
 

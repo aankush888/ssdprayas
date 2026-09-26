@@ -32,17 +32,17 @@ $canonical_url = $page_canonical ?? url($page === 'home' ? '/' : $page);
 
 <meta property="og:type" content="<?= ($page === 'blog') ? 'article' : 'website' ?>">
 <meta property="og:site_name" content="<?= e(SITE_NAME) ?>">
-<meta property="og:title" content="<?= e($page_title) ?>">
-<meta property="og:description" content="<?= e($page_desc) ?>">
+<meta property="og:title" content="<?= e($page_og_title ?? $page_title) ?>">
+<meta property="og:description" content="<?= e($page_og_desc ?? $page_desc) ?>">
 <meta property="og:url" content="<?= e($canonical_url) ?>">
-<meta property="og:image" content="<?= e($page_image) ?>">
+<meta property="og:image" content="<?= e($page_og_image ?? $page_image) ?>">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="<?= e($page_title) ?>">
-<meta name="twitter:description" content="<?= e($page_desc) ?>">
-<meta name="twitter:image" content="<?= e($page_image) ?>">
+<meta name="twitter:card" content="<?= e($page_twitter_card ?? 'summary_large_image') ?>">
+<meta name="twitter:title" content="<?= e($page_twitter_title ?? $page_og_title ?? $page_title) ?>">
+<meta name="twitter:description" content="<?= e($page_twitter_desc ?? $page_og_desc ?? $page_desc) ?>">
+<meta name="twitter:image" content="<?= e($page_twitter_image ?? $page_og_image ?? $page_image) ?>">
 
 <?php if ($page === 'home'): ?>
 <link rel="preload" fetchpriority="high" as="image" href="<?= e(asset('img/home-hero.webp?v=hd')) ?>" type="image/webp">

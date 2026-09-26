@@ -71,31 +71,89 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <link rel="stylesheet" href="admin.css?v=<?= filemtime(__DIR__ . '/admin.css') ?>">
 </head>
 <body class="login-page">
-  <div class="login-box">
-    <img class="login-logo" src="<?= e(asset(SITE_LOGO)) ?>" alt="<?= e(SITE_NAME) ?>">
-    <h2>Welcome back</h2>
-    <p>Sign in to the SSD Prayas admin panel.</p>
 
-    <?php if ($error): ?>
-      <div class="note note-error" style="text-align:left"><i class="fas fa-circle-exclamation"></i><span><?= e($error) ?></span></div>
-    <?php endif; ?>
-
-    <form method="POST">
-      <?= csrf_field() ?>
-      <div class="fg">
-        <label for="u">Username or Email</label>
-        <input type="text" id="u" name="username" required autofocus autocomplete="username" placeholder="Enter username or email">
+  <div class="login-container">
+    <div class="login-card">
+      
+      <div class="login-header">
+        <a href="<?= e(url('/')) ?>" class="login-brand-wrapper" title="SSD Prayas Home">
+          <img class="login-logo-img" src="<?= e(asset(SITE_LOGO)) ?>" alt="<?= e(SITE_NAME) ?>" width="220" height="49">
+        </a>
+        <div>
+          <span class="login-badge">
+            <i class="fas fa-shield-halved"></i> Admin Portal
+          </span>
+        </div>
+        <h1 class="login-title">Welcome back</h1>
+        <p class="login-subtitle">Sign in with your credentials to access the console.</p>
       </div>
-      <div class="fg">
-        <label for="p">Password</label>
-        <input type="password" id="p" name="password" required autocomplete="current-password" placeholder="••••••••">
-      </div>
-      <button type="submit" class="btn btn-primary btn-block" style="margin-top:8px">Sign In</button>
-    </form>
 
-    <p style="margin-top:24px;font-size:13px;color:var(--muted)">
-      <a href="<?= e(url('/')) ?>" style="color:var(--brand);font-weight:600">← Back to website</a>
-    </p>
+      <?php if ($error): ?>
+        <div class="login-alert" role="alert">
+          <i class="fas fa-circle-exclamation"></i>
+          <div><?= e($error) ?></div>
+        </div>
+      <?php endif; ?>
+
+      <form method="POST" class="login-form">
+        <?= csrf_field() ?>
+
+        <div class="login-fg">
+          <label class="login-label" for="u">Username or Email</label>
+          <div class="login-input-group">
+            <i class="fas fa-user-shield login-input-icon"></i>
+            <input type="text" id="u" name="username" class="login-input" required autofocus autocomplete="username" placeholder="admin or name@email.com">
+          </div>
+        </div>
+
+        <div class="login-fg">
+          <label class="login-label" for="p">
+            <span>Password</span>
+          </label>
+          <div class="login-input-group">
+            <i class="fas fa-lock login-input-icon"></i>
+            <input type="password" id="p" name="password" class="login-input" required autocomplete="current-password" placeholder="••••••••">
+            <button type="button" class="pass-toggle-btn" onclick="toggleLoginPassword()" title="Show/Hide Password" aria-label="Toggle password visibility">
+              <i class="fas fa-eye" id="toggleIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="login-submit-btn">
+          <span>Sign In to Console</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </form>
+
+      <div class="login-footer-links">
+        <a href="<?= e(url('/')) ?>" class="login-back-link">
+          <i class="fas fa-arrow-left"></i>
+          <span>Back to main website</span>
+        </a>
+        <div class="login-trust-note">
+          <i class="fas fa-shield-check"></i>
+          <span>Secure End-to-End Encrypted Session</span>
+        </div>
+      </div>
+
+    </div>
   </div>
+
+  <script>
+    function toggleLoginPassword() {
+      const input = document.getElementById('p');
+      const icon = document.getElementById('toggleIcon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+  </script>
+
 </body>
 </html>

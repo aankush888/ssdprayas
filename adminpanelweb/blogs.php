@@ -156,7 +156,21 @@ include __DIR__ . '/_layout.php';
                   </div>
                   <div>
                     <div class="cell-main"><?= e($r['title']) ?></div>
-                    <div class="cell-sub">/blog/<?= e($r['slug']) ?></div>
+                    <div class="cell-sub" style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:3px">
+                      <span>/blog/<?= e($r['slug']) ?></span>
+                      <?php if (!empty($r['meta_title']) || !empty($r['meta_description'])): ?>
+                        <span class="badge b-blue" style="font-size:10px;padding:1px 6px" title="SEO Meta configured"><i class="fas fa-magnifying-glass"></i> SEO</span>
+                      <?php endif; ?>
+                      <?php if (!empty($r['schema_article']) || !empty($r['schema_faq'])): ?>
+                        <span class="badge b-purple" style="font-size:10px;padding:1px 6px" title="Schema Structured Data active"><i class="fas fa-code"></i> Schema</span>
+                      <?php endif; ?>
+                      <?php if (!empty($r['og_title']) || !empty($r['twitter_title'])): ?>
+                        <span class="badge b-green" style="font-size:10px;padding:1px 6px" title="Social Cards active"><i class="fas fa-share-nodes"></i> Social</span>
+                      <?php endif; ?>
+                      <?php if (!empty($r['image_alt'])): ?>
+                        <span class="badge b-teal" style="font-size:10px;padding:1px 6px" title="Alt text set: <?= e($r['image_alt']) ?>"><i class="fas fa-universal-access"></i> Alt</span>
+                      <?php endif; ?>
+                    </div>
                   </div>
                 </div>
               </td>

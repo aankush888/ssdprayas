@@ -3,6 +3,9 @@ Disallow: /adminpanelweb/
 Disallow: /includes/
 Disallow: /assets/uploads/resumes/
 Disallow: /_backup_old_site/
+Disallow: /*?*tag=
+Disallow: /*?tag=*
+Disallow: /*&tag=*
 Allow: /
 
 Sitemap: https://ssdprayas.com/sitemap.xml
