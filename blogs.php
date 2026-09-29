@@ -13,6 +13,12 @@ $offset   = ($current - 1) * $per_page;
 $tag    = trim($_GET['tag'] ?? '');
 $search = trim($_GET['search'] ?? '');
 
+// Normalize ?page=1 to clean URL for SEO and cleaner address bar
+if (isset($_GET['page']) && (int)$_GET['page'] === 1 && $tag === '' && $search === '') {
+    header('Location: ' . url('blogs'), true, 301);
+    exit;
+}
+
 // Prevent filtered tag and search parameter URLs from being indexed
 if ($tag !== '' || $search !== '') {
     $page_robots = 'noindex, follow';
@@ -255,16 +261,30 @@ include __DIR__ . '/includes/header.php';
         $total_pages_to_show = max(3, $pages);
         ?>
         <div class="blog-pagination">
-          <a href="<?= e(url('blogs?page=' . max(1, $current - 1) . ($tag !== '' ? '&tag=' . urlencode($tag) : '') . ($search !== '' ? '&search=' . urlencode($search) : ''))) ?>" class="page-circle-btn" aria-label="Previous page">
+          <?php
+          $prev_p = max(1, $current - 1);
+          $prev_href = ($prev_p === 1 && $tag === '' && $search === '')
+              ? url('blogs')
+              : url('blogs?page=' . $prev_p . ($tag !== '' ? '&tag=' . urlencode($tag) : '') . ($search !== '' ? '&search=' . urlencode($search) : ''));
+          ?>
+          <a href="<?= e($prev_href) ?>" class="page-circle-btn" aria-label="Previous page">
             <i class="fas fa-chevron-left" style="font-size:11px"></i>
           </a>
-          <?php for ($i = 1; $i <= $total_pages_to_show; $i++): ?>
-            <a href="<?= e(url('blogs?page=' . $i . ($tag !== '' ? '&tag=' . urlencode($tag) : '') . ($search !== '' ? '&search=' . urlencode($search) : ''))) ?>"
+          <?php for ($i = 1; $i <= $total_pages_to_show; $i++): 
+            $page_href = ($i === 1 && $tag === '' && $search === '')
+                ? url('blogs')
+                : url('blogs?page=' . $i . ($tag !== '' ? '&tag=' . urlencode($tag) : '') . ($search !== '' ? '&search=' . urlencode($search) : ''));
+          ?>
+            <a href="<?= e($page_href) ?>"
                class="page-circle-btn <?= $i === $current ? 'is-active' : '' ?>">
               <?= $i ?>
             </a>
           <?php endfor; ?>
-          <a href="<?= e(url('blogs?page=' . min($total_pages_to_show, $current + 1) . ($tag !== '' ? '&tag=' . urlencode($tag) : '') . ($search !== '' ? '&search=' . urlencode($search) : ''))) ?>" class="page-circle-btn" aria-label="Next page">
+          <?php
+          $next_p = min($total_pages_to_show, $current + 1);
+          $next_href = url('blogs?page=' . $next_p . ($tag !== '' ? '&tag=' . urlencode($tag) : '') . ($search !== '' ? '&search=' . urlencode($search) : ''));
+          ?>
+          <a href="<?= e($next_href) ?>" class="page-circle-btn" aria-label="Next page">
             <i class="fas fa-chevron-right" style="font-size:11px"></i>
           </a>
         </div>
