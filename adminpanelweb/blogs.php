@@ -3,6 +3,23 @@ require_once __DIR__ . '/_auth.php';
 require_admin();
 require_csrf();
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'sync_new_blogs') {
+    $sqlFile = __DIR__ . '/../add_5_new_blogs.sql';
+    if (file_exists($sqlFile)) {
+        try {
+            $sql = file_get_contents($sqlFile);
+            $pdo->exec($sql);
+            flash_set('success', '5 Naye blogs database me successfully sync/add ho gaye!');
+        } catch (PDOException $e) {
+            flash_set('error', 'Sync failed: ' . $e->getMessage());
+        }
+    } else {
+        flash_set('error', 'add_5_new_blogs.sql file nahi mili.');
+    }
+    header('Location: blogs.php');
+    exit;
+}
+
 if (($_GET['action'] ?? '') === 'delete' && ($id = (int)($_GET['id'] ?? 0))) {
     try {
         $pdo->prepare("DELETE FROM blogs WHERE id = ?")->execute([$id]);
@@ -51,7 +68,14 @@ include __DIR__ . '/_layout.php';
       <p class="mod-hero-sub">Publish educational stories, AI curriculum announcements, and event updates.</p>
     </div>
   </div>
-  <div class="mod-hero-actions">
+  <div class="mod-hero-actions" style="display:flex;gap:10px;align-items:center;">
+    <form method="POST" style="margin:0;" onsubmit="return confirm('Kya aap 5 naye blogs database me sync karna chahte hain?');">
+      <?= csrf_field() ?>
+      <input type="hidden" name="action" value="sync_new_blogs">
+      <button type="submit" class="btn btn-secondary" title="Sync 5 new blogs into database">
+        <i class="fas fa-cloud-arrow-up"></i> Sync 5 New Blogs
+      </button>
+    </form>
     <a href="blog-form.php" class="btn btn-primary"><i class="fas fa-plus"></i> Write Post</a>
   </div>
 </div>
