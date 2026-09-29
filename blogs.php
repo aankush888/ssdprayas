@@ -47,10 +47,10 @@ $posts = rows(
 
 function get_blog_tag_class($tag) {
     $t = strtolower(trim($tag));
-    if ($t === 'ai') return 'tag-blue';
-    if ($t === 'innovation') return 'tag-green';
-    if ($t === 'policy') return 'tag-red';
-    if ($t === 'future skills') return 'tag-purple';
+    if ($t === 'ai' || strpos($t, 'education') !== false || strpos($t, 'curriculum') !== false) return 'tag-blue';
+    if ($t === 'innovation' || strpos($t, 'career') !== false) return 'tag-green';
+    if ($t === 'policy' || strpos($t, 'cbse') !== false) return 'tag-red';
+    if ($t === 'future skills' || strpos($t, 'skills') !== false || strpos($t, 'study') !== false) return 'tag-purple';
     return 'tag-blue';
 }
 

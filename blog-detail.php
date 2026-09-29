@@ -28,7 +28,7 @@ try {
 }
 
 $page       = 'blog';
-$page_title = ($blog['meta_title'] ?: $blog['title']) . ' | ' . SITE_NAME;
+$page_title = $blog['meta_title'] ?: $blog['title'];
 $page_desc  = $blog['meta_description'] ?: mb_strimwidth(strip_tags($blog['excerpt']), 0, 155, '…');
 $page_keywords = !empty($blog['meta_keywords']) ? $blog['meta_keywords'] : null;
 $page_image = url(blog_image($blog));

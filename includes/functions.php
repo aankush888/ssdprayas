@@ -71,6 +71,11 @@ function blog_image($post) {
         'how-do-i-learn-ai-as-a-student-in-india'                                    => 'assets/img/blog-6.jpg',
         'how-school-students-in-india-can-learn-artificial-intelligence'             => 'assets/img/blog-7.jpg',
         'artificial-intelligence-for-kids-india'                                     => 'assets/img/blog-7.jpg',
+        'chatgpt-for-school-homework-guide-for-students'                             => 'assets/img/blog-8.jpg',
+        'how-to-use-ai-for-studies-students-guide'                                   => 'assets/img/blog-9.jpg',
+        'is-ai-compulsory-in-cbse-2026-rules-explained'                              => 'assets/img/blog-10.jpg',
+        'best-ai-course-after-12th-in-india-2026-guide'                              => 'assets/img/blog-11.jpg',
+        'cbse-class-9-ai-syllabus-2026-27-breakdown'                                 => 'assets/img/blog-12.jpg',
     ];
 
     if (empty($img) || strpos($img, 'student-laptop.png') !== false) {
