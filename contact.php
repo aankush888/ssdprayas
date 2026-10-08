@@ -68,12 +68,11 @@ include __DIR__ . '/includes/header.php';
         </span>
 
         <h1 class="contact-hero-title">
-          Let's Plan Your<br>
-          <span class="text-blue">AI</span> <span class="text-green">Roll-out</span>
+          <?= !empty($page_seo_h1) ? e($page_seo_h1) : 'Let\'s Plan Your<br><span class="text-blue">AI</span> <span class="text-green">Roll-out</span>' ?>
         </h1>
 
         <p class="contact-hero-desc">
-          Whether it is one school, a district programme or a state-level project — tell us what you need and our team will design the roll-out with you.
+          <?= !empty($page_seo_content) ? nl2br(e($page_seo_content)) : 'Whether it is one school, a district programme or a state-level project — tell us what you need and our team will design the roll-out with you.' ?>
         </p>
 
         <div class="contact-trust-row">

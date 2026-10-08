@@ -4,9 +4,12 @@ require_admin();
 $me    = admin_user();
 $flash = flash_get();
 
+$count_row = $pdo->query("SELECT 
+    (SELECT COUNT(*) FROM enquiries WHERE status = 'new') AS enq,
+    (SELECT COUNT(*) FROM job_applications WHERE status = 'new') AS apps")->fetch(PDO::FETCH_ASSOC);
 $nav_counts = [
-    'enquiries'    => (int)scalar($pdo, "SELECT COUNT(*) FROM enquiries WHERE status = 'new'"),
-    'applications' => (int)scalar($pdo, "SELECT COUNT(*) FROM job_applications WHERE status = 'new'"),
+    'enquiries'    => (int)($count_row['enq'] ?? 0),
+    'applications' => (int)($count_row['apps'] ?? 0),
 ];
 
 $nav = [
@@ -18,6 +21,7 @@ $nav = [
     ['applications', 'applications.php', 'fa-file-lines',        'Applications'],
     ['enquiries',    'enquiries.php',    'fa-inbox',             'Enquiries'],
     ['blogs',        'blogs.php',        'fa-pen-nib',           'Blogs'],
+    ['seo',          'seo.php',          'fa-magnifying-glass-chart', 'SEO Manager'],
     ['settings',     'settings.php',     'fa-gear',              'Settings'],
 ];
 ?>

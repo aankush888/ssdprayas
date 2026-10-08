@@ -194,6 +194,103 @@ include __DIR__ . '/_layout.php';
   .counter-badge.ok { background: #e6f4ea; color: #137333; }
   .counter-badge.warn { background: #fef7e0; color: #b06000; }
   .counter-badge.over { background: #fce8e6; color: #c5221f; }
+
+  /* Normal Editor Styles - 0 External Dependencies */
+  .normal-editor-container {
+      border: 1px solid var(--line, #cbd5e1);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      transition: border-color .2s, box-shadow .2s;
+  }
+  .normal-editor-container:focus-within {
+      border-color: var(--brand, #1a73e8);
+      box-shadow: 0 0 0 3px rgba(26,115,232,0.18);
+  }
+  .normal-editor-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+  }
+  .normal-editor-toolbar .tb-group {
+      display: inline-flex;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 2px;
+      gap: 2px;
+  }
+  .ed-btn {
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #334155;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      min-width: 32px;
+      height: 32px;
+      transition: all .15s ease;
+  }
+  .ed-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+  }
+  .normal-editor-textarea {
+      width: 100%;
+      min-height: 480px;
+      padding: 18px 20px;
+      border: none;
+      outline: none;
+      resize: vertical;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      color: #1e293b;
+      box-sizing: border-box;
+      background: #ffffff;
+      display: block;
+  }
+  .normal-editor-preview {
+      width: 100%;
+      min-height: 480px;
+      padding: 22px 24px;
+      background: #ffffff;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      color: #1e293b;
+      overflow-y: auto;
+  }
+  .normal-editor-preview h1 { font-size: 26px; font-weight: 800; color: #0b132b; margin: 20px 0 10px; border-bottom: 2px solid #ebf3fe; padding-bottom: 6px; }
+  .normal-editor-preview h2 { font-size: 21px; font-weight: 700; color: #1a73e8; margin: 18px 0 8px; }
+  .normal-editor-preview h3 { font-size: 18px; font-weight: 700; color: #1e293b; margin: 16px 0 6px; }
+  .normal-editor-preview h4 { font-size: 16px; font-weight: 600; color: #475569; margin: 14px 0 6px; }
+  .normal-editor-preview p { margin-bottom: 14px; }
+  .normal-editor-preview ul, .normal-editor-preview ol { padding-left: 24px; margin-bottom: 14px; }
+  .normal-editor-preview blockquote { border-left: 4px solid #1a73e8; padding-left: 14px; color: #475569; font-style: italic; margin: 14px 0; }
+  .normal-editor-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 16px;
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      font-size: 12px;
+      color: #64748b;
+  }
 </style>
 
 <!-- Form Hero Header -->
@@ -307,18 +404,66 @@ include __DIR__ . '/_layout.php';
             <textarea id="b-excerpt" name="excerpt" style="min-height:80px" placeholder="One or two compelling sentences summarizing the article"><?= e($row['excerpt']) ?></textarea>
           </div>
 
-          <!-- Full Content with Rich Headings H1, H2, H3, H4 -->
+          <!-- Article Content: Normal Editor (Zero External Dependencies) -->
           <div class="fg full">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-              <label for="b-content" style="margin:0">Article Content (Supports Heading H1, H2, H3, H4)</label>
-              <div style="display:flex;gap:6px">
-                <span class="badge b-blue" style="font-size:11px">H1</span>
-                <span class="badge b-blue" style="font-size:11px">H2</span>
-                <span class="badge b-blue" style="font-size:11px">H3</span>
-                <span class="badge b-blue" style="font-size:11px">H4</span>
+              <label for="b-content" style="margin:0">Article Content <span class="hint">(Direct Normal Editor &bull; Full HTML & Text Support)</span></label>
+              <span class="badge b-blue" style="font-size:11px"><i class="fas fa-feather-pointed"></i> Zero-Lag Editor</span>
+            </div>
+
+            <div class="normal-editor-container">
+              <!-- Editor Quick Toolbar -->
+              <div class="normal-editor-toolbar">
+                <div class="tb-group" title="Headings">
+                  <button type="button" class="ed-btn" data-tag="h1" title="Heading 1"><b>H1</b></button>
+                  <button type="button" class="ed-btn" data-tag="h2" title="Heading 2"><b>H2</b></button>
+                  <button type="button" class="ed-btn" data-tag="h3" title="Heading 3"><b>H3</b></button>
+                  <button type="button" class="ed-btn" data-tag="h4" title="Heading 4"><b>H4</b></button>
+                  <button type="button" class="ed-btn" data-tag="p" title="Paragraph"><i class="fas fa-paragraph"></i></button>
+                </div>
+
+                <div class="tb-group" title="Text Styles">
+                  <button type="button" class="ed-btn" data-tag="strong" title="Bold"><b>B</b></button>
+                  <button type="button" class="ed-btn" data-tag="em" title="Italic"><i>I</i></button>
+                  <button type="button" class="ed-btn" data-tag="u" title="Underline"><u>U</u></button>
+                  <button type="button" class="ed-btn" data-tag="blockquote" title="Quote"><i class="fas fa-quote-left"></i></button>
+                </div>
+
+                <div class="tb-group" title="Lists & Breaks">
+                  <button type="button" class="ed-btn" data-action="ul" title="Bullet List"><i class="fas fa-list-ul"></i></button>
+                  <button type="button" class="ed-btn" data-action="ol" title="Numbered List"><i class="fas fa-list-ol"></i></button>
+                  <button type="button" class="ed-btn" data-action="br" title="Line Break">&lt;br&gt;</button>
+                </div>
+
+                <div class="tb-group" title="Links & Media">
+                  <button type="button" class="ed-btn" data-action="link" title="Insert Link"><i class="fas fa-link"></i> Link</button>
+                  <button type="button" class="ed-btn" data-action="img" title="Insert Image"><i class="fas fa-image"></i> Image</button>
+                </div>
+
+                <div style="margin-left:auto;display:flex;gap:6px">
+                  <button type="button" class="ed-btn" id="btnTogglePreview" style="background:#e8f0fe;color:#1a73e8;border:1px solid #bfdbfe;font-size:12px">
+                    <i class="fas fa-eye"></i> <span id="previewBtnText">Live Preview</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Main Content Textarea -->
+              <textarea id="b-content" name="content" class="normal-editor-textarea" placeholder="Yahan apna article likhein ya paste karein... HTML tags aur normal text dono supported hain."><?= e($row['content']) ?></textarea>
+
+              <!-- Live Preview Output -->
+              <div id="contentPreviewBox" class="normal-editor-preview" style="display:none"></div>
+
+              <!-- Editor Footer -->
+              <div class="normal-editor-footer">
+                <div style="display:flex;gap:14px;align-items:center">
+                  <span id="edWordCount" style="font-weight:700;color:#0f172a">0 words</span>
+                  <span id="edCharCount" style="color:#64748b">0 characters</span>
+                </div>
+                <div>
+                  <span class="hint" style="color:#64748b"><i class="fas fa-info-circle"></i> Kisi bhi text ko select karke H1, H2, ya B par click karke format karein</span>
+                </div>
               </div>
             </div>
-            <textarea id="b-content" name="content"><?= e($row['content']) ?></textarea>
           </div>
 
         </div>
@@ -593,7 +738,6 @@ include __DIR__ . '/_layout.php';
   </div>
 </aside>
 
-<script src="https://cdn.tiny.cloud/1/cfovpxfzfx9fxcuionrvci6065cwk71prl39eibgvt0n1prn/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
 (function () {
     var esc = function (s) {
@@ -619,22 +763,112 @@ include __DIR__ . '/_layout.php';
         });
     });
 
-    // 2. TinyMCE Initializer with Explicit Headings H1, H2, H3, H4
-    tinymce.init({
-        selector: '#b-content',
-        plugins: 'anchor autolink charmap code codesample image link lists media searchreplace table visualblocks wordcount fullscreen',
-        toolbar: 'undo redo | blocks | bold italic underline strikethrough | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist | link image media table | removeformat code fullscreen',
-        block_formats: 'Paragraph=p; Heading 1 (H1)=h1; Heading 2 (H2)=h2; Heading 3 (H3)=h3; Heading 4 (H4)=h4; Preformatted=pre; Blockquote=blockquote',
-        height: 520,
-        menubar: 'edit view insert format tools table',
-        branding: false,
-        content_style: 'body { font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif; font-size: 15px; line-height: 1.75; color: #1e293b; padding: 16px; } ' +
-                       'h1 { font-size: 26px; font-weight: 800; color: #0b132b; margin-top: 24px; margin-bottom: 12px; border-bottom: 2px solid #ebf3fe; padding-bottom: 6px; } ' +
-                       'h2 { font-size: 21px; font-weight: 700; color: #1a73e8; margin-top: 20px; margin-bottom: 10px; } ' +
-                       'h3 { font-size: 18px; font-weight: 700; color: #1e293b; margin-top: 18px; margin-bottom: 8px; } ' +
-                       'h4 { font-size: 16px; font-weight: 600; color: #475569; margin-top: 14px; margin-bottom: 6px; } ' +
-                       'p { margin-bottom: 14px; } pre { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; font-family: monospace; }'
+    // 2. Normal Editor Logic (0 External Dependencies, 0 CDN, No Domain Restrictions)
+    var contentTa     = document.getElementById('b-content');
+    var previewBox    = document.getElementById('contentPreviewBox');
+    var btnTogglePrev = document.getElementById('btnTogglePreview');
+    var prevText      = document.getElementById('previewBtnText');
+    var wordCountEl   = document.getElementById('edWordCount');
+    var charCountEl   = document.getElementById('edCharCount');
+
+    function updateEditorStats() {
+        if (!contentTa) return;
+        var val = contentTa.value || '';
+        var words = val.trim() ? val.trim().split(/\s+/).length : 0;
+        if (wordCountEl) wordCountEl.textContent = words + ' words';
+        if (charCountEl) charCountEl.textContent = val.length + ' characters';
+    }
+
+    if (contentTa) {
+        contentTa.addEventListener('input', updateEditorStats);
+        updateEditorStats();
+    }
+
+    function insertTag(openTag, closeTag, defaultText) {
+        if (!contentTa) return;
+        contentTa.focus();
+        var start = contentTa.selectionStart;
+        var end   = contentTa.selectionEnd;
+        var selected = contentTa.value.substring(start, end);
+        var text = selected || defaultText || '';
+        var replacement = openTag + text + closeTag;
+        
+        if (typeof contentTa.setRangeText === 'function') {
+            contentTa.setRangeText(replacement, start, end, 'end');
+        } else {
+            contentTa.value = contentTa.value.substring(0, start) + replacement + contentTa.value.substring(end);
+        }
+        updateEditorStats();
+    }
+
+    // Heading & style tag buttons
+    document.querySelectorAll('.normal-editor-toolbar .ed-btn[data-tag]').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            var tag = this.dataset.tag;
+            var placeholders = {
+                'h1': 'Heading 1',
+                'h2': 'Heading 2',
+                'h3': 'Heading 3',
+                'h4': 'Heading 4',
+                'p': 'Paragraph text...',
+                'strong': 'Bold text',
+                'em': 'Italic text',
+                'u': 'Underlined text',
+                'blockquote': 'Quote text...'
+            };
+            insertTag('<' + tag + '>', '</' + tag + '>', placeholders[tag] || '');
+        });
     });
+
+    // Action buttons (Lists, Links, Images, Line break)
+    document.querySelectorAll('.normal-editor-toolbar .ed-btn[data-action]').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            var action = this.dataset.action;
+            if (action === 'br') {
+                insertTag('<br>\n', '', '');
+            } else if (action === 'ul') {
+                insertTag("<ul>\n  <li>", "</li>\n  <li>Item 2</li>\n</ul>\n", "Item 1");
+            } else if (action === 'ol') {
+                insertTag("<ol>\n  <li>", "</li>\n  <li>Item 2</li>\n</ol>\n", "Item 1");
+            } else if (action === 'link') {
+                var url = prompt('Link URL enter karein (e.g. https://ssdprayas.com):', 'https://');
+                if (url) {
+                    insertTag('<a href="' + url.replace(/"/g, '&quot;') + '" target="_blank">', '</a>', 'Link text');
+                }
+            } else if (action === 'img') {
+                var imgUrl = prompt('Image URL enter karein:', 'https://');
+                if (imgUrl) {
+                    var alt = prompt('Image description (alt text):', 'Blog image') || '';
+                    insertTag('<img src="' + imgUrl.replace(/"/g, '&quot;') + '" alt="' + alt.replace(/"/g, '&quot;') + '" style="max-width:100%;border-radius:10px">\n', '', '');
+                }
+            }
+        });
+    });
+
+    // Live Preview Toggle
+    if (btnTogglePrev && previewBox && contentTa) {
+        btnTogglePrev.addEventListener('click', function (e) {
+            e.preventDefault();
+            var isPreview = (previewBox.style.display !== 'none');
+            if (isPreview) {
+                previewBox.style.display = 'none';
+                contentTa.style.display  = 'block';
+                contentTa.focus();
+                if (prevText) prevText.textContent = 'Live Preview';
+                btnTogglePrev.style.background = '#e8f0fe';
+                btnTogglePrev.style.color      = '#1a73e8';
+            } else {
+                previewBox.innerHTML = contentTa.value.trim() ? contentTa.value : '<p style="color:#94a3b8;font-style:italic">Content khali hai. Textarea me kuch type karein preview dekhne ke liye.</p>';
+                previewBox.style.display = 'block';
+                contentTa.style.display  = 'none';
+                if (prevText) prevText.textContent = 'Edit Content';
+                btnTogglePrev.style.background = '#fef3c7';
+                btnTogglePrev.style.color      = '#b45309';
+            }
+        });
+    }
 
     // 3. Title, Slug & SERP Real-time Sync
     var titleInput = document.getElementById('b-title');
@@ -842,11 +1076,8 @@ include __DIR__ . '/_layout.php';
         document.getElementById('b-tag').value     = draft.tag     || '';
         document.getElementById('b-excerpt').value = draft.excerpt || '';
         document.getElementById('b-slug').value    = slugify(draft.title || '');
-        if (tinymce.get('b-content')) {
-            tinymce.get('b-content').setContent(draft.content || '');
-        } else {
-            document.getElementById('b-content').value = draft.content || '';
-        }
+        document.getElementById('b-content').value = draft.content || '';
+        if (typeof updateEditorStats === 'function') updateEditorStats();
         panel.classList.remove('is-open');
         updateSerp();
     };

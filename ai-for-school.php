@@ -92,8 +92,8 @@ include __DIR__ . '/includes/header.php';
     <div class="school-hero-content">
       <p class="crumbs"><a href="<?= e(url('/')) ?>">Home</a> &nbsp;/&nbsp; AI for School Programme</p>
       <span class="eyebrow is-green"><i class="fas fa-school"></i> Flagship Programme</span>
-      <h1>AI for <span class="text-blue">Schools</span> in <span class="text-green">India</span></h1>
-      <p class="hero-lead">We don't hand over a syllabus and walk away. Our AI training for schools model puts your own teachers through certified training, runs classes inside the computer lab you already have, and leaves your campus capable of teaching AI on its own — long after our team has moved to the next school.</p>
+      <h1><?= !empty($page_seo_h1) ? e($page_seo_h1) : 'AI for <span class="text-blue">Schools</span> in <span class="text-green">India</span>' ?></h1>
+      <p class="hero-lead"><?= !empty($page_seo_content) ? nl2br(e($page_seo_content)) : "We don't hand over a syllabus and walk away. Our AI training for schools model puts your own teachers through certified training, runs classes inside the computer lab you already have, and leaves your campus capable of teaching AI on its own — long after our team has moved to the next school." ?></p>
       <div class="hero-actions" style="justify-content: flex-start;">
         <a href="<?= e(url('contact')) ?>" class="btn btn-primary btn-pill">Partner Your School <i class="fas fa-arrow-right"></i></a>
         <a href="<?= e(whatsapp_link('Hello SSD Prayas, I want to know about the AI for School programme.')) ?>"

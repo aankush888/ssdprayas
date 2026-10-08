@@ -23,9 +23,9 @@ include __DIR__ . '/includes/header.php';
   <div class="container">
     <div class="prog-hero-content">
       <span class="eyebrow is-blue"><i class="fas fa-graduation-cap"></i> Our Programmes</span>
-      <h1>The SSD Prayas<br><span class="text-blue">Learning</span> <span class="text-teal">Journey</span></h1>
+      <h1><?= !empty($page_seo_h1) ? e($page_seo_h1) : 'The SSD Prayas<br><span class="text-blue">Learning</span> <span class="text-teal">Journey</span>' ?></h1>
       <p class="prog-hero-lead">
-        AI is not one course taught once. Our curriculum grows with the learner — from a Class 3 child meeting a computer, to a Class 12 student building real AI projects, to a teacher who can carry the whole programme forward.
+        <?= !empty($page_seo_content) ? nl2br(e($page_seo_content)) : 'AI is not one course taught once. Our curriculum grows with the learner — from a Class 3 child meeting a computer, to a Class 12 student building real AI projects, to a teacher who can carry the whole programme forward.' ?>
       </p>
       
       <div class="prog-hero-actions">

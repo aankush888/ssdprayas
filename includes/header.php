@@ -9,6 +9,27 @@ $page_image  = $page_image  ?? asset('img/og-default.png');
 $page_robots   = $page_robots ?? 'index, follow';
 $page_keywords = $page_keywords ?? 'SSD Prayas, AI education India, AI course for school students, AI training for educators, AI skilling for professionals, NEP 2020 AI, government AI skilling project';
 
+// Auto-load SEO overrides from database if present
+$page_seo_h1      = null;
+$page_seo_content = null;
+if (isset($pdo) && !empty($page) && $page !== 'blog') {
+    $db_seo = get_page_seo($pdo, $page);
+    if ($db_seo) {
+        if (!empty($db_seo['meta_title']))       $page_title       = $db_seo['meta_title'];
+        if (!empty($db_seo['meta_description'])) $page_desc        = $db_seo['meta_description'];
+        if (!empty($db_seo['meta_keywords']))    $page_keywords    = $db_seo['meta_keywords'];
+        if (!empty($db_seo['canonical_url']))    $page_canonical   = $db_seo['canonical_url'];
+        if (!empty($db_seo['og_title']))         $page_og_title    = $db_seo['og_title'];
+        if (!empty($db_seo['og_description']))   $page_og_desc     = $db_seo['og_description'];
+        if (!empty($db_seo['og_image']))         $page_og_image    = $db_seo['og_image'];
+        $page_seo_h1      = !empty($db_seo['h1_heading']) ? $db_seo['h1_heading'] : null;
+        $page_seo_content = !empty($db_seo['content']) ? $db_seo['content'] : null;
+        if (!empty($db_seo['schema_json'])) {
+            $custom_schema = ($custom_schema ?? '') . "\n" . $db_seo['schema_json'];
+        }
+    }
+}
+
 // Anchors live on the homepage, so off-home pages need an absolute link.
 $home = ($page === 'home') ? '' : url('/');
 $canonical_url = $page_canonical ?? url($page === 'home' ? '/' : $page);

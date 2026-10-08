@@ -20,11 +20,15 @@ if (!$blog) {
     exit;
 }
 
-// Non-critical view counter
-try {
-    $pdo->prepare("UPDATE blogs SET views = views + 1 WHERE id = ?")->execute([$blog['id']]);
-} catch (PDOException $e) {
-    error_log('View counter failed: ' . $e->getMessage());
+// Lightweight view counter (throttled per session to prevent DB write-lock storms)
+$view_key = 'viewed_blog_' . (int)$blog['id'];
+if (empty($_SESSION[$view_key])) {
+    $_SESSION[$view_key] = time();
+    try {
+        $pdo->prepare("UPDATE blogs SET views = views + 1 WHERE id = ?")->execute([$blog['id']]);
+    } catch (PDOException $e) {
+        error_log('View counter failed: ' . $e->getMessage());
+    }
 }
 
 $page       = 'blog';
@@ -157,8 +161,12 @@ include __DIR__ . '/includes/header.php';
       <?php endif; ?>
 
       <?php
-      /* Content is authored in the admin TinyMCE editor, so HTML is intentional here. */
-      echo $blog['content'];
+      /* Content authored in admin: renders HTML or preserves line breaks if plain text */
+      if (strip_tags($blog['content']) === $blog['content']) {
+          echo nl2br(e($blog['content']));
+      } else {
+          echo $blog['content'];
+      }
       ?>
     </div>
 

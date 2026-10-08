@@ -81,12 +81,11 @@ include __DIR__ . '/includes/header.php';
       </div>
       
       <h1 class="career-hero-title">
-        Teach the Skill That <br>
-        <span class="text-blue">Changes</span> <span class="text-green">Careers</span>
+        <?= !empty($page_seo_h1) ? e($page_seo_h1) : 'Teach the Skill That <br><span class="text-blue">Changes</span> <span class="text-green">Careers</span>' ?>
       </h1>
       
       <p class="career-hero-desc">
-        SSD Prayas hires educators only. If you can hold a classroom and you are willing to learn AI properly, we will train you, certify you and put you in front of students who need you.
+        <?= !empty($page_seo_content) ? nl2br(e($page_seo_content)) : 'SSD Prayas hires educators only. If you can hold a classroom and you are willing to learn AI properly, we will train you, certify you and put you in front of students who need you.' ?>
       </p>
       
       <div class="career-hero-actions">

@@ -99,11 +99,11 @@ include __DIR__ . '/includes/header.php';
         </span>
 
         <h1 class="blog-hero-title">
-          The <span class="text-blue">SSD Prayas</span> Blog
+          <?= !empty($page_seo_h1) ? e($page_seo_h1) : 'The <span class="text-blue">SSD Prayas</span> Blog' ?>
         </h1>
 
         <p class="blog-hero-desc">
-          Stories, ideas and insights on AI education, NEP 2020, educator training and what's really working inside Indian classrooms.
+          <?= !empty($page_seo_content) ? nl2br(e($page_seo_content)) : 'Stories, ideas and insights on AI education, NEP 2020, educator training and what\'s really working inside Indian classrooms.' ?>
         </p>
 
         <div class="blog-trust-row">

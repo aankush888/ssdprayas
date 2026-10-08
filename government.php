@@ -25,15 +25,11 @@ include __DIR__ . '/includes/header.php';
       </div>
       
       <h1 class="govt-hero-title">
-        Large-Scale <br>
-        AI Skilling, <br>
-        <span class="govt-title-highlight"><span class="text-blue">Across Multiple</span> <span class="text-green">States</span></span>
+        <?= !empty($page_seo_h1) ? e($page_seo_h1) : 'Large-Scale <br>AI Skilling, <br><span class="govt-title-highlight"><span class="text-blue">Across Multiple</span> <span class="text-green">States</span></span>' ?>
       </h1>
       
       <p class="govt-hero-desc">
-        SSD Prayas delivers government and institutional AI skilling at state scale —<br class="hero-desc-br">
-        managing partner onboarding, educator training batches, student enrolment<br class="hero-desc-br">
-        and certification tracking through a single monitored system.
+        <?= !empty($page_seo_content) ? nl2br(e($page_seo_content)) : 'SSD Prayas delivers government and institutional AI skilling at state scale —<br class="hero-desc-br">managing partner onboarding, educator training batches, student enrolment<br class="hero-desc-br">and certification tracking through a single monitored system.' ?>
       </p>
       
       <div class="govt-hero-actions">

@@ -1,12 +1,15 @@
 RewriteEngine On
 
-# 301 Redirect: Force HTTPS and non-www (Single-hop canonical for ssdprayas.com)
-RewriteCond %{HTTP_HOST} ^www\.ssdprayas\.com$ [NC,OR]
-RewriteCond %{HTTP_HOST} ^ssdprayas\.com$ [NC]
-RewriteCond %{HTTPS} off
+# 1. Canonical non-www redirect: www.ssdprayas.com -> ssdprayas.com
+RewriteCond %{HTTP_HOST} ^www\.ssdprayas\.com$ [NC]
 RewriteRule ^ https://ssdprayas.com%{REQUEST_URI} [R=301,L]
 
-RewriteCond %{HTTP_HOST} ^www\.ssdprayas\.com$ [NC]
+# 2. Force HTTPS for ssdprayas.com behind Reverse Proxy (Hostinger / Cloudflare)
+# Prevents infinite 301 loops when SSL is terminated at proxy level
+RewriteCond %{HTTP_HOST} ^(www\.)?ssdprayas\.com$ [NC]
+RewriteCond %{HTTPS} !on [NC]
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+RewriteCond %{HTTP:CF-Visitor} !https [NC]
 RewriteRule ^ https://ssdprayas.com%{REQUEST_URI} [R=301,L]
 
 # Force extensionless, index-free URLs.

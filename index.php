@@ -35,10 +35,10 @@ include __DIR__ . '/includes/header.php';
         <span>Google for Education Partner</span>
       </div>
 
-      <h1>AI Education for a<br><span class="text-blue">Future-Ready</span> Bharat</h1>
+      <h1><?= !empty($page_seo_h1) ? e($page_seo_h1) : 'AI Education for a<br><span class="text-blue">Future-Ready</span> Bharat' ?></h1>
 
       <p class="home-hero-lead">
-        Practical, hands-on AI education for school students, teachers and working professionals across India.
+        <?= !empty($page_seo_content) ? nl2br(e($page_seo_content)) : 'Practical, hands-on AI education for school students, teachers and working professionals across India.' ?>
       </p>
 
       <div class="home-hero-actions">

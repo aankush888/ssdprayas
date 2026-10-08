@@ -25,12 +25,11 @@ include __DIR__ . '/includes/header.php';
       </div>
       
       <h1 class="about-hero-title">
-        Building India's <br>
-        <span class="text-blue">AI-Ready</span> <span class="text-green">Generation</span>
+        <?= !empty($page_seo_h1) ? e($page_seo_h1) : 'Building India\'s <br><span class="text-blue">AI-Ready</span> <span class="text-green">Generation</span>' ?>
       </h1>
       
       <p class="about-hero-desc">
-        SSD Prayas exists for one reason — to make sure practical AI skills reach every classroom, every teacher and every working professional, not just the ones in metro cities.
+        <?= !empty($page_seo_content) ? nl2br(e($page_seo_content)) : 'SSD Prayas exists for one reason — to make sure practical AI skills reach every classroom, every teacher and every working professional, not just the ones in metro cities.' ?>
       </p>
       
       <div class="about-trust-row">
